@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gridkaart Generator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; background-color: #f0f0f0; }
+        button { padding: 15px 30px; font-size: 1.2em; cursor: pointer; background-color: #007bff; color: white; border: none; border-radius: 5px; transition: background-color 0.3s ease; }
+        button:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+    <button id="generatePdf">Genereer Gridkaart PDF</button>
+
+    <script>
+        const { jsPDF } = window.jspdf;
+
+        document.getElementById('generatePdf').addEventListener('click', () => {
+            const doc = new jsPDF();
+
+            const pageWidth = doc.internal.pageSize.getWidth();
+            const pageHeight = doc.internal.pageSize.getHeight();
+
+            const gridSize = 20; // Grootte van elk vakje in de grid (in mm)
+            const startX = 10;   // Startpositie X (marge)
+            const startY = 10;   // Startpositie Y (marge)
+
+            // Teken verticale lijnen
+            for (let x = startX; x <= pageWidth - startX; x += gridSize) {
+                doc.line(x, startY, x, pageHeight - startY);
+            }
+
+            // Teken horizontale lijnen
+            for (let y = startY; y <= pageHeight - startY; y += gridSize) {
+                doc.line(startX, y, pageWidth - startX, y);
+            }
+
+            // Optioneel: Voeg coördinaten of labels toe
+            doc.setFontSize(10);
+            for (let x = startX + gridSize / 2; x < pageWidth - startX; x += gridSize) {
+                for (let y = startY + gridSize / 2; y < pageHeight - startY; y += gridSize) {
+                    // Voorbeeld: Voeg een eenvoudige X,Y coördinaat toe aan elk vakje
+                    const col = Math.floor((x - startX) / gridSize) + 1;
+                    const row = Math.floor((y - startY) / gridSize) + 1;
+                    doc.text(`${col},${row}`, x, y, { align: 'center' });
+                }
+            }
+
+
+            doc.save("gridkaart.pdf");
+        });
+    </script>
+</body>
+</html>
