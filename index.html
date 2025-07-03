@@ -3,54 +3,289 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gridkaart Generator</title>
+    <title>Gridkaart Generator Plus</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
-        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; background-color: #f0f0f0; }
-        button { padding: 15px 30px; font-size: 1.2em; cursor: pointer; background-color: #007bff; color: white; border: none; border-radius: 5px; transition: background-color 0.3s ease; }
-        button:hover { background-color: #0056b3; }
+        body {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .controls {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 15px 25px;
+            align-items: center;
+            max-width: 500px;
+            width: 90%;
+        }
+        .controls label {
+            font-weight: bold;
+            color: #333;
+            text-align: right;
+            padding-right: 10px;
+        }
+        .controls input[type="number"],
+        .controls input[type="file"],
+        .controls select {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1em;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .button-group {
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: space-around;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .button-group button {
+            flex-grow: 1;
+            padding: 15px 15px; /* Iets minder padding voor twee knoppen */
+            font-size: 1.1em;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .button-group button:hover {
+            background-color: #0056b3;
+        }
+        #imagePreview {
+            max-width: 100px;
+            max-height: 100px;
+            border: 1px dashed #ccc;
+            padding: 5px;
+            display: block;
+            margin-top: 10px;
+        }
+        #pdfPreviewContainer {
+            width: 90%;
+            max-width: 800px;
+            height: 600px; /* Vaste hoogte voor de voorvertoning */
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            background-color: white; /* Zorgt dat de achtergrond wit is als er geen PDF is geladen */
+            display: none; /* Standaard verborgen */
+        }
+        #pdfPreview {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
     </style>
 </head>
 <body>
-    <button id="generatePdf">Genereer Gridkaart PDF</button>
+    <div class="controls">
+        <label for="orientation">Oriëntatie:</label>
+        <select id="orientation">
+            <option value="p">Staand (Portret)</option>
+            <option value="l">Liggend (Landschap)</option>
+        </select>
+
+        <label for="rows">Aantal rijen:</label>
+        <input type="number" id="rows" value="10" min="1">
+
+        <label for="cols">Aantal kolommen:</label>
+        <input type="number" id="cols" value="10" min="1">
+
+        <label for="backgroundImg">Achtergrondafbeelding:</label>
+        <div>
+            <input type="file" id="backgroundImg" accept="image/*">
+            <img id="imagePreview" src="#" alt="Afbeelding voorbeeld" style="display: none;">
+        </div>
+
+        <div class="button-group">
+            <button id="previewPdf">Voorbeeld Tonen</button>
+            <button id="downloadPdf">PDF Downloaden</button>
+        </div>
+    </div>
+
+    <div id="pdfPreviewContainer">
+        <iframe id="pdfPreview" src="" type="application/pdf"></iframe>
+    </div>
 
     <script>
         const { jsPDF } = window.jspdf;
 
-        document.getElementById('generatePdf').addEventListener('click', () => {
-            const doc = new jsPDF();
+        const orientationInput = document.getElementById('orientation');
+        const rowsInput = document.getElementById('rows');
+        const colsInput = document.getElementById('cols');
+        const backgroundImgInput = document.getElementById('backgroundImg');
+        const imagePreview = document.getElementById('imagePreview');
+        const previewPdfButton = document.getElementById('previewPdf'); // Nieuwe knop
+        const downloadPdfButton = document.getElementById('downloadPdf'); // Oude knop, hernoemd
+        const pdfPreviewContainer = document.getElementById('pdfPreviewContainer'); // Nieuw
+        const pdfPreview = document.getElementById('pdfPreview'); // Nieuw
+
+        let uploadedImageBase64 = null;
+        let currentPdfBlobUrl = null; // Variabele om de Blob URL van de PDF op te slaan
+
+        // Functie om een getal om te zetten naar een alfabetische kolomletter (A, B, C... AA, AB...)
+        function getColumnLetter(colIndex) {
+            let result = '';
+            let num = colIndex;
+            while (num >= 0) {
+                result = String.fromCharCode(65 + (num % 26)) + result;
+                num = Math.floor(num / 26) - 1;
+            }
+            return result;
+        }
+
+        // Voorvertoning van de geüploade afbeelding
+        backgroundImgInput.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    imagePreview.src = e.target.result;
+                    imagePreview.style.display = 'block';
+                    uploadedImageBase64 = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            } else {
+                imagePreview.src = '#';
+                imagePreview.style.display = 'none';
+                uploadedImageBase64 = null;
+            }
+        });
+
+        // Functie om de PDF te genereren (nu herbruikbaar voor voorvertoning en download)
+        function generatePdfDocument() {
+            const selectedOrientation = orientationInput.value;
+            const numRows = parseInt(rowsInput.value);
+            const numCols = parseInt(colsInput.value);
+
+            if (isNaN(numRows) || numRows <= 0 || isNaN(numCols) || numCols <= 0) {
+                alert("Voer geldige aantallen voor rijen en kolommen in (minimaal 1).");
+                return null; // Geen document als input ongeldig is
+            }
+
+            const doc = new jsPDF(selectedOrientation, 'mm', 'a4');
 
             const pageWidth = doc.internal.pageSize.getWidth();
             const pageHeight = doc.internal.pageSize.getHeight();
 
-            const gridSize = 20; // Grootte van elk vakje in de grid (in mm)
-            const startX = 10;   // Startpositie X (marge)
-            const startY = 10;   // Startpositie Y (marge)
+            const margin = 0;
+            const labelMargin = 8;
 
-            // Teken verticale lijnen
-            for (let x = startX; x <= pageWidth - startX; x += gridSize) {
-                doc.line(x, startY, x, pageHeight - startY);
-            }
+            const gridStartX = margin + labelMargin;
+            const gridStartY = margin + labelMargin;
+            const gridEndX = pageWidth - margin;
+            const gridEndY = pageHeight - margin;
 
-            // Teken horizontale lijnen
-            for (let y = startY; y <= pageHeight - startY; y += gridSize) {
-                doc.line(startX, y, pageWidth - startX, y);
-            }
+            const usableGridWidth = gridEndX - gridStartX;
+            const usableGridHeight = gridEndY - gridStartY;
 
-            // Optioneel: Voeg coördinaten of labels toe
-            doc.setFontSize(10);
-            for (let x = startX + gridSize / 2; x < pageWidth - startX; x += gridSize) {
-                for (let y = startY + gridSize / 2; y < pageHeight - startY; y += gridSize) {
-                    // Voorbeeld: Voeg een eenvoudige X,Y coördinaat toe aan elk vakje
-                    const col = Math.floor((x - startX) / gridSize) + 1;
-                    const row = Math.floor((y - startY) / gridSize) + 1;
-                    doc.text(`${col},${row}`, x, y, { align: 'center' });
+            const colWidth = usableGridWidth / numCols;
+            const rowHeight = usableGridHeight / numRows;
+
+            // Teken de achtergrondafbeelding (indien aanwezig)
+            if (uploadedImageBase64) {
+                try {
+                    doc.addImage(uploadedImageBase64, 'JPEG', gridStartX, gridStartY, usableGridWidth, usableGridHeight);
+                } catch (e) {
+                    console.error("Fout bij het toevoegen van de afbeelding:", e);
+                    alert("Kon de afbeelding niet toevoegen. Zorg ervoor dat het een geldig afbeeldingsbestand is.");
+                    // Hier kun je kiezen om door te gaan zonder afbeelding of te stoppen
                 }
             }
 
+            // Teken de gridlijnen
+            doc.setDrawColor(0);
+            doc.setLineWidth(0.2);
 
-            doc.save("gridkaart.pdf");
+            for (let i = 0; i <= numCols; i++) {
+                const x = gridStartX + i * colWidth;
+                doc.line(x, gridStartY, x, gridEndY);
+            }
+
+            for (let i = 0; i <= numRows; i++) {
+                const y = gridStartY + i * rowHeight;
+                doc.line(gridStartX, y, gridEndX, y);
+            }
+
+            // Voeg de coördinaten toe
+            doc.setFontSize(10);
+            doc.setTextColor(0, 0, 0);
+
+            // X-as coördinaten (Alfabetisch bovenaan en onderaan)
+            for (let c = 0; c < numCols; c++) {
+                const colLetter = getColumnLetter(c);
+                const textX = gridStartX + c * colWidth + colWidth / 2;
+
+                doc.text(colLetter, textX, margin + (labelMargin / 2), { align: 'center', baseline: 'middle' });
+                doc.text(colLetter, textX, pageHeight - margin - (labelMargin / 2), { align: 'center', baseline: 'middle' });
+            }
+
+            // Y-as coördinaten (Numeriek links en rechts)
+            for (let r = 0; r < numRows; r++) {
+                const rowNumber = r + 1;
+                const textY = gridStartY + r * rowHeight + rowHeight / 2;
+
+                doc.text(String(rowNumber), margin + (labelMargin / 2), textY, { align: 'center', baseline: 'middle' });
+                doc.text(String(rowNumber), pageWidth - margin - (labelMargin / 2), textY, { align: 'center', baseline: 'middle' });
+            }
+
+            return doc; // Retourneer het jsPDF document object
+        }
+
+        // Event listener voor de "Voorbeeld Tonen" knop
+        previewPdfButton.addEventListener('click', () => {
+            const doc = generatePdfDocument();
+            if (doc) {
+                // Maak een Blob van de PDF
+                const pdfBlob = doc.output('blob');
+
+                // Als er al een Blob URL bestaat, trek die dan in om geheugen te vrijwaren
+                if (currentPdfBlobUrl) {
+                    URL.revokeObjectURL(currentPdfBlobUrl);
+                }
+
+                // Maak een nieuwe object URL voor de Blob
+                currentPdfBlobUrl = URL.createObjectURL(pdfBlob);
+
+                // Stel de src van de iframe in op de Blob URL
+                pdfPreview.src = currentPdfBlobUrl;
+                pdfPreviewContainer.style.display = 'block'; // Toon de container
+            } else {
+                // Als generatePdfDocument null retourneert (ongeldige input)
+                pdfPreviewContainer.style.display = 'none'; // Verberg de container
+            }
         });
+
+        // Event listener voor de "PDF Downloaden" knop
+        downloadPdfButton.addEventListener('click', () => {
+            const doc = generatePdfDocument();
+            if (doc) {
+                doc.save("gridkaart.pdf");
+            }
+        });
+
+        // Zorg ervoor dat de voorvertoning verdwijnt als de inputs veranderen
+        orientationInput.addEventListener('change', () => pdfPreviewContainer.style.display = 'none');
+        rowsInput.addEventListener('input', () => pdfPreviewContainer.style.display = 'none');
+        colsInput.addEventListener('input', () => pdfPreviewContainer.style.display = 'none');
+        backgroundImgInput.addEventListener('change', () => pdfPreviewContainer.style.display = 'none');
+
     </script>
 </body>
 </html>
