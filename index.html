@@ -37,9 +37,8 @@
             text-align: right;
             padding-right: 10px;
         }
-        .controls input[type="number"],
-        .controls input[type="file"],
-        .controls select {
+        .controls select,
+        .controls input {
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 4px;
@@ -47,6 +46,10 @@
             width: 100%;
             box-sizing: border-box;
         }
+        .controls input[type="color"] {
+            padding: 5px 10px;
+        }
+
         .button-group {
             grid-column: 1 / -1;
             display: flex;
@@ -107,6 +110,15 @@
         <label for="cols">Aantal kolommen:</label>
         <input type="number" id="cols" value="10" min="1">
 
+        <label for="line">Lijn dikte:</label>
+        <input type="number" id="line" value="1" min="1" max="20" step="1">
+
+        <label for="lineColor">Lijnkleur:</label>
+        <input type="color" id="lineColor" value="#000000">
+
+        <label for="textColor">Tekstkleur:</label>
+        <input type="color" id="textColor" value="#000000">
+
         <label for="backgroundImg">Achtergrondafbeelding:</label>
         <div>
             <input type="file" id="backgroundImg" accept="image/*">
@@ -129,6 +141,9 @@
         const orientationInput = document.getElementById('orientation');
         const rowsInput = document.getElementById('rows');
         const colsInput = document.getElementById('cols');
+        const lineInput = document.getElementById('line');
+        const lineColorInput = document.getElementById('lineColor');
+        const textColorInput = document.getElementById('textColor');
         const backgroundImgInput = document.getElementById('backgroundImg');
         const imagePreview = document.getElementById('imagePreview');
         const previewPdfButton = document.getElementById('previewPdf'); // Nieuwe knop
@@ -173,6 +188,9 @@
             const selectedOrientation = orientationInput.value;
             const numRows = parseInt(rowsInput.value);
             const numCols = parseInt(colsInput.value);
+            const numLine = parseInt(lineInput.value);
+            const lineColor = lineColorInput.value;
+            const textColor = textColorInput.value;
 
             if (isNaN(numRows) || numRows <= 0 || isNaN(numCols) || numCols <= 0) {
                 alert("Voer geldige aantallen voor rijen en kolommen in (minimaal 1).");
@@ -210,8 +228,8 @@
             }
 
             // Teken de gridlijnen
-            doc.setDrawColor(0);
-            doc.setLineWidth(0.2);
+            doc.setDrawColor(lineColor);
+            doc.setLineWidth(numLine / 10);
 
             for (let i = 0; i <= numCols; i++) {
                 const x = gridStartX + i * colWidth;
@@ -225,7 +243,7 @@
 
             // Voeg de coördinaten toe
             doc.setFontSize(10);
-            doc.setTextColor(0, 0, 0);
+            doc.setTextColor(textColor);
 
             // X-as coördinaten (Alfabetisch bovenaan en onderaan)
             for (let c = 0; c < numCols; c++) {
@@ -284,6 +302,9 @@
         orientationInput.addEventListener('change', () => pdfPreviewContainer.style.display = 'none');
         rowsInput.addEventListener('input', () => pdfPreviewContainer.style.display = 'none');
         colsInput.addEventListener('input', () => pdfPreviewContainer.style.display = 'none');
+        lineInput.addEventListener('input', () => pdfPreviewContainer.style.display = 'none');
+        lineColorInput.addEventListener('input', () => pdfPreviewContainer.style.display = 'none');
+        textColorInput.addEventListener('input', () => pdfPreviewContainer.style.display = 'none');
         backgroundImgInput.addEventListener('change', () => pdfPreviewContainer.style.display = 'none');
 
     </script>
