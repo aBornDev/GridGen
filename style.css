@@ -1,0 +1,88 @@
+body {
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.controls {
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 15px 25px;
+    align-items: center;
+    max-width: 500px;
+    width: 90%;
+}
+.controls label {
+    font-weight: bold;
+    color: #333;
+    text-align: right;
+    padding-right: 10px;
+}
+.controls select,
+.controls input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+    width: 100%;
+    box-sizing: border-box;
+}
+.controls input[type="color"] {
+    padding: 5px 10px;
+}
+
+.button-group {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    margin-top: 10px;
+}
+.button-group button {
+    flex-grow: 1;
+    padding: 15px 15px; /* Iets minder padding voor twee knoppen */
+    font-size: 1.1em;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+.button-group button:hover {
+    background-color: #0056b3;
+}
+#imagePreview {
+    max-width: 100px;
+    max-height: 100px;
+    border: 1px dashed #ccc;
+    padding: 5px;
+    display: block;
+    margin-top: 10px;
+}
+#pdfPreviewContainer {
+    width: 90%;
+    max-width: 800px;
+    height: 600px; /* Vaste hoogte voor de voorvertoning */
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: white; /* Zorgt dat de achtergrond wit is als er geen PDF is geladen */
+    display: none; /* Standaard verborgen */
+}
+#pdfPreview {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
