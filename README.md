@@ -4,7 +4,7 @@
 
 A simple, browser-based tool to create and download custom grid maps in PDF format. Ideal for tabletop games, strategic planning, or any activity that requires a grid overlay on a map or blank canvas.
 
-This tool is a single, self-contained HTML file that runs entirely in your browser.
+This tool is a simple web application that runs entirely in your browser, with no server-side processing required.
 
 ## Features
 
@@ -20,7 +20,7 @@ This tool is a single, self-contained HTML file that runs entirely in your brows
 
 ## How to Use
 
-1.  Open the `index.html` file in any modern web browser (like Chrome, Firefox, or Edge).
+1.  Open the application by navigating to its GitHub Pages URL in your browser. For local use, you can also open the `index.html` file directly.
 2.  Use the control panel to configure your grid map:
     *   Select the page orientation.
     *   Enter the desired number of rows and columns.
@@ -45,7 +45,7 @@ This tool is a single, self-contained HTML file that runs entirely in your brows
 
 Een eenvoudige, browser-gebaseerde tool om aangepaste gridkaarten te maken en te downloaden in PDF-formaat. Ideaal voor tabletop-spellen, strategische planning, of elke activiteit die een raster-overlay op een kaart of een leeg canvas vereist.
 
-Deze tool is een enkel, op zichzelf staand HTML-bestand dat volledig in uw browser draait.
+Deze tool is een eenvoudige webapplicatie die volledig in uw browser draait, zonder dat er server-side verwerking nodig is.
 
 ## Functies
 
@@ -61,7 +61,7 @@ Deze tool is een enkel, op zichzelf staand HTML-bestand dat volledig in uw brows
 
 ## Hoe te Gebruiken
 
-1.  Open het `index.html`-bestand in een moderne web browser (zoals Chrome, Firefox of Edge).
+1.  Open de applicatie door naar de GitHub Pages URL te navigeren in uw browser. Voor lokaal gebruik kunt u ook het `index.html`-bestand direct openen.
 2.  Gebruik het configuratiescherm om uw gridkaart in te stellen:
     *   Selecteer de pagina-oriëntatie.
     *   Voer het gewenste aantal rijen en kolommen in.
