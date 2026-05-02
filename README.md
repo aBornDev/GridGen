@@ -42,4 +42,4 @@ Any modern browser with Canvas and File API support — Chrome, Firefox, Safari,
 
 ## License
 
-GNU
+GNU GENERAL PUBLIC LICENSE V3
