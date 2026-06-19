@@ -8,6 +8,7 @@
   <meta name="description" content="How GridGen is built: a zero-dependency vanilla JavaScript app that renders a coordinate grid on an HTML5 Canvas and exports to PDF with jsPDF. Architecture, rendering pipeline, label algorithm, and PDF export explained.">
   <link rel="canonical" href="https://aborndev.github.io/GridGen/wiki/technical.html">
   <meta name="theme-color" content="#171717">
+  <meta name="robots" content="index, follow">
 
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="GridGen">
@@ -15,7 +16,10 @@
   <meta property="og:description" content="A deep dive into how GridGen works: vanilla JS, HTML5 Canvas rendering, the label algorithm, and PDF export with jsPDF.">
   <meta property="og:url" content="https://aborndev.github.io/GridGen/wiki/technical.html">
   <meta property="og:image" content="https://aborndev.github.io/GridGen/og-image.png">
+  <meta property="og:image:alt" content="GridGen — a labeled coordinate grid laid over an image, exported as a PDF">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="GridGen Technical Reference — Stack &amp; Architecture">
+  <meta name="twitter:description" content="A deep dive into how GridGen works: vanilla JS, HTML5 Canvas rendering, the label algorithm, and PDF export with jsPDF.">
   <meta name="twitter:image" content="https://aborndev.github.io/GridGen/og-image.png">
 
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
@@ -74,7 +78,7 @@
     <main class="content">
       <p class="eyebrow">Technical Reference</p>
       <h1>How GridGen is built</h1>
-      <p class="lead">GridGen is a zero-dependency, client-only web app. There is no build step, no framework, and no backend — just three static files and one CDN library for PDF generation.</p>
+      <p class="lead">GridGen is a zero-dependency, client-only web app. There is no build step, no framework, and no backend — just static files and one CDN library for PDF generation. The app itself is three files: <code>index.html</code>, <code>style.css</code>, and <code>gridgen.js</code>.</p>
 
       <h2 id="stack">Tech stack</h2>
       <table class="spec-table">
@@ -128,7 +132,7 @@
       <p><code>render()</code> repaints the entire canvas in a fixed order. Drawing back-to-front means later layers naturally sit on top of earlier ones.</p>
       <ol class="steps">
         <li><strong>Compute geometry</strong> — derive cell width/height and column/row counts from the active grid mode.</li>
-        <li><strong>Size the canvas</strong> — image dimensions plus a margin when outside labels are enabled.</li>
+        <li><strong>Size the canvas</strong> — image dimensions plus a top and left margin when outside labels are enabled (the gutters that hold the column and row labels).</li>
         <li><strong>Paint the background</strong> white, then draw the image at the margin offset.</li>
         <li><strong>Stroke the grid lines</strong> using the chosen color, thickness, and opacity.</li>
         <li><strong>Draw labels</strong> — either in the outer margin or inside each cell.</li>
@@ -180,8 +184,9 @@ const pdf = new jsPDF({ orientation, unit: 'pt', format: 'a4', compress: true })
 
 // scale to fit the page within a 24pt margin, then center
 const scale = Math.min(availW / w, availH / h);
+const drawW = w * scale, drawH = h * scale;
 const imgData = canvas.toDataURL('image/png');
-pdf.addImage(imgData, 'PNG', x, y, w * scale, h * scale);
+pdf.addImage(imgData, 'PNG', x, y, drawW, drawH);
 pdf.save(`${baseName || 'grid-map'}-grid.pdf`);</code></pre>
       <p>Because the source canvas is at the image's native pixel dimensions, downscaling to the page keeps grid lines sharp. The output filename is derived from the uploaded file, with its extension stripped and <code>-grid</code> appended.</p>
 

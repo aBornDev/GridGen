@@ -39,6 +39,8 @@ A wiki-style guide is published alongside the app:
 - **[How GridGen Works](https://aborndev.github.io/GridGen/wiki/index.html)** — a full user guide covering uploading, grid modes, appearance, labels, and PDF export.
 - **[Technical Reference](https://aborndev.github.io/GridGen/wiki/technical.html)** — the tech stack, rendering pipeline, label algorithm, and PDF export internals.
 
+> **Changing the domain?** The canonical, Open Graph, `sitemap.xml`, and `robots.txt` URLs are hard-coded to `https://aborndev.github.io/GridGen/`. If you move to a custom domain or rename the repo, update those absolute URLs in `index.html`, `wiki/index.html`, `wiki/technical.html`, `sitemap.xml`, and `robots.txt`.
+
 ## Tech
 
 Plain HTML, CSS, and vanilla JavaScript. PDF generation via [jsPDF](https://github.com/parallax/jsPDF). No frameworks, no bundler.

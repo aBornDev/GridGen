@@ -1,5 +1,6 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
+/* Design tokens mirror the app's style.css :root — keep the two in sync on a rebrand. */
 :root {
   --bg: #fafafa;
   --panel: #ffffff;
