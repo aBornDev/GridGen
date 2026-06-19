@@ -3,14 +3,74 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GridGen</title>
+
+  <!-- Primary SEO -->
+  <title>GridGen — Add a Coordinate Grid to Any Image &amp; Export as PDF</title>
+  <meta name="description" content="Free browser tool to overlay a labeled coordinate grid on any photo and export it as a print-ready PDF. No signup, runs entirely in your browser. Built for artists, archaeologists, game masters, and surveyors.">
+  <meta name="keywords" content="grid overlay, grid on image, grid drawing method, image to grid PDF, coordinate grid generator, battle map grid, reference grid photo">
+  <link rel="canonical" href="https://aborndev.github.io/GridGen/">
+  <meta name="theme-color" content="#171717">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GridGen">
+  <meta property="og:title" content="GridGen — Coordinate Grid Over Any Image, Exported as PDF">
+  <meta property="og:description" content="Overlay a labeled coordinate grid on any image and export a print-ready PDF. Free, no signup, runs in your browser.">
+  <meta property="og:url" content="https://aborndev.github.io/GridGen/">
+  <meta property="og:image" content="https://aborndev.github.io/GridGen/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="GridGen — a labeled coordinate grid laid over an image, exported as a PDF">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="GridGen — Coordinate Grid Over Any Image, Exported as PDF">
+  <meta name="twitter:description" content="Overlay a labeled coordinate grid on any image and export a print-ready PDF. Free, no signup, runs in your browser.">
+  <meta name="twitter:image" content="https://aborndev.github.io/GridGen/og-image.png">
+  <meta name="twitter:image:alt" content="GridGen — a labeled coordinate grid laid over an image, exported as a PDF">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "GridGen",
+    "url": "https://aborndev.github.io/GridGen/",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Any (browser-based)",
+    "browserRequirements": "Requires a modern browser with HTML5 Canvas and File API support.",
+    "description": "Overlay a labeled coordinate grid on any image and export it as a print-ready PDF. Runs entirely in the browser with no upload or signup.",
+    "softwareVersion": "1.0",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Grid by number of cells or by cell size in pixels",
+      "Customizable line color, thickness, and opacity",
+      "Chess (A1) or numeric (1,1) coordinate labels",
+      "Inside or outside label placement",
+      "Top-left or bottom-left origin",
+      "PDF export at full image resolution"
+    ]
+  }
+  </script>
 </head>
 <body>
 <div class="app">
   <header class="header">
-    <h1>GridGen</h1>
+    <div class="header-top">
+      <h1>GridGen</h1>
+      <nav class="header-nav" aria-label="Documentation">
+        <a href="wiki/index.html">Docs &amp; Wiki</a>
+      </nav>
+    </div>
     <p>Upload an image, lay a coordinate grid over it, export as PDF.</p>
   </header>
 

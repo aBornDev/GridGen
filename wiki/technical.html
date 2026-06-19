@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>GridGen Technical Reference — Stack &amp; Architecture</title>
+  <meta name="description" content="How GridGen is built: a zero-dependency vanilla JavaScript app that renders a coordinate grid on an HTML5 Canvas and exports to PDF with jsPDF. Architecture, rendering pipeline, label algorithm, and PDF export explained.">
+  <link rel="canonical" href="https://aborndev.github.io/GridGen/wiki/technical.html">
+  <meta name="theme-color" content="#171717">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="GridGen">
+  <meta property="og:title" content="GridGen Technical Reference — Stack &amp; Architecture">
+  <meta property="og:description" content="A deep dive into how GridGen works: vanilla JS, HTML5 Canvas rendering, the label algorithm, and PDF export with jsPDF.">
+  <meta property="og:url" content="https://aborndev.github.io/GridGen/wiki/technical.html">
+  <meta property="og:image" content="https://aborndev.github.io/GridGen/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="GridGen — a labeled coordinate grid laid over an image, exported as a PDF">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="GridGen Technical Reference — Stack &amp; Architecture">
+  <meta name="twitter:description" content="A deep dive into how GridGen works: vanilla JS, HTML5 Canvas rendering, the label algorithm, and PDF export with jsPDF.">
+  <meta name="twitter:image" content="https://aborndev.github.io/GridGen/og-image.png">
+  <meta name="twitter:image:alt" content="GridGen — a labeled coordinate grid laid over an image, exported as a PDF">
+
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="wiki.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "GridGen Technical Reference",
+    "description": "How GridGen is built: vanilla JavaScript, HTML5 Canvas rendering, and PDF export with jsPDF.",
+    "url": "https://aborndev.github.io/GridGen/wiki/technical.html",
+    "about": ["HTML5 Canvas", "JavaScript", "jsPDF", "GitHub Pages"]
+  }
+  </script>
+</head>
+<body>
+<div class="wiki">
+  <header class="topbar">
+    <a class="brand" href="../index.html">
+      <img src="../favicon.svg" alt="GridGen logo">
+      GridGen Wiki
+    </a>
+    <nav class="topbar-actions" aria-label="Site">
+      <a href="../index.html">Open the app →</a>
+    </nav>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <nav class="nav-group" aria-label="Documentation pages">
+        <p class="nav-title">Guide</p>
+        <ul>
+          <li><a href="index.html">How GridGen Works</a></li>
+          <li><a class="active" href="technical.html">Technical Reference</a></li>
+        </ul>
+      </nav>
+      <nav class="nav-group" aria-label="On this page">
+        <p class="nav-title">On this page</p>
+        <ul>
+          <li><a href="#stack">Tech stack</a></li>
+          <li><a href="#structure">Project structure</a></li>
+          <li><a href="#state">State model</a></li>
+          <li><a href="#pipeline">Rendering pipeline</a></li>
+          <li><a href="#geometry">Grid geometry</a></li>
+          <li><a href="#labels">Label algorithm</a></li>
+          <li><a href="#contrast">Contrast &amp; legibility</a></li>
+          <li><a href="#pdf">PDF export</a></li>
+          <li><a href="#privacy">Privacy model</a></li>
+          <li><a href="#deploy">Hosting &amp; deployment</a></li>
+          <li><a href="#extend">Extending GridGen</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <p class="eyebrow">Technical Reference</p>
+      <h1>How GridGen is built</h1>
+      <p class="lead">GridGen is a zero-dependency, client-only web app. There is no build step, no framework, and no backend — the app is just <code>index.html</code>, <code>style.css</code>, and <code>gridgen.js</code>, plus one CDN library for PDF generation. The other files in the repository (this wiki, the favicon, and the SEO assets below) are static support files, not part of the runtime.</p>
+
+      <h2 id="stack">Tech stack</h2>
+      <table class="spec-table">
+        <thead><tr><th>Layer</th><th>Choice</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>Markup</td><td>Plain HTML5</td><td>A single semantic page; no templating.</td></tr>
+          <tr><td>Styling</td><td>Hand-written CSS with custom properties</td><td>Design tokens via <code>:root</code> variables; no preprocessor.</td></tr>
+          <tr><td>Logic</td><td>Vanilla JavaScript (ES6+)</td><td>No framework, no bundler — the browser runs the source directly.</td></tr>
+          <tr><td>Rendering</td><td>HTML5 Canvas 2D API</td><td>Pixel-accurate compositing of image + grid + labels.</td></tr>
+          <tr><td>PDF</td><td><a class="inline" href="https://github.com/parallax/jsPDF">jsPDF</a> (UMD, via CDN)</td><td>The only third-party dependency; turns the canvas into an A4 PDF.</td></tr>
+          <tr><td>Hosting</td><td>GitHub Pages</td><td>Free static hosting straight from the repository.</td></tr>
+        </tbody>
+      </table>
+      <div class="note">
+        <strong>No build, no install.</strong> Because the app ships its source as-is, you can open <code>index.html</code> from disk and it works. There is nothing to compile.
+      </div>
+
+      <h2 id="structure">Project structure</h2>
+      <pre><code>GridGen/
+├── index.html      # Markup + SEO metadata; loads style.css and gridgen.js
+├── style.css       # Design tokens and component styles
+├── gridgen.js      # All application logic (state, render, export)
+├── favicon.svg     # Site icon
+├── robots.txt      # Crawler directives
+├── sitemap.xml     # Sitemap for search engines
+├── og-image.png    # Social share image
+└── wiki/           # This documentation
+    ├── index.html      # User guide
+    ├── technical.html  # Technical reference
+    └── wiki.css</code></pre>
+
+      <h2 id="state">State model</h2>
+      <p>All app state lives in one plain object. Every control writes into it, and a single <code>render()</code> function reads from it — a tiny unidirectional data flow with no framework required.</p>
+      <pre><code>const state = {
+  image: null,        // the decoded HTMLImageElement
+  imageName: '',      // used to name the exported file
+  gridMode: 'cells',  // 'cells' | 'size'
+  cols: 10, rows: 10, // for 'cells' mode
+  cellSize: 50,       // for 'size' mode (px)
+  color: '#000000',
+  thickness: 2,
+  opacity: 1.0,
+  showLabels: true,
+  labelStyle: 'chess',     // 'chess' | 'numeric'
+  labelPosition: 'outside',// 'outside' | 'inside'
+  origin: 'top-left'       // 'top-left' | 'bottom-left'
+};</code></pre>
+      <p>Each input listener mutates one field and calls <code>render()</code>. There is no virtual DOM and no diffing — the canvas is simply redrawn from scratch on every change, which is cheap for a single image.</p>
+
+      <h2 id="pipeline">Rendering pipeline</h2>
+      <p><code>render()</code> repaints the entire canvas in a fixed order. Drawing back-to-front means later layers naturally sit on top of earlier ones.</p>
+      <ol class="steps">
+        <li><strong>Compute geometry</strong> — derive cell width/height and column/row counts from the active grid mode.</li>
+        <li><strong>Size the canvas</strong> — image dimensions plus a top and left margin when outside labels are enabled (the gutters that hold the column and row labels).</li>
+        <li><strong>Paint the background</strong> white, then draw the image at the margin offset.</li>
+        <li><strong>Stroke the grid lines</strong> using the chosen color, thickness, and opacity.</li>
+        <li><strong>Draw labels</strong> — either in the outer margin or inside each cell.</li>
+        <li><strong>Update the info bar</strong> with the live cell and image dimensions.</li>
+      </ol>
+
+      <h2 id="geometry">Grid geometry</h2>
+      <p>The two grid modes resolve to the same four values — <code>cols</code>, <code>rows</code>, <code>cellW</code>, <code>cellH</code> — so the rest of the renderer does not care which mode you picked:</p>
+      <pre><code>if (state.gridMode === 'cells') {
+  cols = state.cols;  rows = state.rows;
+  cellW = img.width / cols;       // cells may be rectangular
+  cellH = img.height / rows;
+} else {
+  cellW = cellH = state.cellSize; // square cells
+  cols = Math.ceil(img.width / cellW);
+  rows = Math.ceil(img.height / cellH);
+}</code></pre>
+      <p>When outside labels are on, GridGen reserves a margin sized relative to the image so it scales with resolution:</p>
+      <pre><code>const baseMargin = Math.max(36, Math.min(img.width, img.height) * 0.045);</code></pre>
+      <p>Grid lines are clamped to the image bounds with <code>Math.min(i * cellW, img.width)</code> so a partial final cell in <em>by size</em> mode never draws past the edge.</p>
+
+      <h2 id="labels">Label algorithm</h2>
+      <p>Column labels in chess style are a base-26 (bijective) conversion — the same scheme spreadsheets use for columns, so after <code>Z</code> comes <code>AA</code>:</p>
+      <pre><code>function getColumnLabel(i) {
+  if (state.labelStyle === 'numeric') return String(i + 1);
+  let label = '', n = i;
+  while (n >= 0) {
+    label = String.fromCharCode(65 + (n % 26)) + label;
+    n = Math.floor(n / 26) - 1;
+  }
+  return label;
+}</code></pre>
+      <p>Row numbering respects the <strong>origin</strong> setting by flipping the index when the origin is bottom-left:</p>
+      <pre><code>const rowIdx = state.origin === 'top-left' ? i : rows - 1 - i;</code></pre>
+      <p><strong>Outside</strong> labels are centered in the margin gutters along the top and left. <strong>Inside</strong> labels are drawn in each cell's top-left corner with a stroked halo behind the fill text so they remain readable over busy image content.</p>
+
+      <h2 id="contrast">Contrast &amp; legibility</h2>
+      <p>Label color is chosen automatically from the grid color's perceived luminance (the Rec. 601 weighting). Light grid colors get dark labels; dark colors keep their hue:</p>
+      <pre><code>function isLight(hex) {
+  const { r, g, b } = hexToRgb(hex);
+  return (0.299 * r + 0.587 * g + 0.114 * b) > 186;
+}</code></pre>
+      <p>For inside labels, the halo flips the other way — a white halo behind dark text, or a black halo behind light text — guaranteeing contrast regardless of what is underneath.</p>
+
+      <h2 id="pdf">PDF export</h2>
+      <p>Export reuses the already-rendered canvas, so the PDF matches the preview exactly. The canvas is encoded to a PNG data URL and placed on an A4 page whose orientation follows the image's aspect ratio:</p>
+      <pre><code>const w = canvas.width, h = canvas.height;
+const orientation = w > h ? 'landscape' : 'portrait';
+const pdf = new jsPDF({ orientation, unit: 'pt', format: 'a4', compress: true });
+
+// available area inside a 24pt page margin
+const pageW = pdf.internal.pageSize.getWidth();
+const pageH = pdf.internal.pageSize.getHeight();
+const margin = 24;
+const availW = pageW - 2 * margin, availH = pageH - 2 * margin;
+
+// scale to fit, then center on the page
+const scale = Math.min(availW / w, availH / h);
+const drawW = w * scale, drawH = h * scale;
+const x = (pageW - drawW) / 2, y = (pageH - drawH) / 2;
+
+const imgData = canvas.toDataURL('image/png');
+pdf.addImage(imgData, 'PNG', x, y, drawW, drawH);
+pdf.save(`${baseName || 'grid-map'}-grid.pdf`);</code></pre>
+      <p>Because the source canvas is at the image's native pixel dimensions, downscaling to the page keeps grid lines sharp. The output filename is derived from the uploaded file, with its extension stripped and <code>-grid</code> appended.</p>
+
+      <h2 id="privacy">Privacy model</h2>
+      <p>GridGen is <strong>client-only</strong>. The image is read with the browser's <code>FileReader</code> as a data URL and decoded into an <code>Image</code> element — it is never transmitted anywhere:</p>
+      <pre><code>const reader = new FileReader();
+reader.onload = (ev) => { img.src = ev.target.result; };
+reader.readAsDataURL(file);</code></pre>
+      <p>There is no analytics, no server, and no network request beyond loading the jsPDF library from its CDN. Everything else runs in the page.</p>
+
+      <h2 id="deploy">Hosting &amp; deployment</h2>
+      <p>The site is served by <strong>GitHub Pages</strong> directly from the repository — pushing to the published branch deploys it. Since the app is static, there is no CI build to configure; the files in the repo <em>are</em> the deployment. SEO assets (<code>robots.txt</code>, <code>sitemap.xml</code>, Open Graph tags, and JSON-LD structured data) are plain files alongside the app.</p>
+
+      <h2 id="extend">Extending GridGen</h2>
+      <p>The single-file-of-logic design makes changes localized. Common extensions:</p>
+      <ul>
+        <li><strong>New label styles</strong> — add a branch to <code>getColumnLabel()</code> and the label-drawing code.</li>
+        <li><strong>Export formats</strong> — the canvas can be turned into PNG/JPEG with <code>canvas.toBlob()</code> for direct image download.</li>
+        <li><strong>Non-uniform grids</strong> — the geometry block is the single source of truth for cell sizing.</li>
+        <li><strong>Presets</strong> — the flat <code>state</code> object serializes cleanly to JSON for save/load or URL sharing.</li>
+      </ul>
+
+      <nav class="page-nav" aria-label="Page navigation">
+        <a class="prev" href="index.html"><span>Previous</span>How GridGen Works</a>
+        <a class="next" href="../index.html"><span>Back to</span>The app →</a>
+      </nav>
+
+      <footer class="footer">
+        <p>GridGen is open source under the GPL v3. PDF generation by <a href="https://github.com/parallax/jsPDF">jsPDF</a>.</p>
+      </footer>
+    </main>
+  </div>
+</div>
+</body>
+</html>
