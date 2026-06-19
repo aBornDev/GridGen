@@ -32,6 +32,13 @@ The exported file is named after the original image (e.g., `site-photo-grid.pdf`
 - For dark images, switch the line color to white. The label color auto-adjusts for legibility.
 - Bottom-left origin matches conventional Cartesian coordinates and chess boards. Top-left matches image-pixel and spreadsheet conventions.
 
+## Documentation
+
+A wiki-style guide is published alongside the app:
+
+- **[How GridGen Works](https://aborndev.github.io/GridGen/wiki/index.html)** — a full user guide covering uploading, grid modes, appearance, labels, and PDF export.
+- **[Technical Reference](https://aborndev.github.io/GridGen/wiki/technical.html)** — the tech stack, rendering pipeline, label algorithm, and PDF export internals.
+
 ## Tech
 
 Plain HTML, CSS, and vanilla JavaScript. PDF generation via [jsPDF](https://github.com/parallax/jsPDF). No frameworks, no bundler.

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>How GridGen Works — User Guide &amp; Wiki</title>
+  <meta name="description" content="A complete guide to GridGen: how to upload an image, configure a coordinate grid, customize its appearance, add chess or numeric labels, and export a print-ready PDF.">
+  <link rel="canonical" href="https://aborndev.github.io/GridGen/wiki/index.html">
+  <meta name="theme-color" content="#171717">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="GridGen">
+  <meta property="og:title" content="How GridGen Works — User Guide &amp; Wiki">
+  <meta property="og:description" content="Learn how to overlay a labeled coordinate grid on any image and export it as a PDF with GridGen.">
+  <meta property="og:url" content="https://aborndev.github.io/GridGen/wiki/index.html">
+  <meta property="og:image" content="https://aborndev.github.io/GridGen/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://aborndev.github.io/GridGen/og-image.png">
+
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="wiki.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to add a coordinate grid to an image and export it as a PDF with GridGen",
+    "description": "Upload an image, configure a grid, customize its appearance and labels, then export a print-ready PDF.",
+    "step": [
+      { "@type": "HowToStep", "name": "Upload an image", "text": "Drag and drop or click to select a PNG, JPG, or WEBP image." },
+      { "@type": "HowToStep", "name": "Choose a grid mode", "text": "Define the grid by number of cells or by cell size in pixels." },
+      { "@type": "HowToStep", "name": "Customize appearance", "text": "Set the line color, thickness, and opacity for readability." },
+      { "@type": "HowToStep", "name": "Add coordinate labels", "text": "Pick chess or numeric labels, inside or outside placement, and the origin corner." },
+      { "@type": "HowToStep", "name": "Export the PDF", "text": "Click Download PDF to save an A4 file at full image resolution." }
+    ]
+  }
+  </script>
+</head>
+<body>
+<div class="wiki">
+  <header class="topbar">
+    <a class="brand" href="../index.html">
+      <img src="../favicon.svg" alt="GridGen logo">
+      GridGen Wiki
+    </a>
+    <div class="topbar-actions">
+      <a href="../index.html">Open the app →</a>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="nav-group">
+        <div class="nav-title">Guide</div>
+        <ul>
+          <li><a class="active" href="index.html">How GridGen Works</a></li>
+          <li><a href="technical.html">Technical Reference</a></li>
+        </ul>
+      </div>
+      <div class="nav-group">
+        <div class="nav-title">On this page</div>
+        <ul>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#workflow">The workflow</a></li>
+          <li><a href="#uploading">Uploading an image</a></li>
+          <li><a href="#grid-modes">Grid modes</a></li>
+          <li><a href="#appearance">Appearance</a></li>
+          <li><a href="#labels">Coordinate labels</a></li>
+          <li><a href="#exporting">Exporting a PDF</a></li>
+          <li><a href="#use-cases">Use cases</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="content">
+      <p class="eyebrow">User Guide</p>
+      <h1>How GridGen Works</h1>
+      <p class="lead">GridGen lays a labeled coordinate grid over any image and exports the result as a print-ready PDF — entirely in your browser, with no upload, account, or install.</p>
+
+      <h2 id="overview">Overview</h2>
+      <p>GridGen is a single-page web app. You give it an image, it draws a grid on top of a live preview, and you tune the grid until it reads well against your picture. When you are happy, it renders everything to a PDF and downloads it to your device.</p>
+      <div class="note">
+        <strong>Your images never leave your device.</strong> GridGen reads the file locally in the browser and does all drawing on an HTML5 canvas. Nothing is uploaded to a server — see the <a class="inline" href="technical.html#privacy">Technical Reference</a> for details.
+      </div>
+
+      <h2 id="workflow">The workflow</h2>
+      <ol class="steps">
+        <li><strong>Upload</strong> an image (PNG, JPG, or WEBP).</li>
+        <li><strong>Pick a grid mode</strong> and set columns/rows or a cell size.</li>
+        <li><strong>Adjust the appearance</strong> — color, thickness, opacity — until the grid is legible.</li>
+        <li><strong>Configure labels</strong> — style, position, and origin.</li>
+        <li><strong>Download the PDF.</strong></li>
+      </ol>
+
+      <h2 id="uploading">Uploading an image</h2>
+      <p>There are two ways to load an image:</p>
+      <ul>
+        <li><strong>Click</strong> the upload zone and pick a file from your device.</li>
+        <li><strong>Drag and drop</strong> a file directly onto the preview area.</li>
+      </ul>
+      <p>Supported formats are <code>PNG</code>, <code>JPG</code>, and <code>WEBP</code>. The original pixel dimensions are preserved throughout, so the exported grid lines up exactly with your source image. Once loaded, the file name is shown and you can hit <strong>Replace</strong> to swap in a different image at any time.</p>
+
+      <h2 id="grid-modes">Grid modes</h2>
+      <p>GridGen offers two ways to define the grid. Switch between them with the <strong>By cells</strong> / <strong>By size</strong> tabs.</p>
+      <table class="spec-table">
+        <thead><tr><th>Mode</th><th>You set</th><th>Best for</th></tr></thead>
+        <tbody>
+          <tr><td>By cells</td><td>Number of <strong>columns</strong> and <strong>rows</strong> (1–100 each)</td><td>A fixed grid shape regardless of image size — e.g. a 10&nbsp;×&nbsp;10 drawing grid.</td></tr>
+          <tr><td>By size</td><td>A single <strong>cell size</strong> in pixels (5–500)</td><td>Consistent real-world scale — cells stay the same pixel size and GridGen fits as many as needed.</td></tr>
+        </tbody>
+      </table>
+      <p>In <em>By cells</em> mode, cell width and height are the image dimensions divided by the column and row counts, so cells may be rectangular. In <em>By size</em> mode, cells are square and the last row/column is clipped to the image edge if it does not divide evenly.</p>
+
+      <h2 id="appearance">Appearance</h2>
+      <p>Three controls govern how the grid lines look:</p>
+      <ul>
+        <li><strong>Color</strong> — choose from presets (black, white, red, blue, green) or open the custom color picker. For dark images, switch the line color to white.</li>
+        <li><strong>Line thickness</strong> — 1 to 10 pixels.</li>
+        <li><strong>Opacity</strong> — 10% to 100%, so the grid can sit lightly over detailed images.</li>
+      </ul>
+      <p>The live preview updates instantly as you drag the sliders, so you can dial in readability before exporting.</p>
+
+      <h2 id="labels">Coordinate labels</h2>
+      <p>Toggle the <strong>Coordinates</strong> switch to add cell labels. Three options shape how they appear:</p>
+      <h3>Style</h3>
+      <ul>
+        <li><strong>Chess (A1)</strong> — columns are letters (A, B, C… and AA, AB after Z), rows are numbers.</li>
+        <li><strong>Numeric (1,1)</strong> — both axes are numbers, written as <code>column,row</code>.</li>
+      </ul>
+      <h3>Position</h3>
+      <ul>
+        <li><strong>Outside</strong> — labels sit in a clean white margin around the image. Most readable for printing and reference.</li>
+        <li><strong>Inside</strong> — labels are placed in the corner of each cell with an automatic contrast halo so they stay legible over any image content.</li>
+      </ul>
+      <h3>Origin</h3>
+      <ul>
+        <li><strong>Top-left</strong> — row 1 is at the top. Matches image-pixel and spreadsheet conventions.</li>
+        <li><strong>Bottom-left</strong> — row 1 is at the bottom. Matches Cartesian coordinates and chess boards.</li>
+      </ul>
+      <div class="note">
+        <strong>Tip:</strong> the label color adjusts automatically for legibility. When you pick a light line color, GridGen darkens the outside labels and flips the inside-label halo so text never washes out.
+      </div>
+
+      <h2 id="exporting">Exporting a PDF</h2>
+      <p>Click <strong>Download PDF</strong>. GridGen renders the full-resolution canvas — image, grid, and labels — into an A4 page:</p>
+      <ul>
+        <li><strong>Orientation</strong> is chosen automatically (landscape or portrait) to match your image's aspect ratio.</li>
+        <li>The artwork is <strong>scaled to fit</strong> the page with a small margin and centered.</li>
+        <li>The file is named after your source image — for example, <code>site-photo</code> becomes <code>site-photo-grid.pdf</code>.</li>
+      </ul>
+      <p>Because the grid is drawn at the image's native resolution, fine lines stay crisp when printed.</p>
+
+      <h2 id="use-cases">Use cases</h2>
+      <ul>
+        <li><strong>Artists</strong> — use the classic grid drawing method to transfer or scale up a reference image by hand.</li>
+        <li><strong>Game masters</strong> — turn a map or illustration into a battle grid with coordinate references.</li>
+        <li><strong>Archaeologists &amp; field researchers</strong> — overlay a reference grid on site photos for documentation.</li>
+        <li><strong>Surveyors &amp; analysts</strong> — mark consistent reference points across an image.</li>
+        <li><strong>Teachers &amp; students</strong> — create coordinate-plane worksheets and labeled diagrams.</li>
+      </ul>
+
+      <h2 id="faq">FAQ</h2>
+      <h3>Is GridGen free?</h3>
+      <p>Yes. It is free, open source, and released under the GNU GPL v3.</p>
+      <h3>Do my images get uploaded anywhere?</h3>
+      <p>No. All processing happens locally in your browser. Your images are never sent to a server.</p>
+      <h3>What image formats are supported?</h3>
+      <p>PNG, JPG, and WEBP — any raster format your browser can decode.</p>
+      <h3>What resolution is the exported PDF?</h3>
+      <p>The grid is composited at your image's full native resolution, then placed on an A4 page scaled to fit.</p>
+      <h3>Which browsers work?</h3>
+      <p>Any modern browser with HTML5 Canvas and File API support — Chrome, Firefox, Safari, and Edge.</p>
+
+      <nav class="page-nav">
+        <a class="prev" href="../index.html"><span>Back to</span>The app</a>
+        <a class="next" href="technical.html"><span>Next</span>Technical Reference →</a>
+      </nav>
+
+      <footer class="footer">
+        <p>GridGen is open source under the GPL v3. See the <a href="../index.html">app</a> or the <a href="technical.html">technical reference</a>.</p>
+      </footer>
+    </main>
+  </div>
+</div>
+</body>
+</html>
