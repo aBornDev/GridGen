@@ -16,11 +16,14 @@
   <meta property="og:description" content="A deep dive into how GridGen works: vanilla JS, HTML5 Canvas rendering, the label algorithm, and PDF export with jsPDF.">
   <meta property="og:url" content="https://aborndev.github.io/GridGen/wiki/technical.html">
   <meta property="og:image" content="https://aborndev.github.io/GridGen/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="GridGen — a labeled coordinate grid laid over an image, exported as a PDF">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="GridGen Technical Reference — Stack &amp; Architecture">
   <meta name="twitter:description" content="A deep dive into how GridGen works: vanilla JS, HTML5 Canvas rendering, the label algorithm, and PDF export with jsPDF.">
   <meta name="twitter:image" content="https://aborndev.github.io/GridGen/og-image.png">
+  <meta name="twitter:image:alt" content="GridGen — a labeled coordinate grid laid over an image, exported as a PDF">
 
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="wiki.css">
@@ -43,22 +46,22 @@
       <img src="../favicon.svg" alt="GridGen logo">
       GridGen Wiki
     </a>
-    <div class="topbar-actions">
+    <nav class="topbar-actions" aria-label="Site">
       <a href="../index.html">Open the app →</a>
-    </div>
+    </nav>
   </header>
 
   <div class="layout">
     <aside class="sidebar">
-      <div class="nav-group">
-        <div class="nav-title">Guide</div>
+      <nav class="nav-group" aria-label="Documentation pages">
+        <p class="nav-title">Guide</p>
         <ul>
           <li><a href="index.html">How GridGen Works</a></li>
           <li><a class="active" href="technical.html">Technical Reference</a></li>
         </ul>
-      </div>
-      <div class="nav-group">
-        <div class="nav-title">On this page</div>
+      </nav>
+      <nav class="nav-group" aria-label="On this page">
+        <p class="nav-title">On this page</p>
         <ul>
           <li><a href="#stack">Tech stack</a></li>
           <li><a href="#structure">Project structure</a></li>
@@ -72,13 +75,13 @@
           <li><a href="#deploy">Hosting &amp; deployment</a></li>
           <li><a href="#extend">Extending GridGen</a></li>
         </ul>
-      </div>
+      </nav>
     </aside>
 
     <main class="content">
       <p class="eyebrow">Technical Reference</p>
       <h1>How GridGen is built</h1>
-      <p class="lead">GridGen is a zero-dependency, client-only web app. There is no build step, no framework, and no backend — just static files and one CDN library for PDF generation. The app itself is three files: <code>index.html</code>, <code>style.css</code>, and <code>gridgen.js</code>.</p>
+      <p class="lead">GridGen is a zero-dependency, client-only web app. There is no build step, no framework, and no backend — the app is just <code>index.html</code>, <code>style.css</code>, and <code>gridgen.js</code>, plus one CDN library for PDF generation. The other files in the repository (this wiki, the favicon, and the SEO assets below) are static support files, not part of the runtime.</p>
 
       <h2 id="stack">Tech stack</h2>
       <table class="spec-table">
@@ -179,12 +182,21 @@
 
       <h2 id="pdf">PDF export</h2>
       <p>Export reuses the already-rendered canvas, so the PDF matches the preview exactly. The canvas is encoded to a PNG data URL and placed on an A4 page whose orientation follows the image's aspect ratio:</p>
-      <pre><code>const orientation = w > h ? 'landscape' : 'portrait';
+      <pre><code>const w = canvas.width, h = canvas.height;
+const orientation = w > h ? 'landscape' : 'portrait';
 const pdf = new jsPDF({ orientation, unit: 'pt', format: 'a4', compress: true });
 
-// scale to fit the page within a 24pt margin, then center
+// available area inside a 24pt page margin
+const pageW = pdf.internal.pageSize.getWidth();
+const pageH = pdf.internal.pageSize.getHeight();
+const margin = 24;
+const availW = pageW - 2 * margin, availH = pageH - 2 * margin;
+
+// scale to fit, then center on the page
 const scale = Math.min(availW / w, availH / h);
 const drawW = w * scale, drawH = h * scale;
+const x = (pageW - drawW) / 2, y = (pageH - drawH) / 2;
+
 const imgData = canvas.toDataURL('image/png');
 pdf.addImage(imgData, 'PNG', x, y, drawW, drawH);
 pdf.save(`${baseName || 'grid-map'}-grid.pdf`);</code></pre>
