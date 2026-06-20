@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="nl" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Hoe GridGen werkt — Handleiding &amp; wiki</title>
+  <meta name="description" content="Een complete handleiding voor GridGen: een afbeelding uploaden, een coördinatenraster instellen, het uiterlijk aanpassen, schaak- of cijferlabels toevoegen en exporteren als drukklare PDF.">
+  
+  <link rel="canonical" href="https://aborndev.github.io/GridGen/nl/wiki/">
+  <meta name="theme-color" content="#171717">
+  <meta name="robots" content="index, follow">
+  <link rel="alternate" hreflang="en" href="https://aborndev.github.io/GridGen/wiki/">
+  <link rel="alternate" hreflang="nl" href="https://aborndev.github.io/GridGen/nl/wiki/">
+  <link rel="alternate" hreflang="x-default" href="https://aborndev.github.io/GridGen/wiki/">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="GridGen">
+  <meta property="og:title" content="Hoe GridGen werkt — Handleiding &amp; wiki">
+  <meta property="og:description" content="Een complete handleiding voor GridGen: een afbeelding uploaden, een coördinatenraster instellen, het uiterlijk aanpassen, schaak- of cijferlabels toevoegen en exporteren als drukklare PDF.">
+  <meta property="og:url" content="https://aborndev.github.io/GridGen/nl/wiki/">
+  <meta property="og:locale" content="nl_NL">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:image" content="https://aborndev.github.io/GridGen/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="GridGen — een coördinatenraster over een afbeelding, geëxporteerd als PDF">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hoe GridGen werkt — Handleiding &amp; wiki">
+  <meta name="twitter:description" content="Een complete handleiding voor GridGen: een afbeelding uploaden, een coördinatenraster instellen, het uiterlijk aanpassen, schaak- of cijferlabels toevoegen en exporteren als drukklare PDF.">
+  <meta name="twitter:image" content="https://aborndev.github.io/GridGen/og-image.png">
+  <meta name="twitter:image:alt" content="GridGen — een coördinatenraster over een afbeelding, geëxporteerd als PDF">
+
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../wiki/wiki.css">
+  
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Een coördinatenraster over een afbeelding leggen en als PDF exporteren met GridGen",
+  "description": "Een complete handleiding voor GridGen: een afbeelding uploaden, een coördinatenraster instellen, het uiterlijk aanpassen, schaak- of cijferlabels toevoegen en exporteren als drukklare PDF.",
+  "inLanguage": "nl",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Upload een afbeelding",
+      "text": "Sleep een PNG, JPG of WEBP naar de app of klik om er een te kiezen."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Kies een rastermodus",
+      "text": "Bepaal het raster op aantal vakjes of op celgrootte in pixels."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Pas het uiterlijk aan",
+      "text": "Stel lijnkleur, dikte en dekking in voor goede leesbaarheid."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Voeg coördinaatlabels toe",
+      "text": "Kies schaak- of cijferlabels, plaatsing binnen of buiten, en de oorsprongshoek."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Exporteer de PDF",
+      "text": "Klik op PDF downloaden om een A4-bestand op volledige resolutie op te slaan."
+    }
+  ]
+}
+</script>
+</head>
+
+<body>
+<div class="wiki">
+  <header class="topbar">
+    <a class="brand" href="../../nl/index.html">
+      <img src="../../favicon.svg" alt="GridGen logo">
+      GridGen-wiki
+    </a>
+    <nav class="topbar-actions" aria-label="Sitenavigatie">
+      <div class="lang-switch" aria-label="Taal"><a hreflang="en" href="../../wiki/index.html">English</a><a hreflang="nl" href="../../nl/wiki/index.html" aria-current="true" class="active">Nederlands</a></div>
+      <a href="../../nl/index.html">Open de app →</a>
+    </nav>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <nav class="nav-group" aria-label="Documentatiepagina's">
+        <p class="nav-title">Handleiding</p>
+        <ul>
+          <li><a class="active" href="../../nl/wiki/index.html">Hoe GridGen werkt</a></li>
+          <li><a href="../../nl/wiki/stafkaart.html">Raster over kaarten</a></li>
+          <li><a href="../../nl/wiki/technical.html">Technische referentie</a></li>
+        </ul>
+      </nav>
+      <nav class="nav-group" aria-label="Op deze pagina">
+        <p class="nav-title">Op deze pagina</p>
+        <ul>
+          <li><a href="#overview">Overzicht</a></li>
+          <li><a href="#workflow">De werkwijze</a></li>
+          <li><a href="#uploading">Een afbeelding laden</a></li>
+          <li><a href="#grid-modes">Rastermodi</a></li>
+          <li><a href="#appearance">Uiterlijk</a></li>
+          <li><a href="#labels">Coördinaatlabels</a></li>
+          <li><a href="#exporting">Een PDF exporteren</a></li>
+          <li><a href="#use-cases">Toepassingen</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <p class="eyebrow">Gebruikershandleiding</p>
+      <h1>Hoe GridGen werkt</h1>
+      <p class="lead">GridGen legt een coördinatenraster met labels over elke afbeelding en exporteert het resultaat als een drukklare PDF — volledig in je browser, zonder upload, account of installatie.</p>
+
+      <h2 id="overview">Overzicht</h2>
+      <p>GridGen is een webapplicatie die uit één pagina bestaat. Je laadt een afbeelding, GridGen tekent een raster over een live voorbeeldvenster, en je past het raster aan totdat het goed leesbaar is tegen jouw afbeelding. Als je tevreden bent, rendert GridGen alles naar een PDF en downloadt die naar je apparaat.</p>
+      <div class="note">
+        <strong>Je afbeeldingen verlaten je apparaat nooit.</strong> GridGen leest het bestand lokaal in de browser en doet alle tekeningen op een HTML5 canvas. Er wordt niets naar een server geüpload — zie de <a class="inline" href="../../nl/wiki/technical.html#privacy">Technische referentie</a> voor details.
+      </div>
+
+      <h2 id="workflow">De werkwijze</h2>
+      <ol class="steps">
+        <li><strong>Upload</strong> een afbeelding (PNG, JPG of WEBP).</li>
+        <li><strong>Kies een rastermodus</strong> en stel het aantal kolommen/rijen of een celgrootte in.</li>
+        <li><strong>Pas het uiterlijk aan</strong> — kleur, dikte, dekking — totdat het raster goed leesbaar is.</li>
+        <li><strong>Configureer de labels</strong> — stijl, positie en oorsprong.</li>
+        <li><strong>Download de PDF.</strong></li>
+      </ol>
+
+      <h2 id="uploading">Een afbeelding laden</h2>
+      <p>Er zijn twee manieren om een afbeelding te laden:</p>
+      <ul>
+        <li><strong>Klik</strong> op de uploadzone in de zijbalk en kies een bestand van je apparaat.</li>
+        <li><strong>Sleep en zet neer</strong> — het grote paneel rechts is het doelgebied voor slepen.</li>
+      </ul>
+      <p>Ondersteunde bestandsformaten zijn <code>PNG</code>, <code>JPG</code> en <code>WEBP</code>. De originele pixelafmetingen worden behouden, zodat de geëxporteerde rasterlijnen exact overeenkomen met je bronafbeelding. Zodra een afbeelding is geladen, wordt de bestandsnaam getoond en kun je op <strong>Vervangen</strong> klikken om op elk moment een andere afbeelding te laden.</p>
+
+      <h2 id="grid-modes">Rastermodi</h2>
+      <p>GridGen biedt twee manieren om het raster te definiëren. Schakel ertussen met de tabbladen <strong>Op vakjes</strong> / <strong>Op grootte</strong>.</p>
+      <table class="spec-table">
+        <thead><tr><th>Modus</th><th>Wat je instelt</th><th>Ideaal voor</th></tr></thead>
+        <tbody>
+          <tr><td>Op vakjes</td><td>Aantal <strong>kolommen</strong> en <strong>rijen</strong> (1–100 elk)</td><td>Een vaste rastervorm ongeacht de afbeeldingsgrootte — bijv. een 10&nbsp;×&nbsp;10 tekenraster.</td></tr>
+          <tr><td>Op grootte</td><td>Een enkele <strong>celgrootte</strong> in pixels (5–500)</td><td>Consistente schaal — vakjes blijven even groot in pixels en GridGen past er zoveel in als nodig.</td></tr>
+        </tbody>
+      </table>
+      <p>In de modus <em>Op vakjes</em> zijn de breedte en hoogte van een vak de afbeeldingsafmetingen gedeeld door het aantal kolommen en rijen; vakjes kunnen dus rechthoekig zijn. In de modus <em>Op grootte</em> zijn vakjes vierkant en wordt de laatste rij/kolom bijgesneden tot de rand van de afbeelding als die niet precies past.</p>
+
+      <h2 id="appearance">Uiterlijk</h2>
+      <p>Drie instellingen bepalen hoe de rasterlijnen eruitzien:</p>
+      <ul>
+        <li><strong>Kleur</strong> — kies uit voorinstellingen (zwart, wit, rood, blauw, groen) of open de aangepaste kleurenkiezer. Gebruik wit voor donkere afbeeldingen.</li>
+        <li><strong>Lijndikte</strong> — 1 tot 10 pixels.</li>
+        <li><strong>Dekking</strong> — 10% tot 100%, zodat het raster licht over gedetailleerde afbeeldingen kan liggen.</li>
+      </ul>
+      <p>Het voorbeeldvenster wordt direct bijgewerkt terwijl je de schuifregelaars beweegt, zodat je de leesbaarheid kunt verfijnen vóór het exporteren.</p>
+
+      <h2 id="labels">Coördinaatlabels</h2>
+      <p>Zet de schakelaar <strong>Coördinaten</strong> aan om cellen van labels te voorzien. Drie opties bepalen hoe ze eruitzien:</p>
+      <h3>Stijl</h3>
+      <ul>
+        <li><strong>Schaak (A1)</strong> — kolommen zijn letters (A, B, C… en AA, AB na Z), rijen zijn cijfers.</li>
+        <li><strong>Cijfers (1,1)</strong> — beide assen zijn cijfers, geschreven als <code>kolom,rij</code>.</li>
+      </ul>
+      <h3>Positie</h3>
+      <ul>
+        <li><strong>Buiten</strong> — kolomlabels staan in een schone witte marge boven de afbeelding en rijlabels in een marge links ervan. Het meest leesbaar voor afdrukken en naslagwerk.</li>
+        <li><strong>Binnen</strong> — labels worden in de hoek van elk vak geplaatst, met een automatische contrasthalo zodat ze leesbaar blijven over elke afbeeldingsinhoud.</li>
+      </ul>
+      <h3>Oorsprong</h3>
+      <ul>
+        <li><strong>Linksboven</strong> — rij 1 staat bovenaan. Volgt de conventies van afbeeldingspixels en spreadsheets.</li>
+        <li><strong>Linksonder</strong> — rij 1 staat onderaan. Volgt Cartesische coördinaten en schaakborden.</li>
+      </ul>
+      <div class="note">
+        <strong>Tip:</strong> de labelkleur past zich automatisch aan voor leesbaarheid. Als je een lichte lijnkleur kiest, maakt GridGen de buitenste labels donkerder en keert de binnenlabelhalo om, zodat tekst nooit vervaagt.
+      </div>
+
+      <h2 id="exporting">Een PDF exporteren</h2>
+      <p>Klik op <strong>PDF downloaden</strong>. GridGen rendert het canvas in volledige resolutie — afbeelding, raster en labels — op een A4-pagina:</p>
+      <ul>
+        <li><strong>Oriëntatie</strong> wordt automatisch gekozen (liggend of staand) op basis van de beeldverhouding van je afbeelding.</li>
+        <li>De afbeelding wordt <strong>passend geschaald</strong> op de pagina met een kleine marge en gecentreerd.</li>
+        <li>De bestandsnaam is gebaseerd op je bronafbeelding — zo wordt <code>site-foto</code> bijvoorbeeld <code>site-foto-grid.pdf</code>.</li>
+      </ul>
+      <p>Omdat het raster wordt getekend op de native resolutie van de afbeelding, blijven fijne lijnen scherp bij het afdrukken.</p>
+
+      <h2 id="use-cases">Toepassingen</h2>
+      <ul>
+        <li><strong>Kunstenaars</strong> — gebruik de klassieke rastermethode om een referentieafbeelding met de hand over te tekenen of te vergroten.</li>
+        <li><strong>Spelleiders</strong> — verander een kaart of illustratie in een gevechtsraster met coördinaatreferenties.</li>
+        <li><strong>Oriëntatiesporten &amp; scouting</strong> — voeg een coördinaatraster toe aan een kaartafbeelding en druk die af. Zie <a class="inline" href="../../nl/wiki/stafkaart.html">raster over kaarten</a>.</li>
+        <li><strong>Archeologen &amp; veldonderzoekers</strong> — leg een referentieraster over veldfotos voor documentatie.</li>
+        <li><strong>Docenten &amp; studenten</strong> — maak werkbladen met coördinaatvlakken en gelabelde diagrammen.</li>
+      </ul>
+
+      <h2 id="faq">FAQ</h2>
+      <h3>Is GridGen gratis?</h3>
+      <p>Ja. Het is gratis, open source en uitgebracht onder de GNU GPL v3.</p>
+      <h3>Worden mijn afbeeldingen ergens naar geüpload?</h3>
+      <p>Nee. Alle verwerking vindt lokaal plaats in je browser. Je afbeeldingen worden nooit naar een server gestuurd.</p>
+      <h3>Welke afbeeldingsformaten worden ondersteund?</h3>
+      <p>PNG, JPG en WEBP — elk rasterformaat dat je browser kan decoderen.</p>
+      <h3>Wat is de resolutie van de geëxporteerde PDF?</h3>
+      <p>Het raster wordt samengesteld op de volledige native resolutie van je afbeelding en vervolgens passend geschaald op een A4-pagina.</p>
+      <h3>Welke browsers worden ondersteund?</h3>
+      <p>Elke moderne browser met ondersteuning voor HTML5 Canvas en de File API — Chrome, Firefox, Safari en Edge.</p>
+
+      <nav class="page-nav" aria-label="Paginanavigatie">
+        <a class="prev" href="../../nl/index.html"><span>Terug naar</span>De app</a>
+        <a class="next" href="../../nl/wiki/technical.html"><span>Volgende</span>Technische referentie →</a>
+      </nav>
+
+      <footer class="footer">
+        <p>GridGen is open source onder de GPL v3. Bekijk de <a href="../../nl/index.html">app</a> of de <a href="../../nl/wiki/technical.html">technische referentie</a>.</p>
+      </footer>
+    </main>
+  </div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,238 @@
+#!/usr/bin/env node
+/*
+ * GridGen static site generator.
+ *
+ * Zero dependencies. Renders one set of templates + per-locale content into
+ * static HTML, one directory tree per language. English is emitted at the
+ * site root; every other locale lives under /<lang>/.
+ *
+ * Adding a language:
+ *   1. Add site/locales/<lang>.json  (metadata, nav labels, schema strings)
+ *   2. Add translated bodies under site/pages/<lang>/
+ *   3. Register the lang in LOCALES below
+ *   4. Run `node build.js`
+ *
+ * Nothing here runs on the server — GitHub Pages just serves the output.
+ */
+const fs = require('fs');
+const path = require('path');
+
+const ROOT = __dirname;
+const SRC = path.join(ROOT, 'site');
+const SITE_URL = 'https://aborndev.github.io/GridGen/';
+
+// Locales in priority order. The first is the default and is emitted at the
+// site root (no /<lang>/ prefix). Add new languages here.
+const LOCALES = ['en', 'nl'];
+const DEFAULT_LOCALE = 'en';
+
+// Page registry. `out` maps locale -> output path (relative to the site root),
+// so slugs can be localised (e.g. map-grid -> stafkaart).
+//
+// Note: each locale's body file (site/pages/<lang>/<id>.body.html) carries the
+// full page markup, not just translatable strings — so a structural change to a
+// page must be mirrored across every locale's body or they drift. Keep markup
+// changes in lockstep across languages.
+const PAGES = {
+  home: {
+    body: 'home',
+    css: 'style.css',
+    ogType: 'website',
+    headExtra: '<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>',
+    scripts: '<script src="{{base}}gridgen.js"></script>',
+    schema: 'WebApplication',
+    out: { en: 'index.html', nl: 'nl/index.html' },
+  },
+  wikiHow: {
+    body: 'wiki-how',
+    css: 'wiki/wiki.css',
+    ogType: 'article',
+    schema: 'HowTo',
+    out: { en: 'wiki/index.html', nl: 'nl/wiki/index.html' },
+  },
+  wikiTech: {
+    body: 'wiki-technical',
+    css: 'wiki/wiki.css',
+    ogType: 'article',
+    schema: 'TechArticle',
+    out: { en: 'wiki/technical.html', nl: 'nl/wiki/technical.html' },
+  },
+  mapGrid: {
+    body: 'map-grid',
+    css: 'wiki/wiki.css',
+    ogType: 'article',
+    schema: 'HowTo',
+    out: { en: 'wiki/map-grid.html', nl: 'nl/wiki/stafkaart.html' },
+  },
+};
+const PAGE_IDS = Object.keys(PAGES);
+
+// ---------- helpers ----------
+const read = (p) => fs.readFileSync(p, 'utf8');
+const locales = Object.fromEntries(
+  LOCALES.map((l) => [l, JSON.parse(read(path.join(SRC, 'locales', `${l}.json`)))])
+);
+const partials = Object.fromEntries(
+  fs.readdirSync(path.join(SRC, 'partials')).map((f) => [
+    path.basename(f, '.html'),
+    read(path.join(SRC, 'partials', f)),
+  ])
+);
+const layout = read(path.join(SRC, 'layouts', 'base.html'));
+
+function esc(s) {
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function render(tpl, ctx) {
+  // Inline partials (a few passes to allow nesting).
+  for (let i = 0; i < 4 && /\{\{>\s*[\w.-]+\s*\}\}/.test(tpl); i++) {
+    tpl = tpl.replace(/\{\{>\s*([\w.-]+)\s*\}\}/g, (_, n) => partials[n] || '');
+  }
+  tpl = tpl.replace(/\{\{\{\s*([\w.]+)\s*\}\}\}/g, (_, k) => (ctx[k] != null ? ctx[k] : ''));
+  tpl = tpl.replace(/\{\{\s*([\w.]+)\s*\}\}/g, (_, k) => esc(ctx[k] != null ? ctx[k] : ''));
+  return tpl;
+}
+
+// Absolute URL for an output path, collapsing trailing index.html to a dir URL.
+const urlFor = (p) => SITE_URL + p.replace(/index\.html$/, '');
+const baseFor = (p) => '../'.repeat(p.split('/').length - 1);
+
+function jsonLd(pageId, L, ctx) {
+  const s = (L.schema && L.schema[pageId]) || {};
+  const name = L.pages[pageId].title;
+  const desc = L.pages[pageId].description;
+  let obj;
+  if (PAGES[pageId].schema === 'WebApplication') {
+    obj = {
+      '@context': 'https://schema.org',
+      '@type': 'WebApplication',
+      name: 'GridGen',
+      url: ctx.canonical,
+      applicationCategory: 'MultimediaApplication',
+      operatingSystem: 'Any (browser-based)',
+      inLanguage: L.meta.lang,
+      description: desc,
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+      featureList: s.featureList || [],
+    };
+  } else if (PAGES[pageId].schema === 'HowTo') {
+    obj = {
+      '@context': 'https://schema.org',
+      '@type': 'HowTo',
+      name: s.howtoName || name,
+      description: desc,
+      inLanguage: L.meta.lang,
+      step: (s.steps || []).map((st) => ({ '@type': 'HowToStep', name: st.name, text: st.text })),
+    };
+  } else {
+    obj = {
+      '@context': 'https://schema.org',
+      '@type': 'TechArticle',
+      headline: name,
+      description: desc,
+      url: ctx.canonical,
+      inLanguage: L.meta.lang,
+      about: s.about || [],
+    };
+  }
+  return `<script type="application/ld+json">\n${JSON.stringify(obj, null, 2)}\n</script>`;
+}
+
+function langSwitcher(pageId, locale, base) {
+  const items = LOCALES.map((loc) => {
+    const L = locales[loc];
+    const href = base + PAGES[pageId].out[loc];
+    const cur = loc === locale ? ' aria-current="true" class="active"' : '';
+    return `<a hreflang="${loc}" href="${href}"${cur}>${esc(L.meta.nativeName)}</a>`;
+  });
+  const label = esc(locales[locale].common.langLabel || 'Language');
+  return `<div class="lang-switch" aria-label="${label}">${items.join('')}</div>`;
+}
+
+function hreflangBlock(pageId) {
+  const links = LOCALES.map(
+    (loc) => `  <link rel="alternate" hreflang="${loc}" href="${urlFor(PAGES[pageId].out[loc])}">`
+  );
+  links.push(`  <link rel="alternate" hreflang="x-default" href="${urlFor(PAGES[pageId].out[DEFAULT_LOCALE])}">`);
+  return links.join('\n');
+}
+
+// ---------- build ----------
+let written = 0;
+for (const pageId of PAGE_IDS) {
+  const P = PAGES[pageId];
+  for (const locale of LOCALES) {
+    const L = locales[locale];
+    const outPath = P.out[locale];
+    const base = baseFor(outPath);
+    const canonical = urlFor(outPath);
+
+    const ctx = {
+      lang: L.meta.lang,
+      locale: L.meta.locale,
+      dir: L.meta.dir || 'ltr',
+      base,
+      css: P.css,
+      canonical,
+      title: L.pages[pageId].title,
+      description: L.pages[pageId].description,
+      ogType: P.ogType,
+      ogImage: SITE_URL + 'og-image.png',
+      ogImageAlt: L.common.ogImageAlt,
+      keywordsTag: L.pages[pageId].keywords
+        ? `<meta name="keywords" content="${esc(L.pages[pageId].keywords)}">`
+        : '',
+      hreflang: hreflangBlock(pageId),
+      ogLocaleAlt: LOCALES.filter((l) => l !== locale)
+        .map((l) => `<meta property="og:locale:alternate" content="${locales[l].meta.locale}">`)
+        .join('\n  '),
+      headExtra: P.headExtra ? render(P.headExtra, { base }) : '',
+      scripts: P.scripts ? render(P.scripts, { base }) : '',
+      navDocs: L.common.navDocs,
+      openApp: L.common.openApp,
+      brandWiki: L.common.brandWiki,
+      langSwitcher: langSwitcher(pageId, locale, base),
+    };
+    ctx.jsonLd = jsonLd(pageId, L, ctx);
+    // Per-locale link map so internal links always stay within the language.
+    for (const id of PAGE_IDS) ctx['link.' + id] = base + PAGES[id].out[locale];
+
+    const bodyTpl = read(path.join(SRC, 'pages', locale, `${P.body}.body.html`));
+    ctx.body = render(bodyTpl, ctx);
+
+    const html = render(layout, ctx);
+    const dest = path.join(ROOT, outPath);
+    fs.mkdirSync(path.dirname(dest), { recursive: true });
+    fs.writeFileSync(dest, html);
+    written++;
+    console.log('  ' + outPath);
+  }
+}
+
+// ---------- sitemap ----------
+const urls = [];
+for (const pageId of PAGE_IDS) {
+  for (const locale of LOCALES) {
+    const loc = urlFor(PAGES[pageId].out[locale]);
+    const alts = LOCALES.map(
+      (l) => `    <xhtml:link rel="alternate" hreflang="${l}" href="${urlFor(PAGES[pageId].out[l])}"/>`
+    ).join('\n');
+    const xdef = `    <xhtml:link rel="alternate" hreflang="x-default" href="${urlFor(PAGES[pageId].out[DEFAULT_LOCALE])}"/>`;
+    urls.push(
+      `  <url>\n    <loc>${loc}</loc>\n${alts}\n${xdef}\n    <changefreq>monthly</changefreq>\n  </url>`
+    );
+  }
+}
+const sitemap =
+  `<?xml version="1.0" encoding="UTF-8"?>\n` +
+  `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n` +
+  urls.join('\n') +
+  `\n</urlset>\n`;
+fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), sitemap);
+
+console.log(`\nBuilt ${written} pages across ${LOCALES.length} locales + sitemap.xml`);

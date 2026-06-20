@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="nl" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Coördinatenraster over een kaart leggen &amp; printen als PDF — GridGen</title>
+  <meta name="description" content="Leg een coördinatenraster over een kaartafbeelding en exporteer een drukklare PDF — handig voor oriëntatieloop, scouting en als veldreferentie. Een visueel raster over een bestaande kaart, geen kaartgenerator met geodata.">
+  <meta name="keywords" content="coördinatenraster over kaart, raster over kaart leggen, stafkaart raster, kaart met rasterlijnen printen pdf, grid over kaart, stafkaart printen, raster over stafkaart">
+  <link rel="canonical" href="https://aborndev.github.io/GridGen/nl/wiki/stafkaart.html">
+  <meta name="theme-color" content="#171717">
+  <meta name="robots" content="index, follow">
+  <link rel="alternate" hreflang="en" href="https://aborndev.github.io/GridGen/wiki/map-grid.html">
+  <link rel="alternate" hreflang="nl" href="https://aborndev.github.io/GridGen/nl/wiki/stafkaart.html">
+  <link rel="alternate" hreflang="x-default" href="https://aborndev.github.io/GridGen/wiki/map-grid.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="GridGen">
+  <meta property="og:title" content="Coördinatenraster over een kaart leggen &amp; printen als PDF — GridGen">
+  <meta property="og:description" content="Leg een coördinatenraster over een kaartafbeelding en exporteer een drukklare PDF — handig voor oriëntatieloop, scouting en als veldreferentie. Een visueel raster over een bestaande kaart, geen kaartgenerator met geodata.">
+  <meta property="og:url" content="https://aborndev.github.io/GridGen/nl/wiki/stafkaart.html">
+  <meta property="og:locale" content="nl_NL">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:image" content="https://aborndev.github.io/GridGen/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="GridGen — een coördinatenraster over een afbeelding, geëxporteerd als PDF">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Coördinatenraster over een kaart leggen &amp; printen als PDF — GridGen">
+  <meta name="twitter:description" content="Leg een coördinatenraster over een kaartafbeelding en exporteer een drukklare PDF — handig voor oriëntatieloop, scouting en als veldreferentie. Een visueel raster over een bestaande kaart, geen kaartgenerator met geodata.">
+  <meta name="twitter:image" content="https://aborndev.github.io/GridGen/og-image.png">
+  <meta name="twitter:image:alt" content="GridGen — een coördinatenraster over een afbeelding, geëxporteerd als PDF">
+
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../wiki/wiki.css">
+  
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Een coördinatenraster over een kaart leggen en als PDF exporteren",
+  "description": "Leg een coördinatenraster over een kaartafbeelding en exporteer een drukklare PDF — handig voor oriëntatieloop, scouting en als veldreferentie. Een visueel raster over een bestaande kaart, geen kaartgenerator met geodata.",
+  "inLanguage": "nl",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Begin met een kaart",
+      "text": "Gebruik een kaartafbeelding die je al hebt — een schermafbeelding, een scan of een geëxporteerde topografische kaart."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Upload hem in GridGen",
+      "text": "Sleep de kaart in het voorbeeldvenster of klik om hem te kiezen."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Stel het raster in",
+      "text": "Kies het aantal vakjes of een vaste celgrootte die past bij het referentieraster dat je nodig hebt."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Voeg coördinaatlabels toe",
+      "text": "Zet schaaknotatie (A1) of cijferlabels (1,1) aan zodat elk vak een referentie heeft."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Exporteer als PDF",
+      "text": "Download een drukklare PDF om mee het veld in te nemen."
+    }
+  ]
+}
+</script>
+</head>
+
+<body>
+<div class="wiki">
+  <header class="topbar">
+    <a class="brand" href="../../nl/index.html">
+      <img src="../../favicon.svg" alt="GridGen logo">
+      GridGen-wiki
+    </a>
+    <nav class="topbar-actions" aria-label="Sitenavigatie">
+      <div class="lang-switch" aria-label="Taal"><a hreflang="en" href="../../wiki/map-grid.html">English</a><a hreflang="nl" href="../../nl/wiki/stafkaart.html" aria-current="true" class="active">Nederlands</a></div>
+      <a href="../../nl/index.html">Open de app →</a>
+    </nav>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <nav class="nav-group" aria-label="Documentatiepagina's">
+        <p class="nav-title">Handleiding</p>
+        <ul>
+          <li><a href="../../nl/wiki/index.html">Hoe GridGen werkt</a></li>
+          <li><a class="active" href="../../nl/wiki/stafkaart.html">Raster over kaarten</a></li>
+          <li><a href="../../nl/wiki/technical.html">Technische referentie</a></li>
+        </ul>
+      </nav>
+      <nav class="nav-group" aria-label="Op deze pagina">
+        <p class="nav-title">Op deze pagina</p>
+        <ul>
+          <li><a href="#overview">Overzicht</a></li>
+          <li><a href="#how">Raster toevoegen, stap voor stap</a></li>
+          <li><a href="#coordinates">Coördinaatreferenties</a></li>
+          <li><a href="#limits">Wat dit is (en wat niet)</a></li>
+          <li><a href="#use-cases">Toepassingen</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <p class="eyebrow">Handleiding</p>
+      <h1>Een coördinatenraster over een kaart leggen en als PDF exporteren</h1>
+      <p class="lead">GridGen legt een coördinaatreferentieraster over een kaartafbeelding en exporteert een drukklare PDF — handig voor oriëntatielopen, scouting en veldwerk. Het legt een raster over een kaart die je zelf aandraagt; GridGen genereert de kaart zelf niet.</p>
+
+      <h2 id="overview">Overzicht</h2>
+      <p>Een raster met rij- en kolomreferenties maakt een kaart gemakkelijk bespreekbaar: "afspreken bij C4", "de markering staat in vak B7." GridGen neemt elke kaart<em>afbeelding</em> — een screenshot, een scan of een geëxporteerde topografische kaart (stafkaart) — tekent daar een regelmatig raster overheen met schaak-(A1)- of cijferlabels (1,1), en exporteert een A4-PDF die je kunt afdrukken en meenemen.</p>
+      <div class="note">
+        <strong>Breng je eigen basiskaart mee.</strong> GridGen werkt op een afbeelding die jij aanlevert. Maak een screenshot van een online kaart, scan een papieren kaart of een stafkaart, of exporteer er een vanuit een kaartdienst, en sleep die vervolgens in GridGen.
+      </div>
+
+      <h2 id="how">Raster toevoegen, stap voor stap</h2>
+      <ol class="steps">
+        <li><strong>Zorg voor een basiskaart.</strong> Gebruik een kaartafbeelding die je al hebt — een screenshot, een scan of een geëxporteerde topografische kaart.</li>
+        <li><strong>Upload die naar GridGen.</strong> Sleep de kaart naar het voorbeeldvenster of klik om hem te selecteren.</li>
+        <li><strong>Stel het raster in.</strong> Kies het aantal vakjes, of een vaste celgrootte in pixels om aan te sluiten bij het referentieraster dat je nodig hebt.</li>
+        <li><strong>Voeg coördinaatlabels toe.</strong> Zet schaak-(A1)- of cijferlabels (1,1) aan zodat elk vak een referentie heeft, en plaats ze buiten de kaart voor schone marges.</li>
+        <li><strong>Exporteer als PDF.</strong> Download een drukklare PDF om mee naar het veld te nemen.</li>
+      </ol>
+      <p>De volledige bedieningsreferentie staat in de <a class="inline" href="../../nl/wiki/index.html">gebruikershandleiding</a>.</p>
+
+      <h2 id="coordinates">Coördinaatreferenties</h2>
+      <p>Twee labelstijlen dekken de meeste behoeften in het veld:</p>
+      <ul>
+        <li><strong>Schaak (A1)</strong> — letters horizontaal, cijfers verticaal. Snel voor te lezen en vertrouwd van bordspellen en gevechtssimulaties.</li>
+        <li><strong>Cijfers (1,1)</strong> — cijfers op beide assen, geschreven als <code>kolom,rij</code>. Voelt dichter aan bij een coördinatenpaar.</li>
+      </ul>
+      <p>Stel de <strong>oorsprong</strong> in op linksonder voor een Cartesisch gevoel, of op linksboven om aan te sluiten bij scherm- en afdrukconventies. Plaats labels <strong>buiten</strong> zodat ze in schone marges rondom de kaart staan in plaats van over het terrein.</p>
+
+      <h2 id="limits">Wat dit is (en wat niet)</h2>
+      <p>GridGen tekent een <strong>visueel referentieraster</strong>. Het is bewust eenvoudig en eerlijk over zijn mogelijkheden:</p>
+      <ul>
+        <li>✅ Het legt een regelmatig raster met leesbare coördinaatlabels over elke kaartafbeelding en exporteert een nette PDF.</li>
+        <li>✅ Het raster is uitstekend als <em>relatief</em> referentiesysteem voor een groep — vakjes die iedereen kan benoemen en aanwijzen.</li>
+        <li>❌ Het berekent <strong>geen</strong> echte coördinaten. De vakjes zijn geen UTM-, MGRS- of Lambertrastercellen en zijn niet geogereferenceerd aan de projectie van de kaart.</li>
+        <li>❌ Het genereert of downloadt <strong>geen</strong> kaartgegevens — jij levert de kaartafbeelding aan.</li>
+      </ul>
+      <p>Als je een echt coördinatenraster nodig hebt dat gekoppeld is aan UTM/MGRS, gebruik dan een officiële topografische kaart (stafkaart) die die rasterlijnen al gedrukt heeft, en gebruik GridGen alleen wanneer een eenvoudig, afdrukbaar referentieraster voldoende is.</p>
+
+      <h2 id="use-cases">Toepassingen</h2>
+      <ul>
+        <li><strong>Oriëntatielopen &amp; scouting</strong> — voeg een gedeeld referentieraster toe aan een route- of gebiedskaart en druk exemplaren af voor een groep.</li>
+        <li><strong>Tafelspellen &amp; D&amp;D</strong> — verander een kaartillustratie in een gevechtsraster met benoemde vakjes.</li>
+        <li><strong>Wandelen &amp; plannen</strong> — markeer en bespreek locaties op een gedrukte kaart per vak.</li>
+        <li><strong>Kaartvaardigheden aanleren</strong> — laat zien hoe een coördinatenraster en referenties werken op een echte kaart.</li>
+      </ul>
+
+      <h2 id="faq">FAQ</h2>
+      <h3>Genereert GridGen een topografische kaart of haalt het kaartgegevens op?</h3>
+      <p>Nee. GridGen legt een raster over een kaartafbeelding die jij aanlevert. Om een basiskaart te verkrijgen, maak je een screenshot van een online kaart, scan je een papieren kaart of stafkaart, of exporteer je er een vanuit een kaartdienst en upload je die hier.</p>
+      <h3>Zijn de vakjes echte UTM- of MGRS-coördinaten?</h3>
+      <p>Nee. Het raster is een visuele referentie — gelijkmatig verdeelde vakjes met A1- of cijferlabels. Ze zijn niet geogereferenceerd aan de projectie van de kaart, dus behandel ze als een relatief referentiesysteem, geen coördinaten met landmeetkundige nauwkeurigheid.</p>
+      <h3>Kan ik het raster laten aansluiten op een bestaand kaartraster?</h3>
+      <p>Gedeeltelijk — gebruik de modus <strong>Op grootte</strong> en pas de celgrootte aan zodat de overlaylijnen ruwweg samenvallen met het gedrukte raster op je kaartafbeelding. Het is een visuele uitlijning, geen berekende.</p>
+      <h3>Is het gratis en privé?</h3>
+      <p>Ja. GridGen is gratis en open source, en je kaart verlaat je apparaat nooit — alle verwerking vindt plaats in je browser.</p>
+
+      <nav class="page-nav" aria-label="Paginanavigatie">
+        <a class="prev" href="../../nl/wiki/index.html"><span>Vorige</span>Hoe GridGen werkt</a>
+        <a class="next" href="../../nl/index.html"><span>Probeer het</span>Open de app →</a>
+      </nav>
+
+      <footer class="footer">
+        <p>GridGen is open source onder de GPL v3. Een visueel rasteroverlay-hulpmiddel — geen geogereferenceerde kaartgenerator.</p>
+      </footer>
+    </main>
+  </div>
+</div>
+
+
+</body>
+</html>
