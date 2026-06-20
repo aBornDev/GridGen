@@ -357,7 +357,8 @@ async function exportPDF() {
     const baseName = (state.imageName.replace(/\.[^.]+$/, '') || 'grid-map').trim();
     pdf.save(`${baseName || 'grid-map'}-grid.pdf`);
   } catch (err) {
-    alert('Could not generate the PDF — please check your connection and try again.');
+    console.error('PDF export failed:', err);
+    alert('Could not generate the PDF. Please try again.');
   } finally {
     btn.disabled = false;
   }
