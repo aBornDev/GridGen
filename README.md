@@ -34,16 +34,34 @@ The exported file is named after the original image (e.g., `site-photo-grid.pdf`
 
 ## Documentation
 
-A wiki-style guide is published alongside the app:
+A wiki-style guide is published alongside the app (English and Dutch):
 
-- **[How GridGen Works](https://aborndev.github.io/GridGen/wiki/index.html)** — a full user guide covering uploading, grid modes, appearance, labels, and PDF export.
+- **[How GridGen Works](https://aborndev.github.io/GridGen/wiki/)** — a full user guide covering uploading, grid modes, appearance, labels, and PDF export.
+- **[Grids on maps](https://aborndev.github.io/GridGen/wiki/map-grid.html)** — adding a coordinate reference grid to a map image and exporting a PDF.
 - **[Technical Reference](https://aborndev.github.io/GridGen/wiki/technical.html)** — the tech stack, rendering pipeline, label algorithm, and PDF export internals.
 
-> **Changing the domain?** The canonical, Open Graph, `sitemap.xml`, and `robots.txt` URLs are hard-coded to `https://aborndev.github.io/GridGen/`. If you move to a custom domain or rename the repo, update those absolute URLs in `index.html`, `wiki/index.html`, `wiki/technical.html`, `sitemap.xml`, and `robots.txt`.
+Dutch versions live under [`/nl/`](https://aborndev.github.io/GridGen/nl/).
+
+## Build & internationalization
+
+The published HTML is **generated**. Source lives in `site/` and a zero-dependency Node script renders one set of templates into per-language static pages (English at the root, other languages under `/<lang>/`), along with `hreflang` tags, per-language metadata and JSON-LD, a language switcher, and `sitemap.xml`.
+
+```
+node build.js
+```
+
+Edit the templates in `site/`, never the generated output (`index.html`, `wiki/`, `nl/`). To add a language:
+
+1. Add `site/locales/<lang>.json` (titles, descriptions, nav labels, schema strings).
+2. Add translated bodies under `site/pages/<lang>/`.
+3. Register the language code in `LOCALES` in `build.js`.
+4. Run `node build.js`.
+
+> **Changing the domain?** Absolute URLs (canonical, Open Graph, `hreflang`, sitemap) are built from `SITE_URL` in `build.js`. Update that one constant and re-run the build; also update the `Sitemap:` line in `robots.txt`.
 
 ## Tech
 
-Plain HTML, CSS, and vanilla JavaScript. PDF generation via [jsPDF](https://github.com/parallax/jsPDF). No frameworks, no bundler.
+Plain HTML, CSS, and vanilla JavaScript for the app. PDF generation via [jsPDF](https://github.com/parallax/jsPDF). No runtime frameworks or bundler; the only tooling is the static-site generator (`build.js`, no dependencies).
 
 ## Browser support
 

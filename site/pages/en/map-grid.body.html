@@ -1,0 +1,103 @@
+<div class="wiki">
+  <header class="topbar">
+    <a class="brand" href="{{link.home}}">
+      <img src="{{base}}favicon.svg" alt="GridGen logo">
+      {{brandWiki}}
+    </a>
+    <nav class="topbar-actions" aria-label="Site">
+      {{{langSwitcher}}}
+      <a href="{{link.home}}">{{openApp}}</a>
+    </nav>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <nav class="nav-group" aria-label="Documentation pages">
+        <p class="nav-title">Guide</p>
+        <ul>
+          <li><a href="{{link.wikiHow}}">How GridGen Works</a></li>
+          <li><a class="active" href="{{link.mapGrid}}">Grids on maps</a></li>
+          <li><a href="{{link.wikiTech}}">Technical Reference</a></li>
+        </ul>
+      </nav>
+      <nav class="nav-group" aria-label="On this page">
+        <p class="nav-title">On this page</p>
+        <ul>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#how">Add a grid, step by step</a></li>
+          <li><a href="#coordinates">Coordinate references</a></li>
+          <li><a href="#limits">What this is (and isn't)</a></li>
+          <li><a href="#use-cases">Use cases</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <p class="eyebrow">Guide</p>
+      <h1>Add a coordinate grid to a map and export a PDF</h1>
+      <p class="lead">GridGen lays a coordinate reference grid over a map image and exports a print-ready PDF — handy for orienteering, scouting, and field reference. It overlays a grid on a map you already have; it does not generate the map itself.</p>
+
+      <h2 id="overview">Overview</h2>
+      <p>A grid with row/column references makes a map easy to talk about: "meet at C4," "the marker is in square B7." GridGen takes any map <em>image</em> — a screenshot, a scan, or an exported topographic map — draws an even grid on top with chess (A1) or numeric (1,1) labels, and exports an A4 PDF you can print and carry.</p>
+      <div class="note">
+        <strong>Bring your own base map.</strong> GridGen works on an image you provide. Grab a screenshot of an online map, scan a paper map, or export one from a mapping service, then drop it into GridGen.
+      </div>
+
+      <h2 id="how">Add a grid, step by step</h2>
+      <ol class="steps">
+        <li><strong>Get a base map.</strong> Use a map image you already have — a screenshot, a scan, or an exported topographic map.</li>
+        <li><strong>Upload it to GridGen.</strong> Drag the map into the preview area or click to select it.</li>
+        <li><strong>Set the grid.</strong> Choose the number of squares, or a fixed cell size in pixels to match the reference grid you need.</li>
+        <li><strong>Add coordinate labels.</strong> Turn on chess (A1) or numeric (1,1) labels so every square has a reference, and place them outside the map for clean margins.</li>
+        <li><strong>Export as PDF.</strong> Download a print-ready PDF to take into the field.</li>
+      </ol>
+      <p>The full control reference lives in the <a class="inline" href="{{link.wikiHow}}">user guide</a>.</p>
+
+      <h2 id="coordinates">Coordinate references</h2>
+      <p>Two labeling styles cover most field needs:</p>
+      <ul>
+        <li><strong>Chess (A1)</strong> — letters across, numbers down. Quick to read aloud and familiar from board games and battle maps.</li>
+        <li><strong>Numeric (1,1)</strong> — numbers on both axes, written <code>column,row</code>. Closer to a coordinate-pair feel.</li>
+      </ul>
+      <p>Set the <strong>origin</strong> to bottom-left for a Cartesian feel, or top-left to match screen and print conventions. Place labels <strong>outside</strong> so they sit in clean margins around the map rather than over the terrain.</p>
+
+      <h2 id="limits">What this is (and isn't)</h2>
+      <p>GridGen draws a <strong>visual reference grid</strong>. It is intentionally simple and honest about its scope:</p>
+      <ul>
+        <li>✅ It overlays an even grid with readable coordinate labels on any map image and exports a clean PDF.</li>
+        <li>✅ The grid is great as a <em>relative</em> reference system for a group — squares everyone can name and point to.</li>
+        <li>❌ It does <strong>not</strong> compute real-world coordinates. The squares are not UTM, MGRS, or Lambert grid cells, and they are not georeferenced to the map's projection.</li>
+        <li>❌ It does <strong>not</strong> generate or download map data — you supply the map image.</li>
+      </ul>
+      <p>If you need a true coordinate grid tied to UTM/MGRS, use a proper topographic map that already prints those grid lines, and use GridGen only when a simple, printable reference grid is enough.</p>
+
+      <h2 id="use-cases">Use cases</h2>
+      <ul>
+        <li><strong>Orienteering &amp; scouting</strong> — add a shared reference grid to a route or area map and print copies for a group.</li>
+        <li><strong>Tabletop &amp; D&amp;D</strong> — turn a map illustration into a battle grid with named squares.</li>
+        <li><strong>Hiking &amp; planning</strong> — mark and discuss locations on a printed map by square.</li>
+        <li><strong>Teaching map skills</strong> — show how a coordinate grid and references work on a real map.</li>
+      </ul>
+
+      <h2 id="faq">FAQ</h2>
+      <h3>Does GridGen generate a topographic map or pull map data?</h3>
+      <p>No. GridGen overlays a grid on a map image you provide. To get a base map, take a screenshot of an online map, scan a paper map, or export one from a mapping service, then upload it here.</p>
+      <h3>Are the squares real UTM or MGRS coordinates?</h3>
+      <p>No. The grid is a visual reference — evenly spaced squares with A1 / numeric labels. They are not georeferenced to the map's projection, so treat them as a relative reference system, not survey-grade coordinates.</p>
+      <h3>Can I match the grid to an existing map grid?</h3>
+      <p>Partly — use <strong>By size</strong> mode and adjust the cell size so the overlay lines roughly align with the printed grid on your map image. It is a visual alignment, not a calculated one.</p>
+      <h3>Is it free and private?</h3>
+      <p>Yes. GridGen is free and open source, and your map never leaves your device — all processing happens in your browser.</p>
+
+      <nav class="page-nav" aria-label="Page navigation">
+        <a class="prev" href="{{link.wikiHow}}"><span>Previous</span>How GridGen Works</a>
+        <a class="next" href="{{link.home}}"><span>Try it</span>Open the app →</a>
+      </nav>
+
+      <footer class="footer">
+        <p>GridGen is open source under the GPL v3. A visual grid overlay tool — not a georeferenced map generator.</p>
+      </footer>
+    </main>
+  </div>
+</div>

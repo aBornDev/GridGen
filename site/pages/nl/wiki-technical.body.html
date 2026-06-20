@@ -1,0 +1,203 @@
+<div class="wiki">
+  <header class="topbar">
+    <a class="brand" href="{{link.home}}">
+      <img src="{{base}}favicon.svg" alt="GridGen logo">
+      {{brandWiki}}
+    </a>
+    <nav class="topbar-actions" aria-label="Site">
+      {{{langSwitcher}}}
+      <a href="{{link.home}}">{{openApp}}</a>
+    </nav>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <nav class="nav-group" aria-label="Documentation pages">
+        <p class="nav-title">Handleiding</p>
+        <ul>
+          <li><a href="{{link.wikiHow}}">Hoe GridGen werkt</a></li>
+          <li><a href="{{link.mapGrid}}">Raster over kaarten</a></li>
+          <li><a class="active" href="{{link.wikiTech}}">Technische referentie</a></li>
+        </ul>
+      </nav>
+      <nav class="nav-group" aria-label="On this page">
+        <p class="nav-title">Op deze pagina</p>
+        <ul>
+          <li><a href="#stack">Technische stack</a></li>
+          <li><a href="#structure">Projectstructuur</a></li>
+          <li><a href="#i18n">Bouwen &amp; talen</a></li>
+          <li><a href="#state">Statusmodel</a></li>
+          <li><a href="#pipeline">Renderpijplijn</a></li>
+          <li><a href="#geometry">Rastergeometrie</a></li>
+          <li><a href="#labels">Labelalgoritme</a></li>
+          <li><a href="#contrast">Contrast &amp; leesbaarheid</a></li>
+          <li><a href="#pdf">PDF-export</a></li>
+          <li><a href="#privacy">Privacymodel</a></li>
+          <li><a href="#extend">GridGen uitbreiden</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <p class="eyebrow">Technische referentie</p>
+      <h1>Hoe GridGen is gebouwd</h1>
+      <p class="lead">GridGen is een webapplicatie zonder afhankelijkheden die volledig op de client draait. Er is geen framework en geen backend — de app bestaat alleen uit <code>index.html</code>, <code>style.css</code> en <code>gridgen.js</code>, plus één CDN-bibliotheek voor PDF-generatie. Een kleine statische-sitegenerator maakt de gelokaliseerde pagina's aan.</p>
+
+      <h2 id="stack">Technische stack</h2>
+      <table class="spec-table">
+        <thead><tr><th>Laag</th><th>Keuze</th><th>Waarom</th></tr></thead>
+        <tbody>
+          <tr><td>Opmaak</td><td>Gewone HTML5</td><td>Semantische pagina's; geen client-framework.</td></tr>
+          <tr><td>Opmaakstijlen</td><td>Handgeschreven CSS met custom properties</td><td>Ontwerptokens via <code>:root</code>-variabelen; geen preprocessor.</td></tr>
+          <tr><td>Logica</td><td>Vanilla JavaScript (ES6+)</td><td>Geen framework, geen bundler — de browser voert de broncode rechtstreeks uit.</td></tr>
+          <tr><td>Rendering</td><td>HTML5 Canvas 2D API</td><td>Pixelnauwkeurige samenstelling van afbeelding + raster + labels.</td></tr>
+          <tr><td>PDF</td><td><a class="inline" href="https://github.com/parallax/jsPDF">jsPDF</a> (UMD, via CDN)</td><td>De enige externe runtime-afhankelijkheid.</td></tr>
+          <tr><td>Bouwen</td><td>Node-generator zonder afhankelijkheden (<code>build.js</code>)</td><td>Genereert per-taal statische HTML; draait lokaal, niet op de server.</td></tr>
+          <tr><td>Hosting</td><td>GitHub Pages</td><td>Gratis statische hosting rechtstreeks vanuit de repository.</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="structure">Projectstructuur</h2>
+      <pre><code>GridGen/
+├── index.html          # generated — English app shell
+├── style.css           # app styles
+├── gridgen.js          # all application logic
+├── favicon.svg, og-image.png, robots.txt, sitemap.xml
+├── nl/                 # generated — Dutch pages (/nl/, /nl/wiki/…)
+├── wiki/               # generated — English docs + wiki.css
+├── build.js            # static-site generator
+└── site/               # generator SOURCE
+    ├── layouts/        # base.html
+    ├── partials/       # head.html
+    ├── locales/        # en.json, nl.json — metadata + schema strings
+    └── pages/&lt;lang&gt;/   # per-language page bodies</code></pre>
+      <div class="note">
+        <strong>Gegenereerd versus bron.</strong> De HTML in de root van de repository en onder <code>wiki/</code> en <code>nl/</code> is gegenereerd — bewerk de sjablonen in <code>site/</code> en voer <code>node build.js</code> opnieuw uit; bewerk de uitvoer nooit rechtstreeks.
+      </div>
+
+      <h2 id="i18n">Bouwen &amp; talen</h2>
+      <p>Elke taal wordt gegenereerd uit één set sjablonen plus een per-locale JSON-bestand. Engels wordt gegenereerd in de siteroot; elke andere taal staat onder <code>/&lt;lang&gt;/</code>. De generator schrijft ook de <code>hreflang</code>-alternatieven, de per-taal <code>&lt;title&gt;</code>/meta en JSON-LD, een taalwisselaar en een meertalige <code>sitemap.xml</code>.</p>
+      <p>Een taal toevoegen is een vier-stappen wijziging zonder code:</p>
+      <ol class="steps">
+        <li>Voeg <code>site/locales/&lt;lang&gt;.json</code> toe (titels, beschrijvingen, navigatielabels, schema-strings).</li>
+        <li>Voeg vertaalde pagina-inhoud toe onder <code>site/pages/&lt;lang&gt;/</code>.</li>
+        <li>Registreer de taalcode in <code>build.js</code>.</li>
+        <li>Voer <code>node build.js</code> uit.</li>
+      </ol>
+
+      <h2 id="state">Statusmodel</h2>
+      <p>Alle toepassingsstatus leeft in één enkel object. Elk besturingselement schrijft erin, en één <code>render()</code>-functie leest ervan — een kleine unidirectionele dataflow zonder framework.</p>
+      <pre><code>const state = {
+  image: null,        // the decoded HTMLImageElement
+  imageName: '',      // used to name the exported file
+  gridMode: 'cells',  // 'cells' | 'size'
+  cols: 10, rows: 10, // for 'cells' mode
+  cellSize: 50,       // for 'size' mode (px)
+  color: '#000000',
+  thickness: 2,
+  opacity: 1.0,
+  showLabels: true,
+  labelStyle: 'chess',     // 'chess' | 'numeric'
+  labelPosition: 'outside',// 'outside' | 'inside'
+  origin: 'top-left'       // 'top-left' | 'bottom-left'
+};</code></pre>
+      <p>Elke invoerluisteraar muteert één veld en roept <code>render()</code> aan. Er is geen virtuele DOM en geen diffing — het canvas wordt bij elke wijziging simpelweg opnieuw getekend, wat weinig rekenkracht kost voor een enkele afbeelding.</p>
+
+      <h2 id="pipeline">Renderpijplijn</h2>
+      <p><code>render()</code> hertekent het volledige canvas in een vaste volgorde. Door achter-naar-voor te tekenen, liggen latere lagen vanzelf boven eerdere.</p>
+      <ol class="steps">
+        <li><strong>Geometrie berekenen</strong> — celbreedte/-hoogte en het aantal kolommen/rijen afleiden uit de actieve rastermodus.</li>
+        <li><strong>Canvas opmaten</strong> — afbeeldingsafmetingen plus een marge bovenaan en links wanneer buitenlabels zijn ingeschakeld (de kolommen die de kolom- en rijlabels bevatten).</li>
+        <li><strong>Achtergrond wit inkleuren</strong>, dan de afbeelding tekenen op de margeoffset.</li>
+        <li><strong>Rasterlijnen trekken</strong> met de gekozen kleur, dikte en dekking.</li>
+        <li><strong>Labels tekenen</strong> — ofwel in de buitenmarge ofwel in elk vak.</li>
+        <li><strong>De infobalk bijwerken</strong> met de live cel- en afbeeldingsafmetingen.</li>
+      </ol>
+
+      <h2 id="geometry">Rastergeometrie</h2>
+      <p>De twee rastermodi worden omgezet naar dezelfde vier waarden — <code>cols</code>, <code>rows</code>, <code>cellW</code>, <code>cellH</code> — zodat de rest van de renderer niet weet welke modus is gekozen:</p>
+      <pre><code>if (state.gridMode === 'cells') {
+  cols = state.cols;  rows = state.rows;
+  cellW = img.width / cols;       // cells may be rectangular
+  cellH = img.height / rows;
+} else {
+  cellW = cellH = state.cellSize; // square cells
+  cols = Math.ceil(img.width / cellW);
+  rows = Math.ceil(img.height / cellH);
+}</code></pre>
+      <p>Wanneer buitenlabels zijn ingeschakeld, reserveert GridGen een marge die schaalt met de afbeeldingsresolutie:</p>
+      <pre><code>const baseMargin = Math.max(36, Math.min(img.width, img.height) * 0.045);</code></pre>
+      <p>Rasterlijnen worden begrensd tot de afbeeldingsranden met <code>Math.min(i * cellW, img.width)</code>, zodat een gedeeltelijk laatste vak in de modus <em>per grootte</em> nooit voorbij de rand wordt getekend.</p>
+
+      <h2 id="labels">Labelalgoritme</h2>
+      <p>Kolomlabels in schaakstijl zijn een basis-26-conversie (bijectief) — hetzelfde schema dat spreadsheets gebruiken voor kolommen, zodat na <code>Z</code> de reeks <code>AA</code> volgt:</p>
+      <pre><code>function getColumnLabel(i) {
+  if (state.labelStyle === 'numeric') return String(i + 1);
+  let label = '', n = i;
+  while (n >= 0) {
+    label = String.fromCharCode(65 + (n % 26)) + label;
+    n = Math.floor(n / 26) - 1;
+  }
+  return label;
+}</code></pre>
+      <p>De rijnummering respecteert de instelling van de <strong>oorsprong</strong> door de index om te keren wanneer de oorsprong linksonder staat:</p>
+      <pre><code>const rowIdx = state.origin === 'top-left' ? i : rows - 1 - i;</code></pre>
+      <p><strong>Buiten</strong>-labels worden gecentreerd in de margekolommen bovenaan en links. <strong>Binnen</strong>-labels worden in de linkerbovenhoek van elk vak getekend met een omlijnd halo achter de vultekst, zodat ze leesbaar blijven over drukke afbeeldingsinhoud.</p>
+
+      <h2 id="contrast">Contrast &amp; leesbaarheid</h2>
+      <p>De labelkleur wordt automatisch bepaald op basis van de waargenomen luminantie van de rasterkleur (de Rec. 601-weging). Lichte rasterkleuren krijgen donkere labels; donkere kleuren behouden hun tint:</p>
+      <pre><code>function isLight(hex) {
+  const { r, g, b } = hexToRgb(hex);
+  return (0.299 * r + 0.587 * g + 0.114 * b) > 186;
+}</code></pre>
+      <p>Voor binnenlabels werkt de halo andersom — een witte halo achter donkere tekst of een zwarte halo achter lichte tekst — wat contrast garandeert ongeacht wat eronder zit.</p>
+
+      <h2 id="pdf">PDF-export</h2>
+      <p>Bij het exporteren wordt het al gerenderde canvas hergebruikt, zodat de PDF exact overeenkomt met het voorbeeldvenster. Het canvas wordt gecodeerd als PNG-data-URL en geplaatst op een A4-pagina waarvan de oriëntatie de beeldverhouding van de afbeelding volgt:</p>
+      <pre><code>const w = canvas.width, h = canvas.height;
+const orientation = w > h ? 'landscape' : 'portrait';
+const pdf = new jsPDF({ orientation, unit: 'pt', format: 'a4', compress: true });
+
+// available area inside a 24pt page margin
+const pageW = pdf.internal.pageSize.getWidth();
+const pageH = pdf.internal.pageSize.getHeight();
+const margin = 24;
+const availW = pageW - 2 * margin, availH = pageH - 2 * margin;
+
+// scale to fit, then center on the page
+const scale = Math.min(availW / w, availH / h);
+const drawW = w * scale, drawH = h * scale;
+const x = (pageW - drawW) / 2, y = (pageH - drawH) / 2;
+
+const imgData = canvas.toDataURL('image/png');
+pdf.addImage(imgData, 'PNG', x, y, drawW, drawH);
+pdf.save(`${baseName || 'grid-map'}-grid.pdf`);</code></pre>
+      <p>Omdat het broncanvas op de native pixelafmetingen van de afbeelding staat, blijven rasterlijnen scherp bij het verkleinen naar de pagina. De uitvoerbestandsnaam wordt afgeleid van het geüploade bestand, waarbij de extensie wordt verwijderd en <code>-grid</code> wordt toegevoegd.</p>
+
+      <h2 id="privacy">Privacymodel</h2>
+      <p>GridGen werkt <strong>alleen op de client</strong>. De afbeelding wordt gelezen met de <code>FileReader</code> van de browser als een data-URL en gedecodeerd in een <code>Image</code>-element — ze wordt nergens naartoe verzonden:</p>
+      <pre><code>const reader = new FileReader();
+reader.onload = (ev) => { img.src = ev.target.result; };
+reader.readAsDataURL(file);</code></pre>
+      <p>Er zijn geen analyses, geen server en geen netwerkverzoeken buiten het laden van de jsPDF-bibliotheek van zijn CDN. Al het overige draait in de pagina.</p>
+
+      <h2 id="extend">GridGen uitbreiden</h2>
+      <p>Het ontwerp met één logicabestand houdt wijzigingen lokaal. Veelvoorkomende uitbreidingen:</p>
+      <ul>
+        <li><strong>Nieuwe labelstijlen</strong> — voeg een tak toe aan <code>getColumnLabel()</code> en de labeltekencode.</li>
+        <li><strong>Exportformaten</strong> — het canvas kan worden omgezet naar PNG/JPEG met <code>canvas.toBlob()</code> voor directe afbeeldingsdownload.</li>
+        <li><strong>Niet-uniforme rasters</strong> — het geometrieblok is de enige bron van waarheid voor celgrootte.</li>
+        <li><strong>Voorinstellingen</strong> — het platte <code>state</code>-object serialiseert netjes naar JSON voor opslaan/laden of URL-deling.</li>
+      </ul>
+
+      <nav class="page-nav" aria-label="Page navigation">
+        <a class="prev" href="{{link.wikiHow}}"><span>Vorige</span>Hoe GridGen werkt</a>
+        <a class="next" href="{{link.home}}"><span>Terug naar</span>De app →</a>
+      </nav>
+
+      <footer class="footer">
+        <p>GridGen is open source onder de GPL v3. PDF-generatie door <a href="https://github.com/parallax/jsPDF">jsPDF</a>.</p>
+      </footer>
+    </main>
+  </div>
+</div>

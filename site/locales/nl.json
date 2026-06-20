@@ -1,0 +1,64 @@
+{
+  "meta": { "lang": "nl", "locale": "nl_NL", "dir": "ltr", "name": "Dutch", "nativeName": "Nederlands" },
+  "common": {
+    "ogImageAlt": "GridGen — een coördinatenraster over een afbeelding, geëxporteerd als PDF",
+    "openApp": "Open de app →",
+    "navDocs": "Docs & wiki",
+    "brandWiki": "GridGen-wiki"
+  },
+  "pages": {
+    "home": {
+      "title": "GridGen — Coördinatenraster over elke afbeelding, exporteer als PDF",
+      "description": "Gratis browsertool om een coördinatenraster over een foto of kaart te leggen en als drukklare PDF te exporteren. Geen account nodig, draait volledig in je browser.",
+      "keywords": "raster over afbeelding, raster over kaart leggen, coördinatenraster, rasterlijnen over foto, raster tekenmethode, afbeelding naar raster pdf, stafkaart raster"
+    },
+    "wikiHow": {
+      "title": "Hoe GridGen werkt — Handleiding & wiki",
+      "description": "Een complete handleiding voor GridGen: een afbeelding uploaden, een coördinatenraster instellen, het uiterlijk aanpassen, schaak- of cijferlabels toevoegen en exporteren als drukklare PDF."
+    },
+    "wikiTech": {
+      "title": "GridGen technische referentie — Stack & architectuur",
+      "description": "Hoe GridGen is gebouwd: een vanilla-JavaScript-app zonder dependencies die een coördinatenraster op een HTML5-canvas tekent en met jsPDF naar PDF exporteert."
+    },
+    "mapGrid": {
+      "title": "Coördinatenraster over een kaart leggen & printen als PDF — GridGen",
+      "description": "Leg een coördinatenraster over een kaartafbeelding en exporteer een drukklare PDF — handig voor oriëntatieloop, scouting en als veldreferentie. Een visueel raster over een bestaande kaart, geen kaartgenerator met geodata.",
+      "keywords": "coördinatenraster over kaart, raster over kaart leggen, stafkaart raster, kaart met rasterlijnen printen pdf, grid over kaart, stafkaart printen, raster over stafkaart"
+    }
+  },
+  "schema": {
+    "home": {
+      "featureList": [
+        "Raster op aantal vakjes of op celgrootte in pixels",
+        "Aanpasbare lijnkleur, dikte en transparantie",
+        "Schaaknotatie (A1) of cijferlabels (1,1)",
+        "Labels binnen of buiten de vakjes",
+        "Oorsprong linksboven of linksonder",
+        "PDF-export op volledige beeldresolutie"
+      ]
+    },
+    "wikiHow": {
+      "howtoName": "Een coördinatenraster over een afbeelding leggen en als PDF exporteren met GridGen",
+      "steps": [
+        { "name": "Upload een afbeelding", "text": "Sleep een PNG, JPG of WEBP naar de app of klik om er een te kiezen." },
+        { "name": "Kies een rastermodus", "text": "Bepaal het raster op aantal vakjes of op celgrootte in pixels." },
+        { "name": "Pas het uiterlijk aan", "text": "Stel lijnkleur, dikte en transparantie in voor goede leesbaarheid." },
+        { "name": "Voeg coördinaatlabels toe", "text": "Kies schaak- of cijferlabels, plaatsing binnen of buiten, en de oorsprongshoek." },
+        { "name": "Exporteer de PDF", "text": "Klik op PDF downloaden om een A4-bestand op volledige resolutie op te slaan." }
+      ]
+    },
+    "wikiTech": {
+      "about": ["HTML5 Canvas", "JavaScript", "jsPDF", "GitHub Pages"]
+    },
+    "mapGrid": {
+      "howtoName": "Een coördinatenraster over een kaart leggen en als PDF exporteren",
+      "steps": [
+        { "name": "Begin met een kaart", "text": "Gebruik een kaartafbeelding die je al hebt — een schermafbeelding, een scan of een geëxporteerde topografische kaart." },
+        { "name": "Upload hem in GridGen", "text": "Sleep de kaart in het voorbeeldvenster of klik om hem te kiezen." },
+        { "name": "Stel het raster in", "text": "Kies het aantal vakjes of een vaste celgrootte die past bij het referentieraster dat je nodig hebt." },
+        { "name": "Voeg coördinaatlabels toe", "text": "Zet schaaknotatie (A1) of cijferlabels (1,1) aan zodat elk vak een referentie heeft." },
+        { "name": "Exporteer als PDF", "text": "Download een drukklare PDF om mee het veld in te nemen." }
+      ]
+    }
+  }
+}

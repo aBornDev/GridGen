@@ -61,7 +61,12 @@ a:focus-visible {
   color: var(--text);
 }
 .brand img { width: 26px; height: 26px; display: block; }
-.topbar-actions a {
+.topbar-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.topbar-actions > a {
   text-decoration: none;
   color: var(--text-muted);
   font-size: 13px;
@@ -71,7 +76,23 @@ a:focus-visible {
   border-radius: 7px;
   transition: background 0.15s, color 0.15s;
 }
-.topbar-actions a:hover { background: var(--hover); color: var(--text); }
+.topbar-actions > a:hover { background: var(--hover); color: var(--text); }
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+.lang-switch a {
+  color: var(--text-subtle);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 7px;
+  border-radius: 6px;
+  transition: background 0.15s, color 0.15s;
+}
+.lang-switch a:hover { background: var(--hover); color: var(--text); }
+.lang-switch a.active { color: var(--text); font-weight: 600; }
 
 .layout {
   display: grid;

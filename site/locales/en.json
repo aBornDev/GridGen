@@ -1,0 +1,64 @@
+{
+  "meta": { "lang": "en", "locale": "en_US", "dir": "ltr", "name": "English", "nativeName": "English" },
+  "common": {
+    "ogImageAlt": "GridGen — a labeled coordinate grid laid over an image, exported as a PDF",
+    "openApp": "Open the app →",
+    "navDocs": "Docs & Wiki",
+    "brandWiki": "GridGen Wiki"
+  },
+  "pages": {
+    "home": {
+      "title": "GridGen — Add a Coordinate Grid to Any Image & Export as PDF",
+      "description": "Free browser tool to overlay a labeled coordinate grid on any photo or map and export it as a print-ready PDF. No signup, runs entirely in your browser.",
+      "keywords": "grid overlay, grid on image, grid drawing method, image to grid PDF, coordinate grid generator, add grid to map, battle map grid, reference grid photo"
+    },
+    "wikiHow": {
+      "title": "How GridGen Works — User Guide & Wiki",
+      "description": "A complete guide to GridGen: how to upload an image, configure a coordinate grid, customize its appearance, add chess or numeric labels, and export a print-ready PDF."
+    },
+    "wikiTech": {
+      "title": "GridGen Technical Reference — Stack & Architecture",
+      "description": "How GridGen is built: a zero-dependency vanilla JavaScript app that renders a coordinate grid on an HTML5 Canvas and exports to PDF with jsPDF."
+    },
+    "mapGrid": {
+      "title": "Add a Coordinate Grid to a Map & Export as PDF — GridGen",
+      "description": "Lay a coordinate reference grid over a map image and export a print-ready PDF — useful for orienteering, scouting, and field reference. A visual grid overlay, not a georeferenced map generator.",
+      "keywords": "add coordinate grid to map, overlay grid on map pdf, topographic map grid overlay, orienteering map grid, reference grid on map image, military-style map grid, print map with grid"
+    }
+  },
+  "schema": {
+    "home": {
+      "featureList": [
+        "Grid by number of cells or by cell size in pixels",
+        "Customizable line color, thickness, and opacity",
+        "Chess (A1) or numeric (1,1) coordinate labels",
+        "Inside or outside label placement",
+        "Top-left or bottom-left origin",
+        "PDF export at full image resolution"
+      ]
+    },
+    "wikiHow": {
+      "howtoName": "How to add a coordinate grid to an image and export it as a PDF with GridGen",
+      "steps": [
+        { "name": "Upload an image", "text": "Drag and drop or click to select a PNG, JPG, or WEBP image." },
+        { "name": "Choose a grid mode", "text": "Define the grid by number of cells or by cell size in pixels." },
+        { "name": "Customize appearance", "text": "Set the line color, thickness, and opacity for readability." },
+        { "name": "Add coordinate labels", "text": "Pick chess or numeric labels, inside or outside placement, and the origin corner." },
+        { "name": "Export the PDF", "text": "Click Download PDF to save an A4 file at full image resolution." }
+      ]
+    },
+    "wikiTech": {
+      "about": ["HTML5 Canvas", "JavaScript", "jsPDF", "GitHub Pages"]
+    },
+    "mapGrid": {
+      "howtoName": "How to add a coordinate grid to a map and export it as a PDF",
+      "steps": [
+        { "name": "Get a base map", "text": "Use a map image you already have — a screenshot, a scan, or an exported topographic map." },
+        { "name": "Upload it to GridGen", "text": "Drag the map into the preview area or click to select it." },
+        { "name": "Set the grid", "text": "Choose the number of squares or a fixed cell size to match the reference grid you need." },
+        { "name": "Add coordinate labels", "text": "Turn on chess (A1) or numeric (1,1) labels so every square has a reference." },
+        { "name": "Export as PDF", "text": "Download a print-ready PDF to take into the field." }
+      ]
+    }
+  }
+}

@@ -1,88 +1,12 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>How GridGen Works — User Guide &amp; Wiki</title>
-  <meta name="description" content="A complete guide to GridGen: how to upload an image, configure a coordinate grid, customize its appearance, add chess or numeric labels, and export a print-ready PDF.">
-  
-  <link rel="canonical" href="https://aborndev.github.io/GridGen/wiki/">
-  <meta name="theme-color" content="#171717">
-  <meta name="robots" content="index, follow">
-  <link rel="alternate" hreflang="en" href="https://aborndev.github.io/GridGen/wiki/">
-  <link rel="alternate" hreflang="nl" href="https://aborndev.github.io/GridGen/nl/wiki/">
-  <link rel="alternate" hreflang="x-default" href="https://aborndev.github.io/GridGen/wiki/">
-
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="GridGen">
-  <meta property="og:title" content="How GridGen Works — User Guide &amp; Wiki">
-  <meta property="og:description" content="A complete guide to GridGen: how to upload an image, configure a coordinate grid, customize its appearance, add chess or numeric labels, and export a print-ready PDF.">
-  <meta property="og:url" content="https://aborndev.github.io/GridGen/wiki/">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:locale:alternate" content="nl_NL">
-  <meta property="og:image" content="https://aborndev.github.io/GridGen/og-image.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="GridGen — a labeled coordinate grid laid over an image, exported as a PDF">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="How GridGen Works — User Guide &amp; Wiki">
-  <meta name="twitter:description" content="A complete guide to GridGen: how to upload an image, configure a coordinate grid, customize its appearance, add chess or numeric labels, and export a print-ready PDF.">
-  <meta name="twitter:image" content="https://aborndev.github.io/GridGen/og-image.png">
-  <meta name="twitter:image:alt" content="GridGen — a labeled coordinate grid laid over an image, exported as a PDF">
-
-  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="../wiki/wiki.css">
-  
-
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "HowTo",
-  "name": "How to add a coordinate grid to an image and export it as a PDF with GridGen",
-  "description": "A complete guide to GridGen: how to upload an image, configure a coordinate grid, customize its appearance, add chess or numeric labels, and export a print-ready PDF.",
-  "inLanguage": "en",
-  "step": [
-    {
-      "@type": "HowToStep",
-      "name": "Upload an image",
-      "text": "Drag and drop or click to select a PNG, JPG, or WEBP image."
-    },
-    {
-      "@type": "HowToStep",
-      "name": "Choose a grid mode",
-      "text": "Define the grid by number of cells or by cell size in pixels."
-    },
-    {
-      "@type": "HowToStep",
-      "name": "Customize appearance",
-      "text": "Set the line color, thickness, and opacity for readability."
-    },
-    {
-      "@type": "HowToStep",
-      "name": "Add coordinate labels",
-      "text": "Pick chess or numeric labels, inside or outside placement, and the origin corner."
-    },
-    {
-      "@type": "HowToStep",
-      "name": "Export the PDF",
-      "text": "Click Download PDF to save an A4 file at full image resolution."
-    }
-  ]
-}
-</script>
-</head>
-
-<body>
 <div class="wiki">
   <header class="topbar">
-    <a class="brand" href="../index.html">
-      <img src="../favicon.svg" alt="GridGen logo">
-      GridGen Wiki
+    <a class="brand" href="{{link.home}}">
+      <img src="{{base}}favicon.svg" alt="GridGen logo">
+      {{brandWiki}}
     </a>
     <nav class="topbar-actions" aria-label="Site">
-      <div class="lang-switch" aria-label="Language"><a hreflang="en" href="../wiki/index.html" aria-current="true" class="active">English</a><a hreflang="nl" href="../nl/wiki/index.html">Nederlands</a></div>
-      <a href="../index.html">Open the app →</a>
+      {{{langSwitcher}}}
+      <a href="{{link.home}}">{{openApp}}</a>
     </nav>
   </header>
 
@@ -91,9 +15,9 @@
       <nav class="nav-group" aria-label="Documentation pages">
         <p class="nav-title">Guide</p>
         <ul>
-          <li><a class="active" href="../wiki/index.html">How GridGen Works</a></li>
-          <li><a href="../wiki/map-grid.html">Grids on maps</a></li>
-          <li><a href="../wiki/technical.html">Technical Reference</a></li>
+          <li><a class="active" href="{{link.wikiHow}}">How GridGen Works</a></li>
+          <li><a href="{{link.mapGrid}}">Grids on maps</a></li>
+          <li><a href="{{link.wikiTech}}">Technical Reference</a></li>
         </ul>
       </nav>
       <nav class="nav-group" aria-label="On this page">
@@ -120,7 +44,7 @@
       <h2 id="overview">Overview</h2>
       <p>GridGen is a single-page web app. You give it an image, it draws a grid on top of a live preview, and you tune the grid until it reads well against your picture. When you are happy, it renders everything to a PDF and downloads it to your device.</p>
       <div class="note">
-        <strong>Your images never leave your device.</strong> GridGen reads the file locally in the browser and does all drawing on an HTML5 canvas. Nothing is uploaded to a server — see the <a class="inline" href="../wiki/technical.html#privacy">Technical Reference</a> for details.
+        <strong>Your images never leave your device.</strong> GridGen reads the file locally in the browser and does all drawing on an HTML5 canvas. Nothing is uploaded to a server — see the <a class="inline" href="{{link.wikiTech}}#privacy">Technical Reference</a> for details.
       </div>
 
       <h2 id="workflow">The workflow</h2>
@@ -194,7 +118,7 @@
       <ul>
         <li><strong>Artists</strong> — use the classic grid drawing method to transfer or scale up a reference image by hand.</li>
         <li><strong>Game masters</strong> — turn a map or illustration into a battle grid with coordinate references.</li>
-        <li><strong>Orienteering &amp; scouting</strong> — add a coordinate reference grid to a map image and print it. See <a class="inline" href="../wiki/map-grid.html">grids on maps</a>.</li>
+        <li><strong>Orienteering &amp; scouting</strong> — add a coordinate reference grid to a map image and print it. See <a class="inline" href="{{link.mapGrid}}">grids on maps</a>.</li>
         <li><strong>Archaeologists &amp; field researchers</strong> — overlay a reference grid on site photos for documentation.</li>
         <li><strong>Teachers &amp; students</strong> — create coordinate-plane worksheets and labeled diagrams.</li>
       </ul>
@@ -212,17 +136,13 @@
       <p>Any modern browser with HTML5 Canvas and File API support — Chrome, Firefox, Safari, and Edge.</p>
 
       <nav class="page-nav" aria-label="Page navigation">
-        <a class="prev" href="../index.html"><span>Back to</span>The app</a>
-        <a class="next" href="../wiki/technical.html"><span>Next</span>Technical Reference →</a>
+        <a class="prev" href="{{link.home}}"><span>Back to</span>The app</a>
+        <a class="next" href="{{link.wikiTech}}"><span>Next</span>Technical Reference →</a>
       </nav>
 
       <footer class="footer">
-        <p>GridGen is open source under the GPL v3. See the <a href="../index.html">app</a> or the <a href="../wiki/technical.html">technical reference</a>.</p>
+        <p>GridGen is open source under the GPL v3. See the <a href="{{link.home}}">app</a> or the <a href="{{link.wikiTech}}">technical reference</a>.</p>
       </footer>
     </main>
   </div>
 </div>
-
-
-</body>
-</html>
