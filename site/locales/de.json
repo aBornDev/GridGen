@@ -1,0 +1,65 @@
+{
+  "meta": { "lang": "de", "locale": "de_DE", "dir": "ltr", "name": "German", "nativeName": "Deutsch" },
+  "common": {
+    "ogImageAlt": "GridGen — ein beschriftetes Koordinatengitter über einem Bild, als PDF exportiert",
+    "openApp": "App öffnen →",
+    "navDocs": "Doku & Wiki",
+    "brandWiki": "GridGen-Wiki",
+    "langLabel": "Sprache"
+  },
+  "pages": {
+    "home": {
+      "title": "GridGen — Koordinatengitter über jedes Bild legen & als PDF exportieren",
+      "description": "Kostenloses Browser-Tool, um ein beschriftetes Koordinatengitter über ein Foto oder eine Karte zu legen und als druckfertiges PDF zu exportieren. Kein Konto nötig, läuft komplett im Browser.",
+      "keywords": "Gitter über Bild, Raster über Bild legen, Koordinatengitter, Gitter über Foto, Gitterzeichenmethode, Bild zu Gitter PDF, Gitter über Karte"
+    },
+    "wikiHow": {
+      "title": "Wie GridGen funktioniert — Anleitung & Wiki",
+      "description": "Eine vollständige Anleitung zu GridGen: ein Bild hochladen, ein Koordinatengitter einstellen, die Darstellung anpassen, Schach- oder Zahlenbeschriftungen hinzufügen und als druckfertiges PDF exportieren."
+    },
+    "wikiTech": {
+      "title": "GridGen Technische Referenz — Stack & Architektur",
+      "description": "Wie GridGen gebaut ist: eine Vanilla-JavaScript-App ohne Abhängigkeiten, die ein Koordinatengitter auf ein HTML5-Canvas zeichnet und mit jsPDF als PDF exportiert."
+    },
+    "mapGrid": {
+      "title": "Koordinatengitter über eine Karte legen & als PDF drucken — GridGen",
+      "description": "Lege ein Koordinaten-Referenzgitter über ein Kartenbild und exportiere ein druckfertiges PDF — praktisch für Orientierungslauf, Pfadfinder und als Feldreferenz. Ein visuelles Gitter über einer vorhandenen Karte, kein Kartengenerator mit Geodaten.",
+      "keywords": "Koordinatengitter über Karte, Raster über Karte legen, Gitter über Karte, Karte mit Gitter drucken PDF, Orientierungslauf Karte Gitter, Wanderkarte Gitter, Referenzgitter über Karte"
+    }
+  },
+  "schema": {
+    "home": {
+      "featureList": [
+        "Gitter nach Anzahl der Zellen oder nach Zellengröße in Pixeln",
+        "Anpassbare Linienfarbe, -stärke und Deckkraft",
+        "Schachnotation (A1) oder Zahlenbeschriftung (1,1)",
+        "Beschriftung innerhalb oder außerhalb der Zellen",
+        "Ursprung oben links oder unten links",
+        "PDF-Export in voller Bildauflösung"
+      ]
+    },
+    "wikiHow": {
+      "howtoName": "Wie man mit GridGen ein Koordinatengitter über ein Bild legt und als PDF exportiert",
+      "steps": [
+        { "name": "Bild hochladen", "text": "Ziehe ein PNG, JPG oder WEBP in die App oder klicke, um eines auszuwählen." },
+        { "name": "Gittermodus wählen", "text": "Lege das Gitter nach Anzahl der Zellen oder nach Zellengröße in Pixeln fest." },
+        { "name": "Darstellung anpassen", "text": "Stelle Linienfarbe, -stärke und Deckkraft für gute Lesbarkeit ein." },
+        { "name": "Koordinatenbeschriftung hinzufügen", "text": "Wähle Schach- oder Zahlenbeschriftung, Position innen oder außen und die Ursprungsecke." },
+        { "name": "PDF exportieren", "text": "Klicke auf PDF herunterladen, um eine A4-Datei in voller Auflösung zu speichern." }
+      ]
+    },
+    "wikiTech": {
+      "about": ["HTML5 Canvas", "JavaScript", "jsPDF", "GitHub Pages"]
+    },
+    "mapGrid": {
+      "howtoName": "Wie man ein Koordinatengitter über eine Karte legt und als PDF exportiert",
+      "steps": [
+        { "name": "Eine Karte besorgen", "text": "Verwende ein Kartenbild, das du bereits hast — einen Screenshot, einen Scan oder eine exportierte topografische Karte." },
+        { "name": "In GridGen hochladen", "text": "Ziehe die Karte in den Vorschaubereich oder klicke, um sie auszuwählen." },
+        { "name": "Gitter einstellen", "text": "Wähle die Anzahl der Felder oder eine feste Zellengröße passend zum gewünschten Referenzgitter." },
+        { "name": "Koordinatenbeschriftung hinzufügen", "text": "Aktiviere Schach- (A1) oder Zahlenbeschriftung (1,1), damit jedes Feld eine Referenz hat." },
+        { "name": "Als PDF exportieren", "text": "Lade ein druckfertiges PDF herunter, um es ins Gelände mitzunehmen." }
+      ]
+    }
+  }
+}
