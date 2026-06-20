@@ -34,13 +34,13 @@ The exported file is named after the original image (e.g., `site-photo-grid.pdf`
 
 ## Documentation
 
-A wiki-style guide is published alongside the app (English and Dutch):
+A wiki-style guide is published alongside the app (English, Dutch, and German):
 
 - **[How GridGen Works](https://aborndev.github.io/GridGen/wiki/)** — a full user guide covering uploading, grid modes, appearance, labels, and PDF export.
 - **[Grids on maps](https://aborndev.github.io/GridGen/wiki/map-grid.html)** — adding a coordinate reference grid to a map image and exporting a PDF.
 - **[Technical Reference](https://aborndev.github.io/GridGen/wiki/technical.html)** — the tech stack, rendering pipeline, label algorithm, and PDF export internals.
 
-Dutch versions live under [`/nl/`](https://aborndev.github.io/GridGen/nl/).
+Dutch versions live under [`/nl/`](https://aborndev.github.io/GridGen/nl/) and German under [`/de/`](https://aborndev.github.io/GridGen/de/).
 
 ## Build & internationalization
 
