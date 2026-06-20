@@ -28,6 +28,11 @@ const DEFAULT_LOCALE = 'en';
 
 // Page registry. `out` maps locale -> output path (relative to the site root),
 // so slugs can be localised (e.g. map-grid -> stafkaart).
+//
+// Note: each locale's body file (site/pages/<lang>/<id>.body.html) carries the
+// full page markup, not just translatable strings — so a structural change to a
+// page must be mirrored across every locale's body or they drift. Keep markup
+// changes in lockstep across languages.
 const PAGES = {
   home: {
     body: 'home',
@@ -145,7 +150,8 @@ function langSwitcher(pageId, locale, base) {
     const cur = loc === locale ? ' aria-current="true" class="active"' : '';
     return `<a hreflang="${loc}" href="${href}"${cur}>${esc(L.meta.nativeName)}</a>`;
   });
-  return `<div class="lang-switch" aria-label="Language">${items.join('')}</div>`;
+  const label = esc(locales[locale].common.langLabel || 'Language');
+  return `<div class="lang-switch" aria-label="${label}">${items.join('')}</div>`;
 }
 
 function hreflangBlock(pageId) {
@@ -192,7 +198,6 @@ for (const pageId of PAGE_IDS) {
       brandWiki: L.common.brandWiki,
       langSwitcher: langSwitcher(pageId, locale, base),
     };
-    ctx.canonical = canonical;
     ctx.jsonLd = jsonLd(pageId, L, ctx);
     // Per-locale link map so internal links always stay within the language.
     for (const id of PAGE_IDS) ctx['link.' + id] = base + PAGES[id].out[locale];

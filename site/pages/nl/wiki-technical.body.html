@@ -4,7 +4,7 @@
       <img src="{{base}}favicon.svg" alt="GridGen logo">
       {{brandWiki}}
     </a>
-    <nav class="topbar-actions" aria-label="Site">
+    <nav class="topbar-actions" aria-label="Sitenavigatie">
       {{{langSwitcher}}}
       <a href="{{link.home}}">{{openApp}}</a>
     </nav>
@@ -12,7 +12,7 @@
 
   <div class="layout">
     <aside class="sidebar">
-      <nav class="nav-group" aria-label="Documentation pages">
+      <nav class="nav-group" aria-label="Documentatiepagina's">
         <p class="nav-title">Handleiding</p>
         <ul>
           <li><a href="{{link.wikiHow}}">Hoe GridGen werkt</a></li>
@@ -20,7 +20,7 @@
           <li><a class="active" href="{{link.wikiTech}}">Technische referentie</a></li>
         </ul>
       </nav>
-      <nav class="nav-group" aria-label="On this page">
+      <nav class="nav-group" aria-label="Op deze pagina">
         <p class="nav-title">Op deze pagina</p>
         <ul>
           <li><a href="#stack">Technische stack</a></li>
@@ -77,7 +77,7 @@
 
       <h2 id="i18n">Bouwen &amp; talen</h2>
       <p>Elke taal wordt gegenereerd uit één set sjablonen plus een per-locale JSON-bestand. Engels wordt gegenereerd in de siteroot; elke andere taal staat onder <code>/&lt;lang&gt;/</code>. De generator schrijft ook de <code>hreflang</code>-alternatieven, de per-taal <code>&lt;title&gt;</code>/meta en JSON-LD, een taalwisselaar en een meertalige <code>sitemap.xml</code>.</p>
-      <p>Een taal toevoegen is een vier-stappen wijziging zonder code:</p>
+      <p>Een taal toevoegen is een wijziging in vier stappen — content plus één regel configuratie:</p>
       <ol class="steps">
         <li>Voeg <code>site/locales/&lt;lang&gt;.json</code> toe (titels, beschrijvingen, navigatielabels, schema-strings).</li>
         <li>Voeg vertaalde pagina-inhoud toe onder <code>site/pages/&lt;lang&gt;/</code>.</li>
@@ -190,7 +190,7 @@ reader.readAsDataURL(file);</code></pre>
         <li><strong>Voorinstellingen</strong> — het platte <code>state</code>-object serialiseert netjes naar JSON voor opslaan/laden of URL-deling.</li>
       </ul>
 
-      <nav class="page-nav" aria-label="Page navigation">
+      <nav class="page-nav" aria-label="Paginanavigatie">
         <a class="prev" href="{{link.wikiHow}}"><span>Vorige</span>Hoe GridGen werkt</a>
         <a class="next" href="{{link.home}}"><span>Terug naar</span>De app →</a>
       </nav>

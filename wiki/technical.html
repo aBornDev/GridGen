@@ -133,7 +133,7 @@
 
       <h2 id="i18n">Build &amp; languages</h2>
       <p>Each language is rendered from one set of templates plus a per-locale JSON file. English is emitted at the site root; every other language lives under <code>/&lt;lang&gt;/</code>. The generator also writes the <code>hreflang</code> alternates, the per-language <code>&lt;title&gt;</code>/meta and JSON-LD, a language switcher, and a multilingual <code>sitemap.xml</code>.</p>
-      <p>Adding a language is a four-step, no-code change:</p>
+      <p>Adding a language is a four-step change — content plus a single line of configuration:</p>
       <ol class="steps">
         <li>Add <code>site/locales/&lt;lang&gt;.json</code> (titles, descriptions, nav labels, schema strings).</li>
         <li>Add translated bodies under <code>site/pages/&lt;lang&gt;/</code>.</li>

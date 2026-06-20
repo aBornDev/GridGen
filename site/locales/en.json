@@ -4,7 +4,8 @@
     "ogImageAlt": "GridGen — a labeled coordinate grid laid over an image, exported as a PDF",
     "openApp": "Open the app →",
     "navDocs": "Docs & Wiki",
-    "brandWiki": "GridGen Wiki"
+    "brandWiki": "GridGen Wiki",
+    "langLabel": "Language"
   },
   "pages": {
     "home": {

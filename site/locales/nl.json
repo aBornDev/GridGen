@@ -4,7 +4,8 @@
     "ogImageAlt": "GridGen — een coördinatenraster over een afbeelding, geëxporteerd als PDF",
     "openApp": "Open de app →",
     "navDocs": "Docs & wiki",
-    "brandWiki": "GridGen-wiki"
+    "brandWiki": "GridGen-wiki",
+    "langLabel": "Taal"
   },
   "pages": {
     "home": {
@@ -30,7 +31,7 @@
     "home": {
       "featureList": [
         "Raster op aantal vakjes of op celgrootte in pixels",
-        "Aanpasbare lijnkleur, dikte en transparantie",
+        "Aanpasbare lijnkleur, dikte en dekking",
         "Schaaknotatie (A1) of cijferlabels (1,1)",
         "Labels binnen of buiten de vakjes",
         "Oorsprong linksboven of linksonder",
@@ -42,7 +43,7 @@
       "steps": [
         { "name": "Upload een afbeelding", "text": "Sleep een PNG, JPG of WEBP naar de app of klik om er een te kiezen." },
         { "name": "Kies een rastermodus", "text": "Bepaal het raster op aantal vakjes of op celgrootte in pixels." },
-        { "name": "Pas het uiterlijk aan", "text": "Stel lijnkleur, dikte en transparantie in voor goede leesbaarheid." },
+        { "name": "Pas het uiterlijk aan", "text": "Stel lijnkleur, dikte en dekking in voor goede leesbaarheid." },
         { "name": "Voeg coördinaatlabels toe", "text": "Kies schaak- of cijferlabels, plaatsing binnen of buiten, en de oorsprongshoek." },
         { "name": "Exporteer de PDF", "text": "Klik op PDF downloaden om een A4-bestand op volledige resolutie op te slaan." }
       ]
