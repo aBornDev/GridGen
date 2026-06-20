@@ -54,7 +54,7 @@ Edit the templates in `site/`, never the generated output (`index.html`, `wiki/`
 
 1. Add `site/locales/<lang>.json` (titles, descriptions, nav labels, schema strings).
 2. Add translated bodies under `site/pages/<lang>/`.
-3. Register the language code in `LOCALES` in `build.js`.
+3. Register the language code in `LOCALES` in `build.js` (and, optionally, add an SVG flag for it to the `FLAGS` map there — it falls back to the language code).
 4. Run `node build.js`.
 
 > **Changing the domain?** Absolute URLs (canonical, Open Graph, `hreflang`, sitemap) are built from `SITE_URL` in `build.js`. Update that one constant and re-run the build; also update the `Sitemap:` line in `robots.txt`.
