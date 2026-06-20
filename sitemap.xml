@@ -4,6 +4,7 @@
     <loc>https://aborndev.github.io/GridGen/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://aborndev.github.io/GridGen/"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://aborndev.github.io/GridGen/nl/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aborndev.github.io/GridGen/de/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://aborndev.github.io/GridGen/"/>
     <changefreq>monthly</changefreq>
   </url>
@@ -11,6 +12,15 @@
     <loc>https://aborndev.github.io/GridGen/nl/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://aborndev.github.io/GridGen/"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://aborndev.github.io/GridGen/nl/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aborndev.github.io/GridGen/de/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aborndev.github.io/GridGen/"/>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://aborndev.github.io/GridGen/de/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aborndev.github.io/GridGen/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aborndev.github.io/GridGen/nl/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aborndev.github.io/GridGen/de/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://aborndev.github.io/GridGen/"/>
     <changefreq>monthly</changefreq>
   </url>
@@ -18,6 +28,7 @@
     <loc>https://aborndev.github.io/GridGen/wiki/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://aborndev.github.io/GridGen/wiki/"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://aborndev.github.io/GridGen/nl/wiki/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aborndev.github.io/GridGen/de/wiki/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://aborndev.github.io/GridGen/wiki/"/>
     <changefreq>monthly</changefreq>
   </url>
@@ -25,6 +36,15 @@
     <loc>https://aborndev.github.io/GridGen/nl/wiki/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://aborndev.github.io/GridGen/wiki/"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://aborndev.github.io/GridGen/nl/wiki/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aborndev.github.io/GridGen/de/wiki/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aborndev.github.io/GridGen/wiki/"/>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://aborndev.github.io/GridGen/de/wiki/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aborndev.github.io/GridGen/wiki/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aborndev.github.io/GridGen/nl/wiki/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aborndev.github.io/GridGen/de/wiki/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://aborndev.github.io/GridGen/wiki/"/>
     <changefreq>monthly</changefreq>
   </url>
@@ -32,6 +52,7 @@
     <loc>https://aborndev.github.io/GridGen/wiki/technical.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://aborndev.github.io/GridGen/wiki/technical.html"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://aborndev.github.io/GridGen/nl/wiki/technical.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aborndev.github.io/GridGen/de/wiki/technical.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://aborndev.github.io/GridGen/wiki/technical.html"/>
     <changefreq>monthly</changefreq>
   </url>
@@ -39,6 +60,15 @@
     <loc>https://aborndev.github.io/GridGen/nl/wiki/technical.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://aborndev.github.io/GridGen/wiki/technical.html"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://aborndev.github.io/GridGen/nl/wiki/technical.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aborndev.github.io/GridGen/de/wiki/technical.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aborndev.github.io/GridGen/wiki/technical.html"/>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://aborndev.github.io/GridGen/de/wiki/technical.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aborndev.github.io/GridGen/wiki/technical.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aborndev.github.io/GridGen/nl/wiki/technical.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aborndev.github.io/GridGen/de/wiki/technical.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://aborndev.github.io/GridGen/wiki/technical.html"/>
     <changefreq>monthly</changefreq>
   </url>
@@ -46,6 +76,7 @@
     <loc>https://aborndev.github.io/GridGen/wiki/map-grid.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://aborndev.github.io/GridGen/wiki/map-grid.html"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://aborndev.github.io/GridGen/nl/wiki/stafkaart.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aborndev.github.io/GridGen/de/wiki/karten-gitter.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://aborndev.github.io/GridGen/wiki/map-grid.html"/>
     <changefreq>monthly</changefreq>
   </url>
@@ -53,6 +84,15 @@
     <loc>https://aborndev.github.io/GridGen/nl/wiki/stafkaart.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://aborndev.github.io/GridGen/wiki/map-grid.html"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://aborndev.github.io/GridGen/nl/wiki/stafkaart.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aborndev.github.io/GridGen/de/wiki/karten-gitter.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aborndev.github.io/GridGen/wiki/map-grid.html"/>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://aborndev.github.io/GridGen/de/wiki/karten-gitter.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aborndev.github.io/GridGen/wiki/map-grid.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aborndev.github.io/GridGen/nl/wiki/stafkaart.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aborndev.github.io/GridGen/de/wiki/karten-gitter.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://aborndev.github.io/GridGen/wiki/map-grid.html"/>
     <changefreq>monthly</changefreq>
   </url>

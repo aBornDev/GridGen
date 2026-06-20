@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Koordinatengitter über eine Karte legen &amp; als PDF drucken — GridGen</title>
+  <meta name="description" content="Lege ein Koordinaten-Referenzgitter über ein Kartenbild und exportiere ein druckfertiges PDF — praktisch für Orientierungslauf, Pfadfinder und als Feldreferenz. Ein visuelles Gitter über einer vorhandenen Karte, kein Kartengenerator mit Geodaten.">
+  <meta name="keywords" content="Koordinatengitter über Karte, Raster über Karte legen, Gitter über Karte, Karte mit Gitter drucken PDF, Orientierungslauf Karte Gitter, Wanderkarte Gitter, Referenzgitter über Karte">
+  <link rel="canonical" href="https://aborndev.github.io/GridGen/de/wiki/karten-gitter.html">
+  <meta name="theme-color" content="#171717">
+  <meta name="robots" content="index, follow">
+  <link rel="alternate" hreflang="en" href="https://aborndev.github.io/GridGen/wiki/map-grid.html">
+  <link rel="alternate" hreflang="nl" href="https://aborndev.github.io/GridGen/nl/wiki/stafkaart.html">
+  <link rel="alternate" hreflang="de" href="https://aborndev.github.io/GridGen/de/wiki/karten-gitter.html">
+  <link rel="alternate" hreflang="x-default" href="https://aborndev.github.io/GridGen/wiki/map-grid.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="GridGen">
+  <meta property="og:title" content="Koordinatengitter über eine Karte legen &amp; als PDF drucken — GridGen">
+  <meta property="og:description" content="Lege ein Koordinaten-Referenzgitter über ein Kartenbild und exportiere ein druckfertiges PDF — praktisch für Orientierungslauf, Pfadfinder und als Feldreferenz. Ein visuelles Gitter über einer vorhandenen Karte, kein Kartengenerator mit Geodaten.">
+  <meta property="og:url" content="https://aborndev.github.io/GridGen/de/wiki/karten-gitter.html">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:locale:alternate" content="nl_NL">
+  <meta property="og:image" content="https://aborndev.github.io/GridGen/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="GridGen — ein beschriftetes Koordinatengitter über einem Bild, als PDF exportiert">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Koordinatengitter über eine Karte legen &amp; als PDF drucken — GridGen">
+  <meta name="twitter:description" content="Lege ein Koordinaten-Referenzgitter über ein Kartenbild und exportiere ein druckfertiges PDF — praktisch für Orientierungslauf, Pfadfinder und als Feldreferenz. Ein visuelles Gitter über einer vorhandenen Karte, kein Kartengenerator mit Geodaten.">
+  <meta name="twitter:image" content="https://aborndev.github.io/GridGen/og-image.png">
+  <meta name="twitter:image:alt" content="GridGen — ein beschriftetes Koordinatengitter über einem Bild, als PDF exportiert">
+
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../wiki/wiki.css">
+  
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Wie man ein Koordinatengitter über eine Karte legt und als PDF exportiert",
+  "description": "Lege ein Koordinaten-Referenzgitter über ein Kartenbild und exportiere ein druckfertiges PDF — praktisch für Orientierungslauf, Pfadfinder und als Feldreferenz. Ein visuelles Gitter über einer vorhandenen Karte, kein Kartengenerator mit Geodaten.",
+  "inLanguage": "de",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Eine Karte besorgen",
+      "text": "Verwende ein Kartenbild, das du bereits hast — einen Screenshot, einen Scan oder eine exportierte topografische Karte."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "In GridGen hochladen",
+      "text": "Ziehe die Karte in den Vorschaubereich oder klicke, um sie auszuwählen."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Gitter einstellen",
+      "text": "Wähle die Anzahl der Felder oder eine feste Zellengröße passend zum gewünschten Referenzgitter."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Koordinatenbeschriftung hinzufügen",
+      "text": "Aktiviere Schach- (A1) oder Zahlenbeschriftung (1,1), damit jedes Feld eine Referenz hat."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Als PDF exportieren",
+      "text": "Lade ein druckfertiges PDF herunter, um es ins Gelände mitzunehmen."
+    }
+  ]
+}
+</script>
+</head>
+
+<body>
+<div class="wiki">
+  <header class="topbar">
+    <a class="brand" href="../../de/index.html">
+      <img src="../../favicon.svg" alt="GridGen logo">
+      GridGen-Wiki
+    </a>
+    <nav class="topbar-actions" aria-label="Website">
+      <div class="lang-switch" aria-label="Sprache"><a hreflang="en" href="../../wiki/map-grid.html">English</a><a hreflang="nl" href="../../nl/wiki/stafkaart.html">Nederlands</a><a hreflang="de" href="../../de/wiki/karten-gitter.html" aria-current="true" class="active">Deutsch</a></div>
+      <a href="../../de/index.html">App öffnen →</a>
+    </nav>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <nav class="nav-group" aria-label="Dokumentationsseiten">
+        <p class="nav-title">Anleitung</p>
+        <ul>
+          <li><a href="../../de/wiki/index.html">Wie GridGen funktioniert</a></li>
+          <li><a class="active" href="../../de/wiki/karten-gitter.html">Gitter über Karten</a></li>
+          <li><a href="../../de/wiki/technical.html">Technische Referenz</a></li>
+        </ul>
+      </nav>
+      <nav class="nav-group" aria-label="Auf dieser Seite">
+        <p class="nav-title">Auf dieser Seite</p>
+        <ul>
+          <li><a href="#overview">Überblick</a></li>
+          <li><a href="#how">Schritt für Schritt ein Gitter hinzufügen</a></li>
+          <li><a href="#coordinates">Koordinatenreferenzen</a></li>
+          <li><a href="#limits">Was dieses Tool kann (und was nicht)</a></li>
+          <li><a href="#use-cases">Anwendungsfälle</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <p class="eyebrow">Anleitung</p>
+      <h1>Koordinatengitter über eine Karte legen und als PDF exportieren</h1>
+      <p class="lead">GridGen legt ein Koordinatengitter über ein Kartenbild und exportiert ein druckfertiges PDF – praktisch für Orientierungslauf, Pfadfinder und Geländereferenz. Das Tool legt ein Gitter über eine Karte, die du bereits hast; es erstellt die Karte selbst nicht.</p>
+
+      <h2 id="overview">Überblick</h2>
+      <p>Ein Gitter mit Zeilen- und Spaltenreferenzen macht eine Karte leicht besprechbar: „Treffpunkt C4", „der Marker ist in Feld B7." GridGen nimmt ein beliebiges Karten<em>bild</em> – einen Screenshot, einen Scan oder eine exportierte topografische Karte – zeichnet ein gleichmäßiges Gitter darüber mit Schach- (A1) oder numerischen (1,1) Beschriftungen und exportiert ein A4-PDF zum Ausdrucken und Mitnehmen.</p>
+      <div class="note">
+        <strong>Bringe deine eigene Basiskarte mit.</strong> GridGen arbeitet mit einem Bild, das du bereitstellst. Mach einen Screenshot einer Online-Karte, scanne eine Papierkarte, oder exportiere eine aus einem Kartendienst – und ziehe sie dann in GridGen.
+      </div>
+
+      <h2 id="how">Schritt für Schritt ein Gitter hinzufügen</h2>
+      <ol class="steps">
+        <li><strong>Besorge dir eine Basiskarte.</strong> Verwende ein Kartenbild, das du bereits hast – einen Screenshot, einen Scan oder eine exportierte topografische Karte bzw. Wanderkarte.</li>
+        <li><strong>Lade es in GridGen hoch.</strong> Ziehe die Karte in den Vorschaubereich oder klicke, um sie auszuwählen.</li>
+        <li><strong>Richte das Gitter ein.</strong> Wähle die Anzahl der Felder oder eine feste Zellengröße in Pixeln, die dem benötigten Referenzgitter entspricht.</li>
+        <li><strong>Füge Koordinatenbeschriftungen hinzu.</strong> Schalte Schach- (A1) oder numerische (1,1) Beschriftungen ein, damit jedes Feld eine Referenz hat, und platziere sie außerhalb der Karte für saubere Ränder.</li>
+        <li><strong>Als PDF exportieren.</strong> Lade ein druckfertiges PDF herunter, das du ins Gelände mitnehmen kannst.</li>
+      </ol>
+      <p>Die vollständige Steuerungsreferenz findest du im <a class="inline" href="../../de/wiki/index.html">Benutzerhandbuch</a>.</p>
+
+      <h2 id="coordinates">Koordinatenreferenzen</h2>
+      <p>Zwei Beschriftungsstile decken die meisten Geländeanforderungen ab:</p>
+      <ul>
+        <li><strong>Schach (A1)</strong> – Buchstaben waagerecht, Zahlen senkrecht. Schnell vorzulesen und aus Brettspielen und Kampfkarten vertraut.</li>
+        <li><strong>Numerisch (1,1)</strong> – Zahlen auf beiden Achsen, geschrieben als <code>Spalte,Zeile</code>. Fühlt sich eher wie ein Koordinatenpaar an.</li>
+      </ul>
+      <p>Setze den <strong>Ursprung</strong> auf unten links für ein kartesisches Gefühl, oder auf oben links, um Bildschirm- und Druckkonventionen zu entsprechen. Platziere Beschriftungen <strong>außen</strong>, damit sie in sauberen Rändern um die Karte liegen statt über dem Gelände.</p>
+
+      <h2 id="limits">Was dieses Tool kann (und was nicht)</h2>
+      <p>GridGen zeichnet ein <strong>visuelles Referenzgitter</strong>. Es ist bewusst einfach gehalten und ehrlich über seinen Umfang:</p>
+      <ul>
+        <li>✅ Es legt ein gleichmäßiges Gitter mit lesbaren Koordinatenbeschriftungen über ein beliebiges Kartenbild und exportiert ein sauberes PDF.</li>
+        <li>✅ Das Gitter ist hervorragend als <em>relatives</em> Referenzsystem für eine Gruppe geeignet – Felder, die alle benennen und zeigen können.</li>
+        <li>❌ Es berechnet <strong>keine</strong> realen Koordinaten. Die Felder sind keine UTM-, MGRS- oder Lambert-Gitterzellen und sind nicht georeferenziert auf die Projektion der Karte.</li>
+        <li>❌ Es erzeugt oder lädt <strong>keine</strong> Kartendaten herunter – du stellst das Kartenbild selbst bereit.</li>
+      </ul>
+      <p>Wenn du ein echtes Koordinatengitter benötigst, das an UTM/MGRS oder Gauß-Krüger gebunden ist, verwende eine topografische Karte, die diese Gitterlinien bereits aufdruckt, und nutze GridGen nur dann, wenn ein einfaches, druckbares Referenzgitter ausreicht.</p>
+
+      <h2 id="use-cases">Anwendungsfälle</h2>
+      <ul>
+        <li><strong>Orientierungslauf &amp; Pfadfinder</strong> – füge einer Routen- oder Gebietskarte ein gemeinsames Referenzgitter hinzu und drucke Kopien für eine Gruppe.</li>
+        <li><strong>Tabletop &amp; D&amp;D</strong> – verwandle eine Kartenillustration in ein Kampfgitter mit benannten Feldern.</li>
+        <li><strong>Wandern &amp; Planung</strong> – markiere und bespreche Standorte auf einer gedruckten Karte nach Feld.</li>
+        <li><strong>Kartenlesen unterrichten</strong> – zeige anhand einer echten Karte, wie ein Koordinatengitter und Referenzen funktionieren.</li>
+      </ul>
+
+      <h2 id="faq">FAQ</h2>
+      <h3>Erzeugt GridGen eine topografische Karte oder lädt es Kartendaten herunter?</h3>
+      <p>Nein. GridGen legt ein Gitter über ein Kartenbild, das du bereitstellst. Um eine Basiskarte zu erhalten, mach einen Screenshot einer Online-Karte, scanne eine Papierkarte oder exportiere eine aus einem Kartendienst, und lade sie dann hier hoch.</p>
+      <h3>Sind die Felder echte UTM- oder MGRS-Koordinaten?</h3>
+      <p>Nein. Das Gitter ist eine visuelle Referenz – gleichmäßig verteilte Felder mit A1- bzw. numerischen Beschriftungen. Sie sind nicht auf die Projektion der Karte georeferenziert, also behandle sie als relatives Referenzsystem und nicht als vermessungsgenaue Koordinaten.</p>
+      <h3>Kann ich das Gitter an ein vorhandenes Kartengitter anpassen?</h3>
+      <p>Teilweise – verwende den Modus <strong>Nach Größe</strong> und passe die Zellengröße so an, dass die Überlagerungslinien grob mit dem aufgedruckten Gitter deines Kartenbildes übereinstimmen. Es handelt sich um eine visuelle Ausrichtung, keine berechnete.</p>
+      <h3>Ist es kostenlos und datenschutzfreundlich?</h3>
+      <p>Ja. GridGen ist kostenlos und quelloffen, und deine Karte verlässt dein Gerät nicht – die gesamte Verarbeitung findet in deinem Browser statt.</p>
+
+      <nav class="page-nav" aria-label="Seitennavigation">
+        <a class="prev" href="../../de/wiki/index.html"><span>Zurück</span>Wie GridGen funktioniert</a>
+        <a class="next" href="../../de/index.html"><span>Ausprobieren</span>App öffnen →</a>
+      </nav>
+
+      <footer class="footer">
+        <p>GridGen ist quelloffen unter der GPL v3. Ein visuelles Gitter-Overlay-Tool – kein georeferenzierter Kartengenerator.</p>
+      </footer>
+    </main>
+  </div>
+</div>
+
+
+</body>
+</html>

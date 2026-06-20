@@ -23,7 +23,7 @@ const SITE_URL = 'https://aborndev.github.io/GridGen/';
 
 // Locales in priority order. The first is the default and is emitted at the
 // site root (no /<lang>/ prefix). Add new languages here.
-const LOCALES = ['en', 'nl'];
+const LOCALES = ['en', 'nl', 'de'];
 const DEFAULT_LOCALE = 'en';
 
 // Page registry. `out` maps locale -> output path (relative to the site root),
@@ -41,28 +41,29 @@ const PAGES = {
     headExtra: '<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>',
     scripts: '<script src="{{base}}gridgen.js"></script>',
     schema: 'WebApplication',
-    out: { en: 'index.html', nl: 'nl/index.html' },
+    out: { en: 'index.html' },
   },
   wikiHow: {
     body: 'wiki-how',
     css: 'wiki/wiki.css',
     ogType: 'article',
     schema: 'HowTo',
-    out: { en: 'wiki/index.html', nl: 'nl/wiki/index.html' },
+    out: { en: 'wiki/index.html' },
   },
   wikiTech: {
     body: 'wiki-technical',
     css: 'wiki/wiki.css',
     ogType: 'article',
     schema: 'TechArticle',
-    out: { en: 'wiki/technical.html', nl: 'nl/wiki/technical.html' },
+    out: { en: 'wiki/technical.html' },
   },
   mapGrid: {
     body: 'map-grid',
     css: 'wiki/wiki.css',
     ogType: 'article',
     schema: 'HowTo',
-    out: { en: 'wiki/map-grid.html', nl: 'nl/wiki/stafkaart.html' },
+    // Localized slugs for the map page; other locales auto-derive (see outFor).
+    out: { en: 'wiki/map-grid.html', nl: 'nl/wiki/stafkaart.html', de: 'de/wiki/karten-gitter.html' },
   },
 };
 const PAGE_IDS = Object.keys(PAGES);
@@ -96,6 +97,15 @@ function render(tpl, ctx) {
   tpl = tpl.replace(/\{\{\{\s*([\w.]+)\s*\}\}\}/g, (_, k) => (ctx[k] != null ? ctx[k] : ''));
   tpl = tpl.replace(/\{\{\s*([\w.]+)\s*\}\}/g, (_, k) => esc(ctx[k] != null ? ctx[k] : ''));
   return tpl;
+}
+
+// Output path for a page in a locale. The default locale uses the base (en)
+// path; other locales are auto-prefixed with /<locale>/ unless an explicit
+// slug override is provided in the page's `out` map (e.g. stafkaart.html).
+function outFor(pageId, locale) {
+  const out = PAGES[pageId].out;
+  if (out[locale]) return out[locale];
+  return locale === DEFAULT_LOCALE ? out[DEFAULT_LOCALE] : `${locale}/${out[DEFAULT_LOCALE]}`;
 }
 
 // Absolute URL for an output path, collapsing trailing index.html to a dir URL.
@@ -146,7 +156,7 @@ function jsonLd(pageId, L, ctx) {
 function langSwitcher(pageId, locale, base) {
   const items = LOCALES.map((loc) => {
     const L = locales[loc];
-    const href = base + PAGES[pageId].out[loc];
+    const href = base + outFor(pageId, loc);
     const cur = loc === locale ? ' aria-current="true" class="active"' : '';
     return `<a hreflang="${loc}" href="${href}"${cur}>${esc(L.meta.nativeName)}</a>`;
   });
@@ -156,9 +166,9 @@ function langSwitcher(pageId, locale, base) {
 
 function hreflangBlock(pageId) {
   const links = LOCALES.map(
-    (loc) => `  <link rel="alternate" hreflang="${loc}" href="${urlFor(PAGES[pageId].out[loc])}">`
+    (loc) => `  <link rel="alternate" hreflang="${loc}" href="${urlFor(outFor(pageId, loc))}">`
   );
-  links.push(`  <link rel="alternate" hreflang="x-default" href="${urlFor(PAGES[pageId].out[DEFAULT_LOCALE])}">`);
+  links.push(`  <link rel="alternate" hreflang="x-default" href="${urlFor(outFor(pageId, DEFAULT_LOCALE))}">`);
   return links.join('\n');
 }
 
@@ -168,7 +178,7 @@ for (const pageId of PAGE_IDS) {
   const P = PAGES[pageId];
   for (const locale of LOCALES) {
     const L = locales[locale];
-    const outPath = P.out[locale];
+    const outPath = outFor(pageId, locale);
     const base = baseFor(outPath);
     const canonical = urlFor(outPath);
 
@@ -200,7 +210,7 @@ for (const pageId of PAGE_IDS) {
     };
     ctx.jsonLd = jsonLd(pageId, L, ctx);
     // Per-locale link map so internal links always stay within the language.
-    for (const id of PAGE_IDS) ctx['link.' + id] = base + PAGES[id].out[locale];
+    for (const id of PAGE_IDS) ctx['link.' + id] = base + outFor(id, locale);
 
     const bodyTpl = read(path.join(SRC, 'pages', locale, `${P.body}.body.html`));
     ctx.body = render(bodyTpl, ctx);
@@ -218,11 +228,11 @@ for (const pageId of PAGE_IDS) {
 const urls = [];
 for (const pageId of PAGE_IDS) {
   for (const locale of LOCALES) {
-    const loc = urlFor(PAGES[pageId].out[locale]);
+    const loc = urlFor(outFor(pageId, locale));
     const alts = LOCALES.map(
-      (l) => `    <xhtml:link rel="alternate" hreflang="${l}" href="${urlFor(PAGES[pageId].out[l])}"/>`
+      (l) => `    <xhtml:link rel="alternate" hreflang="${l}" href="${urlFor(outFor(pageId, l))}"/>`
     ).join('\n');
-    const xdef = `    <xhtml:link rel="alternate" hreflang="x-default" href="${urlFor(PAGES[pageId].out[DEFAULT_LOCALE])}"/>`;
+    const xdef = `    <xhtml:link rel="alternate" hreflang="x-default" href="${urlFor(outFor(pageId, DEFAULT_LOCALE))}"/>`;
     urls.push(
       `  <url>\n    <loc>${loc}</loc>\n${alts}\n${xdef}\n    <changefreq>monthly</changefreq>\n  </url>`
     );

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>GridGen Technische Referenz — Stack &amp; Architektur</title>
+  <meta name="description" content="Wie GridGen gebaut ist: eine Vanilla-JavaScript-App ohne Abhängigkeiten, die ein Koordinatengitter auf ein HTML5-Canvas zeichnet und mit jsPDF als PDF exportiert.">
+  
+  <link rel="canonical" href="https://aborndev.github.io/GridGen/de/wiki/technical.html">
+  <meta name="theme-color" content="#171717">
+  <meta name="robots" content="index, follow">
+  <link rel="alternate" hreflang="en" href="https://aborndev.github.io/GridGen/wiki/technical.html">
+  <link rel="alternate" hreflang="nl" href="https://aborndev.github.io/GridGen/nl/wiki/technical.html">
+  <link rel="alternate" hreflang="de" href="https://aborndev.github.io/GridGen/de/wiki/technical.html">
+  <link rel="alternate" hreflang="x-default" href="https://aborndev.github.io/GridGen/wiki/technical.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="GridGen">
+  <meta property="og:title" content="GridGen Technische Referenz — Stack &amp; Architektur">
+  <meta property="og:description" content="Wie GridGen gebaut ist: eine Vanilla-JavaScript-App ohne Abhängigkeiten, die ein Koordinatengitter auf ein HTML5-Canvas zeichnet und mit jsPDF als PDF exportiert.">
+  <meta property="og:url" content="https://aborndev.github.io/GridGen/de/wiki/technical.html">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:locale:alternate" content="nl_NL">
+  <meta property="og:image" content="https://aborndev.github.io/GridGen/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="GridGen — ein beschriftetes Koordinatengitter über einem Bild, als PDF exportiert">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="GridGen Technische Referenz — Stack &amp; Architektur">
+  <meta name="twitter:description" content="Wie GridGen gebaut ist: eine Vanilla-JavaScript-App ohne Abhängigkeiten, die ein Koordinatengitter auf ein HTML5-Canvas zeichnet und mit jsPDF als PDF exportiert.">
+  <meta name="twitter:image" content="https://aborndev.github.io/GridGen/og-image.png">
+  <meta name="twitter:image:alt" content="GridGen — ein beschriftetes Koordinatengitter über einem Bild, als PDF exportiert">
+
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../wiki/wiki.css">
+  
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "GridGen Technische Referenz — Stack & Architektur",
+  "description": "Wie GridGen gebaut ist: eine Vanilla-JavaScript-App ohne Abhängigkeiten, die ein Koordinatengitter auf ein HTML5-Canvas zeichnet und mit jsPDF als PDF exportiert.",
+  "url": "https://aborndev.github.io/GridGen/de/wiki/technical.html",
+  "inLanguage": "de",
+  "about": [
+    "HTML5 Canvas",
+    "JavaScript",
+    "jsPDF",
+    "GitHub Pages"
+  ]
+}
+</script>
+</head>
+
+<body>
+<div class="wiki">
+  <header class="topbar">
+    <a class="brand" href="../../de/index.html">
+      <img src="../../favicon.svg" alt="GridGen logo">
+      GridGen-Wiki
+    </a>
+    <nav class="topbar-actions" aria-label="Website">
+      <div class="lang-switch" aria-label="Sprache"><a hreflang="en" href="../../wiki/technical.html">English</a><a hreflang="nl" href="../../nl/wiki/technical.html">Nederlands</a><a hreflang="de" href="../../de/wiki/technical.html" aria-current="true" class="active">Deutsch</a></div>
+      <a href="../../de/index.html">App öffnen →</a>
+    </nav>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <nav class="nav-group" aria-label="Dokumentationsseiten">
+        <p class="nav-title">Anleitung</p>
+        <ul>
+          <li><a href="../../de/wiki/index.html">Wie GridGen funktioniert</a></li>
+          <li><a href="../../de/wiki/karten-gitter.html">Gitter über Karten</a></li>
+          <li><a class="active" href="../../de/wiki/technical.html">Technische Referenz</a></li>
+        </ul>
+      </nav>
+      <nav class="nav-group" aria-label="Auf dieser Seite">
+        <p class="nav-title">Auf dieser Seite</p>
+        <ul>
+          <li><a href="#stack">Tech-Stack</a></li>
+          <li><a href="#structure">Projektstruktur</a></li>
+          <li><a href="#i18n">Build &amp; Sprachen</a></li>
+          <li><a href="#state">Zustandsmodell</a></li>
+          <li><a href="#pipeline">Rendering-Pipeline</a></li>
+          <li><a href="#geometry">Gittergeometrie</a></li>
+          <li><a href="#labels">Beschriftungsalgorithmus</a></li>
+          <li><a href="#contrast">Kontrast &amp; Lesbarkeit</a></li>
+          <li><a href="#pdf">PDF-Export</a></li>
+          <li><a href="#privacy">Datenschutzmodell</a></li>
+          <li><a href="#extend">GridGen erweitern</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <p class="eyebrow">Technische Referenz</p>
+      <h1>Wie GridGen aufgebaut ist</h1>
+      <p class="lead">GridGen ist eine abhängigkeitsfreie, rein clientseitige Web-App. Es gibt kein Framework und kein Backend – die App besteht nur aus <code>index.html</code>, <code>style.css</code> und <code>gridgen.js</code>, ergänzt durch eine CDN-Bibliothek zur PDF-Erzeugung. Ein kleiner statischer Site-Generator erstellt die lokalisierten Seiten.</p>
+
+      <h2 id="stack">Tech-Stack</h2>
+      <table class="spec-table">
+        <thead><tr><th>Schicht</th><th>Wahl</th><th>Begründung</th></tr></thead>
+        <tbody>
+          <tr><td>Markup</td><td>Reines HTML5</td><td>Semantische Seiten; kein Client-Framework.</td></tr>
+          <tr><td>Styling</td><td>Handgeschriebenes CSS mit Custom Properties</td><td>Design-Tokens über <code>:root</code>-Variablen; kein Präprozessor.</td></tr>
+          <tr><td>Logik</td><td>Vanilla JavaScript (ES6+)</td><td>Kein Framework, kein Bundler – der Browser führt den Quellcode direkt aus.</td></tr>
+          <tr><td>Rendering</td><td>HTML5 Canvas 2D API</td><td>Pixelgenaues Compositing von Bild + Gitter + Beschriftungen.</td></tr>
+          <tr><td>PDF</td><td><a class="inline" href="https://github.com/parallax/jsPDF">jsPDF</a> (UMD, via CDN)</td><td>Die einzige Drittanbieter-Laufzeitabhängigkeit.</td></tr>
+          <tr><td>Build</td><td>Abhängigkeitsfreier Node-Generator (<code>build.js</code>)</td><td>Erzeugt pro Sprache statisches HTML; läuft lokal, nicht auf dem Server.</td></tr>
+          <tr><td>Hosting</td><td>GitHub Pages</td><td>Kostenloses statisches Hosting direkt aus dem Repository.</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="structure">Projektstruktur</h2>
+      <pre><code>GridGen/
+├── index.html          # generated — English app shell
+├── style.css           # app styles
+├── gridgen.js          # all application logic
+├── favicon.svg, og-image.png, robots.txt, sitemap.xml
+├── nl/                 # generated — Dutch pages (/nl/, /nl/wiki/…)
+├── wiki/               # generated — English docs + wiki.css
+├── build.js            # static-site generator
+└── site/               # generator SOURCE
+    ├── layouts/        # base.html
+    ├── partials/       # head.html
+    ├── locales/        # en.json, nl.json — metadata + schema strings
+    └── pages/&lt;lang&gt;/   # per-language page bodies</code></pre>
+      <div class="note">
+        <strong>Generiert vs. Quelle.</strong> Das HTML im Repository-Stammverzeichnis sowie unter <code>wiki/</code> und <code>nl/</code> wird generiert – bearbeite die Templates in <code>site/</code> und führe <code>node build.js</code> erneut aus; bearbeite nie die Ausgabe direkt.
+      </div>
+
+      <h2 id="i18n">Build &amp; Sprachen</h2>
+      <p>Jede Sprache wird aus einem Satz Templates plus einer sprachspezifischen JSON-Datei gerendert. Englisch wird im Site-Root ausgegeben; jede andere Sprache liegt unter <code>/&lt;lang&gt;/</code>. Der Generator schreibt außerdem die <code>hreflang</code>-Alternativen, den sprachspezifischen <code>&lt;title&gt;</code>/Meta- und JSON-LD-Inhalt, einen Sprachumschalter und eine mehrsprachige <code>sitemap.xml</code>.</p>
+      <p>Eine neue Sprache hinzuzufügen ist eine vierschrittige Änderung – Inhalte plus eine einzelne Konfigurationszeile:</p>
+      <ol class="steps">
+        <li>Füge <code>site/locales/&lt;lang&gt;.json</code> hinzu (Titel, Beschreibungen, Nav-Labels, Schema-Strings).</li>
+        <li>Füge übersetzte Seiteninhalte unter <code>site/pages/&lt;lang&gt;/</code> hinzu.</li>
+        <li>Registriere den Sprachcode in <code>build.js</code>.</li>
+        <li>Führe <code>node build.js</code> aus.</li>
+      </ol>
+
+      <h2 id="state">Zustandsmodell</h2>
+      <p>Der gesamte App-Zustand liegt in einem einzigen einfachen Objekt. Jedes Steuerelement schreibt darin, und eine einzige <code>render()</code>-Funktion liest daraus – ein kleiner unidirektionaler Datenfluss ohne Framework.</p>
+      <pre><code>const state = {
+  image: null,        // the decoded HTMLImageElement
+  imageName: '',      // used to name the exported file
+  gridMode: 'cells',  // 'cells' | 'size'
+  cols: 10, rows: 10, // for 'cells' mode
+  cellSize: 50,       // for 'size' mode (px)
+  color: '#000000',
+  thickness: 2,
+  opacity: 1.0,
+  showLabels: true,
+  labelStyle: 'chess',     // 'chess' | 'numeric'
+  labelPosition: 'outside',// 'outside' | 'inside'
+  origin: 'top-left'       // 'top-left' | 'bottom-left'
+};</code></pre>
+      <p>Jeder Eingabe-Listener ändert ein Feld und ruft <code>render()</code> auf. Es gibt kein virtuelles DOM und kein Diffing – der Canvas wird bei jeder Änderung einfach komplett neu gezeichnet, was für ein einzelnes Bild kostengünstig ist.</p>
+
+      <h2 id="pipeline">Rendering-Pipeline</h2>
+      <p><code>render()</code> zeichnet den gesamten Canvas in einer festen Reihenfolge neu. Das Zeichnen von hinten nach vorne sorgt dafür, dass spätere Ebenen natürlich über früheren liegen.</p>
+      <ol class="steps">
+        <li><strong>Geometrie berechnen</strong> – Zellenbreite/-höhe und Spalten-/Zeilenanzahl aus dem aktiven Gittermodus ableiten.</li>
+        <li><strong>Canvas dimensionieren</strong> – Bildabmessungen plus oberen und linken Rand, wenn außen liegende Beschriftungen aktiviert sind (die Ränder, die die Spalten- und Zeilenbeschriftungen aufnehmen).</li>
+        <li><strong>Hintergrund weiß einfärben</strong>, dann das Bild mit dem Randversatz zeichnen.</li>
+        <li><strong>Gitterlinien zeichnen</strong> mit der gewählten Farbe, Stärke und Deckkraft.</li>
+        <li><strong>Beschriftungen zeichnen</strong> – entweder im äußeren Rand oder innerhalb jeder Zelle.</li>
+        <li><strong>Info-Leiste aktualisieren</strong> mit den aktuellen Zellen- und Bildabmessungen.</li>
+      </ol>
+
+      <h2 id="geometry">Gittergeometrie</h2>
+      <p>Die beiden Gittermodi ergeben dieselben vier Werte – <code>cols</code>, <code>rows</code>, <code>cellW</code>, <code>cellH</code> – sodass dem Rest des Renderers egal ist, welchen Modus du gewählt hast:</p>
+      <pre><code>if (state.gridMode === 'cells') {
+  cols = state.cols;  rows = state.rows;
+  cellW = img.width / cols;       // cells may be rectangular
+  cellH = img.height / rows;
+} else {
+  cellW = cellH = state.cellSize; // square cells
+  cols = Math.ceil(img.width / cellW);
+  rows = Math.ceil(img.height / cellH);
+}</code></pre>
+      <p>Wenn außen liegende Beschriftungen aktiviert sind, reserviert GridGen einen Rand, der relativ zur Bildgröße skaliert, damit er mit der Auflösung mitskaliert:</p>
+      <pre><code>const baseMargin = Math.max(36, Math.min(img.width, img.height) * 0.045);</code></pre>
+      <p>Gitterlinien werden mit <code>Math.min(i * cellW, img.width)</code> auf die Bildgrenzen beschränkt, sodass eine unvollständige letzte Zelle im Modus <em>Nach Größe</em> nie über den Rand hinausgezeichnet wird.</p>
+
+      <h2 id="labels">Beschriftungsalgorithmus</h2>
+      <p>Spaltenbeschriftungen im Schach-Stil verwenden eine bijektive Basis-26-Umrechnung – dasselbe Schema, das Tabellenkalkulationen für Spalten verwenden, sodass nach <code>Z</code> <code>AA</code> folgt:</p>
+      <pre><code>function getColumnLabel(i) {
+  if (state.labelStyle === 'numeric') return String(i + 1);
+  let label = '', n = i;
+  while (n >= 0) {
+    label = String.fromCharCode(65 + (n % 26)) + label;
+    n = Math.floor(n / 26) - 1;
+  }
+  return label;
+}</code></pre>
+      <p>Die Zeilennummerierung berücksichtigt die <strong>Ursprung</strong>-Einstellung, indem der Index umgekehrt wird, wenn der Ursprung unten links liegt:</p>
+      <pre><code>const rowIdx = state.origin === 'top-left' ? i : rows - 1 - i;</code></pre>
+      <p><strong>Außen liegende</strong> Beschriftungen werden in den Randstreifen oben und links zentriert. <strong>Innen liegende</strong> Beschriftungen werden in der oberen linken Ecke jeder Zelle mit einem gestrichelten Halo hinter dem Fülltext gezeichnet, damit sie über komplexen Bildinhalten lesbar bleiben.</p>
+
+      <h2 id="contrast">Kontrast &amp; Lesbarkeit</h2>
+      <p>Die Beschriftungsfarbe wird automatisch aus der wahrgenommenen Helligkeit der Gitterfarbe gewählt (Rec. 601-Gewichtung). Helle Gitterfarben erhalten dunkle Beschriftungen; dunkle Farben behalten ihren Farbton:</p>
+      <pre><code>function isLight(hex) {
+  const { r, g, b } = hexToRgb(hex);
+  return (0.299 * r + 0.587 * g + 0.114 * b) > 186;
+}</code></pre>
+      <p>Bei innen liegenden Beschriftungen kehrt sich der Halo um – ein weißer Halo hinter dunklem Text oder ein schwarzer Halo hinter hellem Text – und gewährleistet so Kontrast unabhängig vom darunterliegenden Inhalt.</p>
+
+      <h2 id="pdf">PDF-Export</h2>
+      <p>Der Export verwendet den bereits gerenderten Canvas, sodass das PDF genau der Vorschau entspricht. Der Canvas wird in eine PNG-Daten-URL kodiert und auf einer A4-Seite platziert, deren Ausrichtung dem Seitenverhältnis des Bildes folgt:</p>
+      <pre><code>const w = canvas.width, h = canvas.height;
+const orientation = w > h ? 'landscape' : 'portrait';
+const pdf = new jsPDF({ orientation, unit: 'pt', format: 'a4', compress: true });
+
+// available area inside a 24pt page margin
+const pageW = pdf.internal.pageSize.getWidth();
+const pageH = pdf.internal.pageSize.getHeight();
+const margin = 24;
+const availW = pageW - 2 * margin, availH = pageH - 2 * margin;
+
+// scale to fit, then center on the page
+const scale = Math.min(availW / w, availH / h);
+const drawW = w * scale, drawH = h * scale;
+const x = (pageW - drawW) / 2, y = (pageH - drawH) / 2;
+
+const imgData = canvas.toDataURL('image/png');
+pdf.addImage(imgData, 'PNG', x, y, drawW, drawH);
+pdf.save(`${baseName || 'grid-map'}-grid.pdf`);</code></pre>
+      <p>Da der Quell-Canvas die nativen Pixelabmessungen des Bildes hat, bleiben die Gitterlinien beim Herunterskalieren auf die Seite scharf. Der Ausgabedateiname wird aus der hochgeladenen Datei abgeleitet, ihre Erweiterung wird entfernt und <code>-grid</code> angehängt.</p>
+
+      <h2 id="privacy">Datenschutzmodell</h2>
+      <p>GridGen ist <strong>rein clientseitig</strong>. Das Bild wird mit dem <code>FileReader</code> des Browsers als Daten-URL gelesen und in ein <code>Image</code>-Element dekodiert – es wird nirgendwo übertragen:</p>
+      <pre><code>const reader = new FileReader();
+reader.onload = (ev) => { img.src = ev.target.result; };
+reader.readAsDataURL(file);</code></pre>
+      <p>Es gibt keine Analysen, keinen Server und keine Netzwerkanfrage außer dem Laden der jsPDF-Bibliothek von deren CDN. Alles andere läuft auf der Seite.</p>
+
+      <h2 id="extend">GridGen erweitern</h2>
+      <p>Das Design mit einer einzelnen Logikdatei hält Änderungen lokal. Häufige Erweiterungen:</p>
+      <ul>
+        <li><strong>Neue Beschriftungsstile</strong> – füge einen Zweig zu <code>getColumnLabel()</code> und dem Beschriftungs-Zeichencode hinzu.</li>
+        <li><strong>Exportformate</strong> – der Canvas kann mit <code>canvas.toBlob()</code> in PNG/JPEG umgewandelt werden für direkten Bild-Download.</li>
+        <li><strong>Nicht-uniforme Gitter</strong> – der Geometrieblock ist die einzige Quelle der Wahrheit für die Zellengröße.</li>
+        <li><strong>Voreinstellungen</strong> – das flache <code>state</code>-Objekt lässt sich sauber als JSON serialisieren für Speichern/Laden oder URL-Sharing.</li>
+      </ul>
+
+      <nav class="page-nav" aria-label="Seitennavigation">
+        <a class="prev" href="../../de/wiki/index.html"><span>Zurück</span>Wie GridGen funktioniert</a>
+        <a class="next" href="../../de/index.html"><span>Zurück zu</span>Der App →</a>
+      </nav>
+
+      <footer class="footer">
+        <p>GridGen ist quelloffen unter der GPL v3. PDF-Erzeugung durch <a href="https://github.com/parallax/jsPDF">jsPDF</a>.</p>
+      </footer>
+    </main>
+  </div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Wie GridGen funktioniert — Anleitung &amp; Wiki</title>
+  <meta name="description" content="Eine vollständige Anleitung zu GridGen: ein Bild hochladen, ein Koordinatengitter einstellen, die Darstellung anpassen, Schach- oder Zahlenbeschriftungen hinzufügen und als druckfertiges PDF exportieren.">
+  
+  <link rel="canonical" href="https://aborndev.github.io/GridGen/de/wiki/">
+  <meta name="theme-color" content="#171717">
+  <meta name="robots" content="index, follow">
+  <link rel="alternate" hreflang="en" href="https://aborndev.github.io/GridGen/wiki/">
+  <link rel="alternate" hreflang="nl" href="https://aborndev.github.io/GridGen/nl/wiki/">
+  <link rel="alternate" hreflang="de" href="https://aborndev.github.io/GridGen/de/wiki/">
+  <link rel="alternate" hreflang="x-default" href="https://aborndev.github.io/GridGen/wiki/">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="GridGen">
+  <meta property="og:title" content="Wie GridGen funktioniert — Anleitung &amp; Wiki">
+  <meta property="og:description" content="Eine vollständige Anleitung zu GridGen: ein Bild hochladen, ein Koordinatengitter einstellen, die Darstellung anpassen, Schach- oder Zahlenbeschriftungen hinzufügen und als druckfertiges PDF exportieren.">
+  <meta property="og:url" content="https://aborndev.github.io/GridGen/de/wiki/">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:locale:alternate" content="nl_NL">
+  <meta property="og:image" content="https://aborndev.github.io/GridGen/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="GridGen — ein beschriftetes Koordinatengitter über einem Bild, als PDF exportiert">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Wie GridGen funktioniert — Anleitung &amp; Wiki">
+  <meta name="twitter:description" content="Eine vollständige Anleitung zu GridGen: ein Bild hochladen, ein Koordinatengitter einstellen, die Darstellung anpassen, Schach- oder Zahlenbeschriftungen hinzufügen und als druckfertiges PDF exportieren.">
+  <meta name="twitter:image" content="https://aborndev.github.io/GridGen/og-image.png">
+  <meta name="twitter:image:alt" content="GridGen — ein beschriftetes Koordinatengitter über einem Bild, als PDF exportiert">
+
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../wiki/wiki.css">
+  
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Wie man mit GridGen ein Koordinatengitter über ein Bild legt und als PDF exportiert",
+  "description": "Eine vollständige Anleitung zu GridGen: ein Bild hochladen, ein Koordinatengitter einstellen, die Darstellung anpassen, Schach- oder Zahlenbeschriftungen hinzufügen und als druckfertiges PDF exportieren.",
+  "inLanguage": "de",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Bild hochladen",
+      "text": "Ziehe ein PNG, JPG oder WEBP in die App oder klicke, um eines auszuwählen."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Gittermodus wählen",
+      "text": "Lege das Gitter nach Anzahl der Zellen oder nach Zellengröße in Pixeln fest."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Darstellung anpassen",
+      "text": "Stelle Linienfarbe, -stärke und Deckkraft für gute Lesbarkeit ein."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Koordinatenbeschriftung hinzufügen",
+      "text": "Wähle Schach- oder Zahlenbeschriftung, Position innen oder außen und die Ursprungsecke."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "PDF exportieren",
+      "text": "Klicke auf PDF herunterladen, um eine A4-Datei in voller Auflösung zu speichern."
+    }
+  ]
+}
+</script>
+</head>
+
+<body>
+<div class="wiki">
+  <header class="topbar">
+    <a class="brand" href="../../de/index.html">
+      <img src="../../favicon.svg" alt="GridGen logo">
+      GridGen-Wiki
+    </a>
+    <nav class="topbar-actions" aria-label="Website">
+      <div class="lang-switch" aria-label="Sprache"><a hreflang="en" href="../../wiki/index.html">English</a><a hreflang="nl" href="../../nl/wiki/index.html">Nederlands</a><a hreflang="de" href="../../de/wiki/index.html" aria-current="true" class="active">Deutsch</a></div>
+      <a href="../../de/index.html">App öffnen →</a>
+    </nav>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <nav class="nav-group" aria-label="Dokumentationsseiten">
+        <p class="nav-title">Anleitung</p>
+        <ul>
+          <li><a class="active" href="../../de/wiki/index.html">Wie GridGen funktioniert</a></li>
+          <li><a href="../../de/wiki/karten-gitter.html">Gitter über Karten</a></li>
+          <li><a href="../../de/wiki/technical.html">Technische Referenz</a></li>
+        </ul>
+      </nav>
+      <nav class="nav-group" aria-label="Auf dieser Seite">
+        <p class="nav-title">Auf dieser Seite</p>
+        <ul>
+          <li><a href="#overview">Überblick</a></li>
+          <li><a href="#workflow">Der Arbeitsablauf</a></li>
+          <li><a href="#uploading">Ein Bild hochladen</a></li>
+          <li><a href="#grid-modes">Gittermodi</a></li>
+          <li><a href="#appearance">Darstellung</a></li>
+          <li><a href="#labels">Koordinatenbeschriftungen</a></li>
+          <li><a href="#exporting">Als PDF exportieren</a></li>
+          <li><a href="#use-cases">Anwendungsfälle</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <p class="eyebrow">Benutzerhandbuch</p>
+      <h1>Wie GridGen funktioniert</h1>
+      <p class="lead">GridGen legt ein beschriftetes Koordinatengitter über ein beliebiges Bild und exportiert das Ergebnis als druckfertiges PDF – vollständig im Browser, ohne Upload, Konto oder Installation.</p>
+
+      <h2 id="overview">Überblick</h2>
+      <p>GridGen ist eine einseitige Web-App. Du lädst ein Bild hoch, das Gitter wird live in der Vorschau gezeichnet, und du passt es so an, dass es gut zu deinem Bild passt. Wenn du zufrieden bist, wird alles in ein PDF gerendert und auf dein Gerät heruntergeladen.</p>
+      <div class="note">
+        <strong>Deine Bilder verlassen dein Gerät nicht.</strong> GridGen liest die Datei lokal im Browser und erledigt alle Zeichenoperationen auf einem HTML5 Canvas. Es wird nichts auf einen Server hochgeladen – siehe die <a class="inline" href="../../de/wiki/technical.html#privacy">Technische Referenz</a> für Details.
+      </div>
+
+      <h2 id="workflow">Der Arbeitsablauf</h2>
+      <ol class="steps">
+        <li><strong>Lade ein Bild hoch</strong> (PNG, JPG oder WEBP).</li>
+        <li><strong>Wähle einen Gittermodus</strong> und lege die Anzahl der Spalten/Zeilen oder eine Zellengröße fest.</li>
+        <li><strong>Passe die Darstellung an</strong> – Farbe, Stärke, Deckkraft – bis das Gitter gut lesbar ist.</li>
+        <li><strong>Konfiguriere die Beschriftungen</strong> – Stil, Position und Ursprung.</li>
+        <li><strong>Lade das PDF herunter.</strong></li>
+      </ol>
+
+      <h2 id="uploading">Ein Bild hochladen</h2>
+      <p>Es gibt zwei Möglichkeiten, ein Bild zu laden:</p>
+      <ul>
+        <li><strong>Klicke</strong> auf den Upload-Bereich in der Seitenleiste und wähle eine Datei von deinem Gerät.</li>
+        <li><strong>Ziehe eine Datei per Drag-and-drop</strong> in den Vorschaubereich – das große Panel auf der rechten Seite ist das Ablageziel.</li>
+      </ul>
+      <p>Unterstützte Formate sind <code>PNG</code>, <code>JPG</code> und <code>WEBP</code>. Die ursprünglichen Pixelabmessungen bleiben erhalten, sodass die exportierten Gitterlinien exakt mit deinem Ausgangsbild übereinstimmen. Nach dem Laden wird der Dateiname angezeigt, und du kannst jederzeit auf <strong>Ersetzen</strong> klicken, um ein anderes Bild auszuwählen.</p>
+
+      <h2 id="grid-modes">Gittermodi</h2>
+      <p>GridGen bietet zwei Möglichkeiten, das Gitter zu definieren. Wechsle zwischen ihnen mit den Tabs <strong>Nach Zellen</strong> / <strong>Nach Größe</strong>.</p>
+      <table class="spec-table">
+        <thead><tr><th>Modus</th><th>Du legst fest</th><th>Am besten für</th></tr></thead>
+        <tbody>
+          <tr><td>Nach Zellen</td><td>Anzahl der <strong>Spalten</strong> und <strong>Zeilen</strong> (je 1–100)</td><td>Eine feste Gitterform unabhängig von der Bildgröße – z.&nbsp;B. ein 10&nbsp;×&nbsp;10 Zeichengitter.</td></tr>
+          <tr><td>Nach Größe</td><td>Eine einheitliche <strong>Zellengröße</strong> in Pixeln (5–500)</td><td>Einheitlicher Maßstab – die Zellen behalten dieselbe Pixelgröße, und GridGen füllt so viele wie nötig.</td></tr>
+        </tbody>
+      </table>
+      <p>Im Modus <em>Nach Zellen</em> ergeben sich Breite und Höhe einer Zelle aus den Bildabmessungen geteilt durch die Anzahl der Spalten und Zeilen; Zellen können dabei rechteckig sein. Im Modus <em>Nach Größe</em> sind die Zellen quadratisch, und die letzte Zeile/Spalte wird am Bildrand abgeschnitten, wenn die Aufteilung nicht aufgeht.</p>
+
+      <h2 id="appearance">Darstellung</h2>
+      <p>Drei Einstellungen bestimmen das Aussehen der Gitterlinien:</p>
+      <ul>
+        <li><strong>Farbe</strong> – wähle aus Voreinstellungen (Schwarz, Weiß, Rot, Blau, Grün) oder öffne den benutzerdefinierten Farbwähler. Bei dunklen Bildern empfiehlt sich Weiß als Linienfarbe.</li>
+        <li><strong>Linienstärke</strong> – 1 bis 10 Pixel.</li>
+        <li><strong>Deckkraft</strong> – 10 % bis 100 %, damit das Gitter auch über detailreichen Bildern dezent wirken kann.</li>
+      </ul>
+      <p>Die Live-Vorschau aktualisiert sich sofort beim Bewegen der Regler, sodass du die Lesbarkeit vor dem Export einstellen kannst.</p>
+
+      <h2 id="labels">Koordinatenbeschriftungen</h2>
+      <p>Aktiviere den Schalter <strong>Koordinaten</strong>, um Zellenbeschriftungen hinzuzufügen. Drei Optionen bestimmen, wie sie dargestellt werden:</p>
+      <h3>Stil</h3>
+      <ul>
+        <li><strong>Schach (A1)</strong> – Spalten erhalten Buchstaben (A, B, C … und AA, AB nach Z), Zeilen erhalten Zahlen.</li>
+        <li><strong>Numerisch (1,1)</strong> – beide Achsen erhalten Zahlen, geschrieben als <code>Spalte,Zeile</code>.</li>
+      </ul>
+      <h3>Position</h3>
+      <ul>
+        <li><strong>Außen</strong> – Spaltenbeschriftungen befinden sich in einem sauberen weißen Rand oberhalb des Bildes, Zeilenbeschriftungen in einem Rand links davon. Am besten lesbar für Druck und Referenz.</li>
+        <li><strong>Innen</strong> – Beschriftungen werden in der Ecke jeder Zelle mit einem automatischen Kontrasthalo platziert, sodass sie über beliebigen Bildinhalten lesbar bleiben.</li>
+      </ul>
+      <h3>Ursprung</h3>
+      <ul>
+        <li><strong>Oben links</strong> – Zeile 1 liegt oben. Entspricht der Bild-Pixel- und Tabellenkonvention.</li>
+        <li><strong>Unten links</strong> – Zeile 1 liegt unten. Entspricht kartesischen Koordinaten und Schachbrettern.</li>
+      </ul>
+      <div class="note">
+        <strong>Tipp:</strong> Die Beschriftungsfarbe passt sich automatisch für optimale Lesbarkeit an. Bei einer hellen Linienfarbe werden die äußeren Beschriftungen von GridGen abgedunkelt und der Halo der inneren Beschriftungen umgekehrt, damit der Text nie ausblendet.
+      </div>
+
+      <h2 id="exporting">Als PDF exportieren</h2>
+      <p>Klicke auf <strong>PDF herunterladen</strong>. GridGen rendert den Canvas in voller Auflösung – Bild, Gitter und Beschriftungen – auf eine A4-Seite:</p>
+      <ul>
+        <li><strong>Die Ausrichtung</strong> wird automatisch gewählt (Quer- oder Hochformat), passend zum Seitenverhältnis deines Bildes.</li>
+        <li>Das Bild wird <strong>eingepasst</strong>, mit einem kleinen Rand und zentriert auf der Seite.</li>
+        <li>Die Datei wird nach deinem Ausgangsbild benannt – zum Beispiel wird aus <code>site-photo</code> die Datei <code>site-photo-grid.pdf</code>.</li>
+      </ul>
+      <p>Da das Gitter in der nativen Auflösung des Bildes gezeichnet wird, bleiben feine Linien beim Drucken scharf.</p>
+
+      <h2 id="use-cases">Anwendungsfälle</h2>
+      <ul>
+        <li><strong>Künstlerinnen und Künstler</strong> – nutze die klassische Gitterzeichenmethode, um ein Referenzbild von Hand zu übertragen oder zu vergrößern.</li>
+        <li><strong>Spielleiterinnen und Spielleiter</strong> – verwandle eine Karte oder Illustration in ein Kampfgitter mit Koordinatenreferenzen.</li>
+        <li><strong>Orientierungslauf &amp; Pfadfinder</strong> – füge einer Kartenvorlage ein Koordinatengitter hinzu und drucke sie aus. Siehe <a class="inline" href="../../de/wiki/karten-gitter.html">Gitter über Karten</a>.</li>
+        <li><strong>Archäologinnen, Archäologen &amp; Feldforscher</strong> – lege ein Referenzgitter über Geländefotos zur Dokumentation.</li>
+        <li><strong>Lehrerinnen, Lehrer &amp; Schülerinnen und Schüler</strong> – erstelle Koordinatenebenen-Arbeitsblätter und beschriftete Diagramme.</li>
+      </ul>
+
+      <h2 id="faq">FAQ</h2>
+      <h3>Ist GridGen kostenlos?</h3>
+      <p>Ja. Es ist kostenlos, quelloffen und unter der GNU GPL v3 veröffentlicht.</p>
+      <h3>Werden meine Bilder irgendwo hochgeladen?</h3>
+      <p>Nein. Die gesamte Verarbeitung findet lokal in deinem Browser statt. Deine Bilder werden nie an einen Server gesendet.</p>
+      <h3>Welche Bildformate werden unterstützt?</h3>
+      <p>PNG, JPG und WEBP – jedes Rasterformat, das dein Browser dekodieren kann.</p>
+      <h3>Welche Auflösung hat das exportierte PDF?</h3>
+      <p>Das Gitter wird in der nativen Vollauflösung deines Bildes zusammengesetzt und dann auf einer A4-Seite eingepasst.</p>
+      <h3>Welche Browser werden unterstützt?</h3>
+      <p>Alle modernen Browser mit HTML5 Canvas- und File-API-Unterstützung – Chrome, Firefox, Safari und Edge.</p>
+
+      <nav class="page-nav" aria-label="Seitennavigation">
+        <a class="prev" href="../../de/index.html"><span>Zurück zu</span>Der App</a>
+        <a class="next" href="../../de/wiki/technical.html"><span>Weiter</span>Technische Referenz →</a>
+      </nav>
+
+      <footer class="footer">
+        <p>GridGen ist quelloffen unter der GPL v3. Siehe die <a href="../../de/index.html">App</a> oder die <a href="../../de/wiki/technical.html">technische Referenz</a>.</p>
+      </footer>
+    </main>
+  </div>
+</div>
+
+
+</body>
+</html>
