@@ -155,7 +155,8 @@ function jsonLd(pageId, L, ctx) {
 
 // Small inline SVG flags for the language switcher (robust across platforms,
 // unlike emoji flags which don't render on Windows). Keyed by locale code; a
-// locale without a flag falls back to just its uppercase code.
+// locale without a flag degrades gracefully (its code shows in the summary and
+// its name in the menu). Add a flag here when adding a language.
 const FLAGS = {
   en: '<svg viewBox="0 0 60 30" class="flag-svg" aria-hidden="true"><rect width="60" height="30" fill="#012169"/><path d="M0 0L60 30M60 0L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0L60 30M60 0L0 30" stroke="#C8102E" stroke-width="4"/><path d="M30 0V30M0 15H60" stroke="#fff" stroke-width="10"/><path d="M30 0V30M0 15H60" stroke="#C8102E" stroke-width="6"/></svg>',
   nl: '<svg viewBox="0 0 60 30" class="flag-svg" aria-hidden="true"><rect width="60" height="30" fill="#21468B"/><rect width="60" height="20" fill="#fff"/><rect width="60" height="10" fill="#AE1C28"/></svg>',
@@ -174,13 +175,13 @@ function langSwitcher(pageId, locale, base) {
     const L = locales[loc];
     const href = base + outFor(pageId, loc);
     const cur = loc === locale ? ' aria-current="true" class="active"' : '';
-    return `<a hreflang="${loc}" href="${href}" role="menuitem"${cur}>${flagFor(loc)}<span>${esc(L.meta.nativeName)}</span></a>`;
+    return `<a hreflang="${loc}" href="${href}"${cur}>${flagFor(loc)}<span>${esc(L.meta.nativeName)}</span></a>`;
   });
   const code = esc((locales[locale].meta.lang || '').toUpperCase());
   return (
     `<details class="lang-switch">` +
     `<summary aria-label="${label}" title="${label}">${flagFor(locale)}<span class="lang-code">${code}</span>${CARET}</summary>` +
-    `<div class="lang-menu" role="menu">${items.join('')}</div>` +
+    `<div class="lang-menu">${items.join('')}</div>` +
     `</details>`
   );
 }
