@@ -38,7 +38,6 @@ const PAGES = {
     body: 'home',
     css: 'style.css',
     ogType: 'website',
-    headExtra: '<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>',
     scripts: '<script src="{{base}}gridgen.js"></script>',
     schema: 'WebApplication',
     out: { en: 'index.html' },
@@ -180,7 +179,7 @@ function langSwitcher(pageId, locale, base) {
   const code = esc((locales[locale].meta.lang || '').toUpperCase());
   return (
     `<details class="lang-switch">` +
-    `<summary aria-label="${label}" title="${label}">${flagFor(locale)}<span class="lang-code">${code}</span>${CARET}</summary>` +
+    `<summary aria-label="${code} — ${label}" title="${label}">${flagFor(locale)}<span class="lang-code">${code}</span>${CARET}</summary>` +
     `<div class="lang-menu">${items.join('')}</div>` +
     `</details>`
   );
