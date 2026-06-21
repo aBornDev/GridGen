@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>GridGen — Add a Coordinate Grid to Any Image &amp; Export as PDF</title>
-  <meta name="description" content="Free browser tool to overlay a labeled coordinate grid on any photo or map and export it as a print-ready PDF. No signup, runs entirely in your browser.">
-<meta name="keywords" content="grid overlay, grid on image, grid drawing method, image to grid PDF, coordinate grid generator, add grid to map, battle map grid, reference grid photo">
+  <meta name="description" content="Free browser tool to overlay a labeled coordinate grid on any image — photo, map, battle map, or floor plan — and export a print-ready A4 PDF. No upload, no signup.">
+<meta name="keywords" content="grid overlay, add grid to image, grid on image, grid drawing method, image to grid PDF, coordinate grid generator, add grid to map, battle map grid, cross stitch grid from photo, pixel art grid, coordinate plane grid, sports pitch zone grid, floor plan grid, reference grid photo, print grid PDF">
   <link rel="canonical" href="https://aborndev.github.io/GridGen/">
   <meta name="theme-color" content="#171717">
   <meta name="robots" content="index, follow">
@@ -18,7 +18,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="GridGen">
   <meta property="og:title" content="GridGen — Add a Coordinate Grid to Any Image &amp; Export as PDF">
-  <meta property="og:description" content="Free browser tool to overlay a labeled coordinate grid on any photo or map and export it as a print-ready PDF. No signup, runs entirely in your browser.">
+  <meta property="og:description" content="Free browser tool to overlay a labeled coordinate grid on any image — photo, map, battle map, or floor plan — and export a print-ready A4 PDF. No upload, no signup.">
   <meta property="og:url" content="https://aborndev.github.io/GridGen/">
   <meta property="og:locale" content="en_US">
   <meta property="og:locale:alternate" content="nl_NL">
@@ -29,7 +29,7 @@
   <meta property="og:image:alt" content="GridGen — a labeled coordinate grid laid over an image, exported as a PDF">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="GridGen — Add a Coordinate Grid to Any Image &amp; Export as PDF">
-  <meta name="twitter:description" content="Free browser tool to overlay a labeled coordinate grid on any photo or map and export it as a print-ready PDF. No signup, runs entirely in your browser.">
+  <meta name="twitter:description" content="Free browser tool to overlay a labeled coordinate grid on any image — photo, map, battle map, or floor plan — and export a print-ready A4 PDF. No upload, no signup.">
   <meta name="twitter:image" content="https://aborndev.github.io/GridGen/og-image.png">
   <meta name="twitter:image:alt" content="GridGen — a labeled coordinate grid laid over an image, exported as a PDF">
 
@@ -45,19 +45,22 @@
   "applicationCategory": "MultimediaApplication",
   "operatingSystem": "Any (browser-based)",
   "inLanguage": "en",
-  "description": "Free browser tool to overlay a labeled coordinate grid on any photo or map and export it as a print-ready PDF. No signup, runs entirely in your browser.",
+  "description": "Free browser tool to overlay a labeled coordinate grid on any image — photo, map, battle map, or floor plan — and export a print-ready A4 PDF. No upload, no signup.",
   "offers": {
     "@type": "Offer",
     "price": "0",
     "priceCurrency": "USD"
   },
   "featureList": [
-    "Grid by number of cells or by cell size in pixels",
-    "Customizable line color, thickness, and opacity",
+    "Grid by number of cells (1–100 columns/rows) or by cell size in pixels (5–500)",
+    "Customizable line color, thickness (1–10 px), and opacity (10–100%)",
     "Chess (A1) or numeric (1,1) coordinate labels",
-    "Inside or outside label placement",
-    "Top-left or bottom-left origin",
-    "PDF export at full image resolution"
+    "Inside labels with a contrast halo, or outside labels in clean margins",
+    "Top-left or bottom-left (Cartesian) origin",
+    "Live preview that updates as you adjust the grid",
+    "Print-ready A4 PDF export, auto portrait/landscape, scaled to fit",
+    "Runs entirely in your browser — images are never uploaded",
+    "Free and open source (GPL v3), no signup"
   ]
 }
 </script>
@@ -74,6 +77,7 @@
       </nav>
     </div>
     <p>Upload an image, lay a coordinate grid over it, export as PDF.</p>
+    <p class="header-uses">Used for the grid drawing method, battle maps, cross-stitch charts, coordinate worksheets and <a href="wiki/use-cases.html">more use cases</a>.</p>
   </header>
 
   <main class="main">

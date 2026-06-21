@@ -72,6 +72,47 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": "de",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Erzeugt GridGen eine topografische Karte oder lädt es Kartendaten herunter?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nein. GridGen legt ein Gitter über ein Kartenbild, das du bereitstellst. Um eine Basiskarte zu erhalten, mach einen Screenshot einer Online-Karte, scanne eine Papierkarte oder exportiere eine aus einem Kartendienst, und lade sie dann hier hoch."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Sind die Felder echte UTM- oder MGRS-Koordinaten?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nein. Das Gitter ist eine visuelle Referenz — gleichmäßig verteilte Felder mit A1- bzw. numerischen Beschriftungen. Sie sind nicht auf die Projektion der Karte georeferenziert, also behandle sie als relatives Referenzsystem und nicht als vermessungsgenaue Koordinaten."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kann ich das Gitter an ein vorhandenes Kartengitter anpassen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Teilweise — verwende den Modus Nach Größe und passe die Zellengröße so an, dass die Überlagerungslinien grob mit dem aufgedruckten Gitter deines Kartenbildes übereinstimmen. Es handelt sich um eine visuelle Ausrichtung, keine berechnete."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Ist es kostenlos und datenschutzfreundlich?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. GridGen ist kostenlos und quelloffen, und deine Karte verlässt dein Gerät nicht — die gesamte Verarbeitung findet in deinem Browser statt."
+      }
+    }
+  ]
+}
+</script>
 </head>
 
 <body>
@@ -93,6 +134,7 @@
         <p class="nav-title">Anleitung</p>
         <ul>
           <li><a href="../../de/wiki/index.html">Wie GridGen funktioniert</a></li>
+          <li><a href="../../de/wiki/anwendungen.html">Anwendungen</a></li>
           <li><a class="active" href="../../de/wiki/karten-gitter.html">Gitter über Karten</a></li>
           <li><a href="../../de/wiki/technical.html">Technische Referenz</a></li>
         </ul>

@@ -72,6 +72,47 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": "nl",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Genereert GridGen een topografische kaart of haalt het kaartgegevens op?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nee. GridGen legt een raster over een kaartafbeelding die jij aanlevert. Om een basiskaart te verkrijgen, maak je een screenshot van een online kaart, scan je een papieren kaart of stafkaart, of exporteer je er een vanuit een kaartdienst en upload je die hier."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Zijn de vakjes echte UTM- of MGRS-coördinaten?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nee. Het raster is een visuele referentie — gelijkmatig verdeelde vakjes met A1- of cijferlabels. Ze zijn niet geogereferenceerd aan de projectie van de kaart, dus behandel ze als een relatief referentiesysteem, geen coördinaten met landmeetkundige nauwkeurigheid."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kan ik het raster laten aansluiten op een bestaand kaartraster?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Gedeeltelijk — gebruik de modus Op grootte en pas de celgrootte aan zodat de overlaylijnen ruwweg samenvallen met het gedrukte raster op je kaartafbeelding. Het is een visuele uitlijning, geen berekende."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is het gratis en privé?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. GridGen is gratis en open source, en je kaart verlaat je apparaat nooit — alle verwerking vindt plaats in je browser."
+      }
+    }
+  ]
+}
+</script>
 </head>
 
 <body>
@@ -93,6 +134,7 @@
         <p class="nav-title">Handleiding</p>
         <ul>
           <li><a href="../../nl/wiki/index.html">Hoe GridGen werkt</a></li>
+          <li><a href="../../nl/wiki/toepassingen.html">Toepassingen</a></li>
           <li><a class="active" href="../../nl/wiki/stafkaart.html">Raster over kaarten</a></li>
           <li><a href="../../nl/wiki/technical.html">Technische referentie</a></li>
         </ul>

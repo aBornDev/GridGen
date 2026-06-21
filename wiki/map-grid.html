@@ -72,6 +72,47 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": "en",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does GridGen generate a topographic map or pull map data?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. GridGen overlays a grid on a map image you provide. To get a base map, take a screenshot of an online map, scan a paper map, or export one from a mapping service, then upload it here."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are the squares real UTM or MGRS coordinates?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The grid is a visual reference — evenly spaced squares with A1 or numeric labels. They are not georeferenced to the map's projection, so treat them as a relative reference system, not survey-grade coordinates."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I match the grid to an existing map grid?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Partly — use By size mode and adjust the cell size so the overlay lines roughly align with the printed grid on your map image. It is a visual alignment, not a calculated one."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it free and private?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. GridGen is free and open source, and your map never leaves your device — all processing happens in your browser."
+      }
+    }
+  ]
+}
+</script>
 </head>
 
 <body>
@@ -93,6 +134,7 @@
         <p class="nav-title">Guide</p>
         <ul>
           <li><a href="../wiki/index.html">How GridGen Works</a></li>
+          <li><a href="../wiki/use-cases.html">Use cases</a></li>
           <li><a class="active" href="../wiki/map-grid.html">Grids on maps</a></li>
           <li><a href="../wiki/technical.html">Technical Reference</a></li>
         </ul>

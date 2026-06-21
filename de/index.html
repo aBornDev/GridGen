@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>GridGen — Koordinatengitter über jedes Bild legen &amp; als PDF exportieren</title>
-  <meta name="description" content="Kostenloses Browser-Tool, um ein beschriftetes Koordinatengitter über ein Foto oder eine Karte zu legen und als druckfertiges PDF zu exportieren. Kein Konto nötig, läuft komplett im Browser.">
-<meta name="keywords" content="Gitter über Bild, Raster über Bild legen, Koordinatengitter, Gitter über Foto, Gitterzeichenmethode, Bild zu Gitter PDF, Gitter über Karte">
+  <meta name="description" content="Kostenloses Browser-Tool, um ein beschriftetes Koordinatengitter über ein Foto, eine Karte, eine Schlachtkarte oder einen Grundriss zu legen und als druckfertiges A4-PDF zu exportieren. Kein Upload, kein Konto nötig.">
+<meta name="keywords" content="Gitter über Bild, Raster über Bild legen, Koordinatengitter, Gitter über Foto, Gitterzeichenmethode, Rastermethode zeichnen, Bild zu Gitter PDF, Raster PDF drucken, Gitter über Karte, Schlachtkarte Raster, Zählmuster aus Foto, Pixel-Art-Raster, Koordinatensystem Arbeitsblatt, Fußballfeld Zonen Raster, Grundriss Raster, Referenzgitter Foto">
   <link rel="canonical" href="https://aborndev.github.io/GridGen/de/">
   <meta name="theme-color" content="#171717">
   <meta name="robots" content="index, follow">
@@ -18,7 +18,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="GridGen">
   <meta property="og:title" content="GridGen — Koordinatengitter über jedes Bild legen &amp; als PDF exportieren">
-  <meta property="og:description" content="Kostenloses Browser-Tool, um ein beschriftetes Koordinatengitter über ein Foto oder eine Karte zu legen und als druckfertiges PDF zu exportieren. Kein Konto nötig, läuft komplett im Browser.">
+  <meta property="og:description" content="Kostenloses Browser-Tool, um ein beschriftetes Koordinatengitter über ein Foto, eine Karte, eine Schlachtkarte oder einen Grundriss zu legen und als druckfertiges A4-PDF zu exportieren. Kein Upload, kein Konto nötig.">
   <meta property="og:url" content="https://aborndev.github.io/GridGen/de/">
   <meta property="og:locale" content="de_DE">
   <meta property="og:locale:alternate" content="en_US">
@@ -29,7 +29,7 @@
   <meta property="og:image:alt" content="GridGen — ein beschriftetes Koordinatengitter über einem Bild, als PDF exportiert">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="GridGen — Koordinatengitter über jedes Bild legen &amp; als PDF exportieren">
-  <meta name="twitter:description" content="Kostenloses Browser-Tool, um ein beschriftetes Koordinatengitter über ein Foto oder eine Karte zu legen und als druckfertiges PDF zu exportieren. Kein Konto nötig, läuft komplett im Browser.">
+  <meta name="twitter:description" content="Kostenloses Browser-Tool, um ein beschriftetes Koordinatengitter über ein Foto, eine Karte, eine Schlachtkarte oder einen Grundriss zu legen und als druckfertiges A4-PDF zu exportieren. Kein Upload, kein Konto nötig.">
   <meta name="twitter:image" content="https://aborndev.github.io/GridGen/og-image.png">
   <meta name="twitter:image:alt" content="GridGen — ein beschriftetes Koordinatengitter über einem Bild, als PDF exportiert">
 
@@ -45,19 +45,22 @@
   "applicationCategory": "MultimediaApplication",
   "operatingSystem": "Any (browser-based)",
   "inLanguage": "de",
-  "description": "Kostenloses Browser-Tool, um ein beschriftetes Koordinatengitter über ein Foto oder eine Karte zu legen und als druckfertiges PDF zu exportieren. Kein Konto nötig, läuft komplett im Browser.",
+  "description": "Kostenloses Browser-Tool, um ein beschriftetes Koordinatengitter über ein Foto, eine Karte, eine Schlachtkarte oder einen Grundriss zu legen und als druckfertiges A4-PDF zu exportieren. Kein Upload, kein Konto nötig.",
   "offers": {
     "@type": "Offer",
     "price": "0",
     "priceCurrency": "USD"
   },
   "featureList": [
-    "Gitter nach Anzahl der Zellen oder nach Zellengröße in Pixeln",
-    "Anpassbare Linienfarbe, -stärke und Deckkraft",
-    "Schachnotation (A1) oder Zahlenbeschriftung (1,1)",
-    "Beschriftung innerhalb oder außerhalb der Zellen",
-    "Ursprung oben links oder unten links",
-    "PDF-Export in voller Bildauflösung"
+    "Gitter nach Anzahl der Zellen (1–100 Spalten/Zeilen) oder nach Zellengröße in Pixeln (5–500)",
+    "Anpassbare Linienfarbe, -stärke (1–10 px) und Deckkraft (10–100 %)",
+    "Schach-Beschriftung (A1) oder numerische Beschriftung (1,1)",
+    "Beschriftung innen mit Kontrasthalo oder außen in sauberen Rändern",
+    "Ursprung oben links oder unten links (kartesisch)",
+    "Live-Vorschau, die sich bei jeder Gitteranpassung sofort aktualisiert",
+    "Druckfertiger A4-PDF-Export, automatische Hoch-/Querformat-Wahl, eingepasst",
+    "Läuft vollständig im Browser — Bilder werden nie hochgeladen",
+    "Kostenlos und quelloffen (GPL v3), keine Anmeldung"
   ]
 }
 </script>
@@ -74,6 +77,7 @@
       </nav>
     </div>
     <p>Lade ein Bild hoch, lege ein Koordinatengitter darüber und exportiere als PDF.</p>
+    <p class="header-uses">Für die Gitterzeichenmethode, Schlachtkarten, Kreuzstich-Zählmuster, Koordinatenarbeitsblätter und <a href="../de/wiki/anwendungen.html">weitere Anwendungen</a>.</p>
   </header>
 
   <main class="main">
