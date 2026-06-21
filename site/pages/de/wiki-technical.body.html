@@ -183,7 +183,7 @@ function loadJsPDF() {
       const s = document.createElement('script');
       s.src = JSPDF_SRC;            // the cdnjs UMD bundle
       s.onload = resolve;
-      s.onerror = () =&gt; { jspdfPromise = null; reject(); };
+      s.onerror = () =&gt; { jspdfPromise = null; reject(new Error('Failed to load jsPDF')); };
       document.head.appendChild(s);
     });
   }
