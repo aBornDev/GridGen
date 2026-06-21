@@ -6,7 +6,7 @@
 
   <title>GridGen Technische Referenz — Stack &amp; Architektur</title>
   <meta name="description" content="Wie GridGen gebaut ist: eine Vanilla-JavaScript-App ohne Abhängigkeiten, die ein Koordinatengitter auf ein HTML5-Canvas zeichnet und mit jsPDF als PDF exportiert.">
-  
+
   <link rel="canonical" href="https://aborndev.github.io/GridGen/de/wiki/technical.html">
   <meta name="theme-color" content="#171717">
   <meta name="robots" content="index, follow">
@@ -35,7 +35,6 @@
 
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../../wiki/wiki.css">
-  
 
   <script type="application/ld+json">
 {
@@ -63,7 +62,7 @@
       GridGen-Wiki
     </a>
     <nav class="topbar-actions" aria-label="Website">
-      <details class="lang-switch"><summary aria-label="Sprache" title="Sprache"><svg viewBox="0 0 60 30" class="flag-svg" aria-hidden="true"><rect width="60" height="30" fill="#FFCE00"/><rect width="60" height="20" fill="#DD0000"/><rect width="60" height="10" fill="#000"/></svg><span class="lang-code">DE</span><svg class="lang-caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><div class="lang-menu"><a hreflang="en" href="../../wiki/technical.html"><svg viewBox="0 0 60 30" class="flag-svg" aria-hidden="true"><rect width="60" height="30" fill="#012169"/><path d="M0 0L60 30M60 0L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0L60 30M60 0L0 30" stroke="#C8102E" stroke-width="4"/><path d="M30 0V30M0 15H60" stroke="#fff" stroke-width="10"/><path d="M30 0V30M0 15H60" stroke="#C8102E" stroke-width="6"/></svg><span>English</span></a><a hreflang="nl" href="../../nl/wiki/technical.html"><svg viewBox="0 0 60 30" class="flag-svg" aria-hidden="true"><rect width="60" height="30" fill="#21468B"/><rect width="60" height="20" fill="#fff"/><rect width="60" height="10" fill="#AE1C28"/></svg><span>Nederlands</span></a><a hreflang="de" href="../../de/wiki/technical.html" aria-current="true" class="active"><svg viewBox="0 0 60 30" class="flag-svg" aria-hidden="true"><rect width="60" height="30" fill="#FFCE00"/><rect width="60" height="20" fill="#DD0000"/><rect width="60" height="10" fill="#000"/></svg><span>Deutsch</span></a></div></details>
+      <details class="lang-switch"><summary aria-label="DE — Sprache" title="Sprache"><svg viewBox="0 0 60 30" class="flag-svg" aria-hidden="true"><rect width="60" height="30" fill="#FFCE00"/><rect width="60" height="20" fill="#DD0000"/><rect width="60" height="10" fill="#000"/></svg><span class="lang-code">DE</span><svg class="lang-caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><div class="lang-menu"><a hreflang="en" href="../../wiki/technical.html"><svg viewBox="0 0 60 30" class="flag-svg" aria-hidden="true"><rect width="60" height="30" fill="#012169"/><path d="M0 0L60 30M60 0L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0L60 30M60 0L0 30" stroke="#C8102E" stroke-width="4"/><path d="M30 0V30M0 15H60" stroke="#fff" stroke-width="10"/><path d="M30 0V30M0 15H60" stroke="#C8102E" stroke-width="6"/></svg><span>English</span></a><a hreflang="nl" href="../../nl/wiki/technical.html"><svg viewBox="0 0 60 30" class="flag-svg" aria-hidden="true"><rect width="60" height="30" fill="#21468B"/><rect width="60" height="20" fill="#fff"/><rect width="60" height="10" fill="#AE1C28"/></svg><span>Nederlands</span></a><a hreflang="de" href="../../de/wiki/technical.html" aria-current="true" class="active"><svg viewBox="0 0 60 30" class="flag-svg" aria-hidden="true"><rect width="60" height="30" fill="#FFCE00"/><rect width="60" height="20" fill="#DD0000"/><rect width="60" height="10" fill="#000"/></svg><span>Deutsch</span></a></div></details>
       <a href="../../de/index.html">App öffnen →</a>
     </nav>
   </header>
@@ -232,12 +231,34 @@ pdf.addImage(imgData, 'PNG', x, y, drawW, drawH);
 pdf.save(`${baseName || 'grid-map'}-grid.pdf`);</code></pre>
       <p>Da der Quell-Canvas die nativen Pixelabmessungen des Bildes hat, bleiben die Gitterlinien beim Herunterskalieren auf die Seite scharf. Der Ausgabedateiname wird aus der hochgeladenen Datei abgeleitet, ihre Erweiterung wird entfernt und <code>-grid</code> angehängt.</p>
 
+      <p>jsPDF wird <strong>bei Bedarf geladen</strong>, nicht im Voraus. <code>exportPDF()</code> ist <code>async</code> und wartet auf einen kleinen Loader, der das CDN-<code>&lt;script&gt;</code> beim ersten Bedarf einfügt — im Hintergrund schon vorbereitet, sobald du ein Bild hinzufügst. Wer nie exportiert, lädt nichts vom CDN.</p>
+      <pre><code>let jspdfPromise = null;
+function loadJsPDF() {
+  if (window.jspdf) return Promise.resolve();
+  if (!jspdfPromise) {
+    jspdfPromise = new Promise((resolve, reject) =&gt; {
+      const s = document.createElement('script');
+      s.src = JSPDF_SRC;            // the cdnjs UMD bundle
+      s.onload = resolve;
+      s.onerror = () =&gt; { jspdfPromise = null; reject(new Error('Failed to load jsPDF')); };
+      document.head.appendChild(s);
+    });
+  }
+  return jspdfPromise;              // memoized; retries after a failure
+}
+
+async function exportPDF() {
+  await loadJsPDF();
+  const { jsPDF } = window.jspdf;
+  // … build the PDF (above) …
+}</code></pre>
+
       <h2 id="privacy">Datenschutzmodell</h2>
       <p>GridGen ist <strong>rein clientseitig</strong>. Das Bild wird mit dem <code>FileReader</code> des Browsers als Daten-URL gelesen und in ein <code>Image</code>-Element dekodiert – es wird nirgendwo übertragen:</p>
       <pre><code>const reader = new FileReader();
 reader.onload = (ev) => { img.src = ev.target.result; };
 reader.readAsDataURL(file);</code></pre>
-      <p>Es gibt keine Analysen, keinen Server und keine Netzwerkanfrage außer dem Laden der jsPDF-Bibliothek von deren CDN. Alles andere läuft auf der Seite.</p>
+      <p>Es gibt keine Analysen, keinen Server und keine Netzwerkanfrage außer dem Laden der jsPDF-Bibliothek von deren CDN — und das nur bei Bedarf. Alles andere läuft auf der Seite.</p>
 
       <h2 id="extend">GridGen erweitern</h2>
       <p>Das Design mit einer einzelnen Logikdatei hält Änderungen lokal. Häufige Erweiterungen:</p>

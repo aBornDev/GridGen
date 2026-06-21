@@ -46,6 +46,7 @@ function loadImage(file) {
       document.getElementById('previewContainer').style.display = 'flex';
       document.getElementById('exportBtn').disabled = false;
       render();
+      loadJsPDF(); // warm up the PDF library in the background once an image is ready
     };
     img.src = ev.target.result;
   };
@@ -301,36 +302,64 @@ function render() {
 }
 
 // ---------- PDF export ----------
-function exportPDF() {
+// jsPDF is loaded on demand (on image upload or first export) rather than up
+// front, so visitors who never export don't pay for the ~360KB library.
+const JSPDF_SRC = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+let jspdfPromise = null;
+function loadJsPDF() {
+  if (window.jspdf) return Promise.resolve();
+  if (!jspdfPromise) {
+    jspdfPromise = new Promise((resolve, reject) => {
+      const s = document.createElement('script');
+      s.src = JSPDF_SRC;
+      s.onload = resolve;
+      s.onerror = () => { jspdfPromise = null; reject(new Error('Failed to load jsPDF')); };
+      document.head.appendChild(s);
+    });
+  }
+  return jspdfPromise;
+}
+
+async function exportPDF() {
   if (!state.image) return;
-  const { jsPDF } = window.jspdf;
+  const btn = document.getElementById('exportBtn');
+  btn.disabled = true;
+  try {
+    await loadJsPDF();
+    const { jsPDF } = window.jspdf;
 
-  const w = canvas.width;
-  const h = canvas.height;
-  const orientation = w > h ? 'landscape' : 'portrait';
+    const w = canvas.width;
+    const h = canvas.height;
+    const orientation = w > h ? 'landscape' : 'portrait';
 
-  const pdf = new jsPDF({
-    orientation,
-    unit: 'pt',
-    format: 'a4',
-    compress: true
-  });
+    const pdf = new jsPDF({
+      orientation,
+      unit: 'pt',
+      format: 'a4',
+      compress: true
+    });
 
-  const pageW = pdf.internal.pageSize.getWidth();
-  const pageH = pdf.internal.pageSize.getHeight();
-  const margin = 24;
-  const availW = pageW - 2 * margin;
-  const availH = pageH - 2 * margin;
+    const pageW = pdf.internal.pageSize.getWidth();
+    const pageH = pdf.internal.pageSize.getHeight();
+    const margin = 24;
+    const availW = pageW - 2 * margin;
+    const availH = pageH - 2 * margin;
 
-  const scale = Math.min(availW / w, availH / h);
-  const drawW = w * scale;
-  const drawH = h * scale;
-  const x = (pageW - drawW) / 2;
-  const y = (pageH - drawH) / 2;
+    const scale = Math.min(availW / w, availH / h);
+    const drawW = w * scale;
+    const drawH = h * scale;
+    const x = (pageW - drawW) / 2;
+    const y = (pageH - drawH) / 2;
 
-  const imgData = canvas.toDataURL('image/png');
-  pdf.addImage(imgData, 'PNG', x, y, drawW, drawH);
+    const imgData = canvas.toDataURL('image/png');
+    pdf.addImage(imgData, 'PNG', x, y, drawW, drawH);
 
-  const baseName = (state.imageName.replace(/\.[^.]+$/, '') || 'grid-map').trim();
-  pdf.save(`${baseName || 'grid-map'}-grid.pdf`);
+    const baseName = (state.imageName.replace(/\.[^.]+$/, '') || 'grid-map').trim();
+    pdf.save(`${baseName || 'grid-map'}-grid.pdf`);
+  } catch (err) {
+    console.error('PDF export failed:', err);
+    alert('Could not generate the PDF. Please try again.');
+  } finally {
+    btn.disabled = false;
+  }
 }

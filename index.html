@@ -6,7 +6,7 @@
 
   <title>GridGen — Add a Coordinate Grid to Any Image &amp; Export as PDF</title>
   <meta name="description" content="Free browser tool to overlay a labeled coordinate grid on any photo or map and export it as a print-ready PDF. No signup, runs entirely in your browser.">
-  <meta name="keywords" content="grid overlay, grid on image, grid drawing method, image to grid PDF, coordinate grid generator, add grid to map, battle map grid, reference grid photo">
+<meta name="keywords" content="grid overlay, grid on image, grid drawing method, image to grid PDF, coordinate grid generator, add grid to map, battle map grid, reference grid photo">
   <link rel="canonical" href="https://aborndev.github.io/GridGen/">
   <meta name="theme-color" content="#171717">
   <meta name="robots" content="index, follow">
@@ -35,7 +35,6 @@
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
   <script type="application/ld+json">
 {
@@ -70,7 +69,7 @@
     <div class="header-top">
       <h1>GridGen</h1>
       <nav class="header-nav" aria-label="Documentation">
-        <details class="lang-switch"><summary aria-label="Language" title="Language"><svg viewBox="0 0 60 30" class="flag-svg" aria-hidden="true"><rect width="60" height="30" fill="#012169"/><path d="M0 0L60 30M60 0L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0L60 30M60 0L0 30" stroke="#C8102E" stroke-width="4"/><path d="M30 0V30M0 15H60" stroke="#fff" stroke-width="10"/><path d="M30 0V30M0 15H60" stroke="#C8102E" stroke-width="6"/></svg><span class="lang-code">EN</span><svg class="lang-caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><div class="lang-menu"><a hreflang="en" href="index.html" aria-current="true" class="active"><svg viewBox="0 0 60 30" class="flag-svg" aria-hidden="true"><rect width="60" height="30" fill="#012169"/><path d="M0 0L60 30M60 0L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0L60 30M60 0L0 30" stroke="#C8102E" stroke-width="4"/><path d="M30 0V30M0 15H60" stroke="#fff" stroke-width="10"/><path d="M30 0V30M0 15H60" stroke="#C8102E" stroke-width="6"/></svg><span>English</span></a><a hreflang="nl" href="nl/index.html"><svg viewBox="0 0 60 30" class="flag-svg" aria-hidden="true"><rect width="60" height="30" fill="#21468B"/><rect width="60" height="20" fill="#fff"/><rect width="60" height="10" fill="#AE1C28"/></svg><span>Nederlands</span></a><a hreflang="de" href="de/index.html"><svg viewBox="0 0 60 30" class="flag-svg" aria-hidden="true"><rect width="60" height="30" fill="#FFCE00"/><rect width="60" height="20" fill="#DD0000"/><rect width="60" height="10" fill="#000"/></svg><span>Deutsch</span></a></div></details>
+        <details class="lang-switch"><summary aria-label="EN — Language" title="Language"><svg viewBox="0 0 60 30" class="flag-svg" aria-hidden="true"><rect width="60" height="30" fill="#012169"/><path d="M0 0L60 30M60 0L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0L60 30M60 0L0 30" stroke="#C8102E" stroke-width="4"/><path d="M30 0V30M0 15H60" stroke="#fff" stroke-width="10"/><path d="M30 0V30M0 15H60" stroke="#C8102E" stroke-width="6"/></svg><span class="lang-code">EN</span><svg class="lang-caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><div class="lang-menu"><a hreflang="en" href="index.html" aria-current="true" class="active"><svg viewBox="0 0 60 30" class="flag-svg" aria-hidden="true"><rect width="60" height="30" fill="#012169"/><path d="M0 0L60 30M60 0L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0L60 30M60 0L0 30" stroke="#C8102E" stroke-width="4"/><path d="M30 0V30M0 15H60" stroke="#fff" stroke-width="10"/><path d="M30 0V30M0 15H60" stroke="#C8102E" stroke-width="6"/></svg><span>English</span></a><a hreflang="nl" href="nl/index.html"><svg viewBox="0 0 60 30" class="flag-svg" aria-hidden="true"><rect width="60" height="30" fill="#21468B"/><rect width="60" height="20" fill="#fff"/><rect width="60" height="10" fill="#AE1C28"/></svg><span>Nederlands</span></a><a hreflang="de" href="de/index.html"><svg viewBox="0 0 60 30" class="flag-svg" aria-hidden="true"><rect width="60" height="30" fill="#FFCE00"/><rect width="60" height="20" fill="#DD0000"/><rect width="60" height="10" fill="#000"/></svg><span>Deutsch</span></a></div></details>
         <a href="wiki/index.html">Docs &amp; Wiki</a>
       </nav>
     </div>
@@ -109,11 +108,11 @@
         <div id="cellsControls">
           <div class="field-row">
             <div class="field">
-              <div class="field-label">Columns</div>
+              <label class="field-label" for="cols">Columns</label>
               <input type="number" id="cols" value="10" min="1" max="100">
             </div>
             <div class="field">
-              <div class="field-label">Rows</div>
+              <label class="field-label" for="rows">Rows</label>
               <input type="number" id="rows" value="10" min="1" max="100">
             </div>
           </div>
@@ -121,7 +120,7 @@
 
         <div id="sizeControls" style="display:none">
           <div class="field">
-            <div class="field-label">Cell size <span class="value"><span id="cellSizeVal">50</span> px</span></div>
+            <label class="field-label" for="cellSize">Cell size <span class="value"><span id="cellSizeVal">50</span> px</span></label>
             <input type="number" id="cellSize" value="50" min="5" max="500">
           </div>
         </div>
@@ -140,18 +139,18 @@
             <div class="color-swatch" data-color="#2563eb" style="background:#2563eb"></div>
             <div class="color-swatch" data-color="#16a34a" style="background:#16a34a"></div>
             <div class="color-swatch" id="customColor" style="background:conic-gradient(from 0deg, #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff, #ff0000)">
-              <input type="color" id="customColorInput" value="#000000">
+              <input type="color" id="customColorInput" value="#000000" aria-label="Custom color">
             </div>
           </div>
         </div>
 
         <div class="field">
-          <div class="field-label">Line thickness <span class="value"><span id="thicknessVal">2</span> px</span></div>
+          <label class="field-label" for="thickness">Line thickness <span class="value"><span id="thicknessVal">2</span> px</span></label>
           <input type="range" id="thickness" min="1" max="10" step="1" value="2">
         </div>
 
         <div class="field">
-          <div class="field-label">Opacity <span class="value"><span id="opacityVal">100</span>%</span></div>
+          <label class="field-label" for="opacity">Opacity <span class="value"><span id="opacityVal">100</span>%</span></label>
           <input type="range" id="opacity" min="10" max="100" step="5" value="100">
         </div>
       </section>
