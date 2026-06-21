@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>GridGen Anwendungen — Einsatzmöglichkeiten für Koordinatengitter über Bilder</title>
+  <meta name="description" content="Praktische Anwendungen von GridGen: Gitterzeichenmethode, D&amp;D-Schlachtkarten, Kreuzstich-Zählmuster, Koordinatensystem-Arbeitsblätter, Orientierungskarten, Spielfeldzonen, Grundrisse und mehr — jeweils mit den empfohlenen Einstellungen.">
+<meta name="keywords" content="Gitterzeichenmethode, Rastermethode zeichnen, Schlachtkarte Raster, Kreuzstich Gitter aus Foto, Zählmuster aus Foto, Koordinatensystem Arbeitsblatt, Orientierungslauf Karte Gitter, Spielfeld Zonen Raster, Grundriss Raster, Escape-Room Gitter, Foto Kompositionsgitter, Archäologie Referenzgitter, Raster über Bild legen Anwendungen">
+  <link rel="canonical" href="https://aborndev.github.io/GridGen/de/wiki/anwendungen.html">
+  <meta name="theme-color" content="#171717">
+  <meta name="robots" content="index, follow">
+  <link rel="alternate" hreflang="en" href="https://aborndev.github.io/GridGen/wiki/use-cases.html">
+  <link rel="alternate" hreflang="nl" href="https://aborndev.github.io/GridGen/nl/wiki/toepassingen.html">
+  <link rel="alternate" hreflang="de" href="https://aborndev.github.io/GridGen/de/wiki/anwendungen.html">
+  <link rel="alternate" hreflang="x-default" href="https://aborndev.github.io/GridGen/wiki/use-cases.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="GridGen">
+  <meta property="og:title" content="GridGen Anwendungen — Einsatzmöglichkeiten für Koordinatengitter über Bilder">
+  <meta property="og:description" content="Praktische Anwendungen von GridGen: Gitterzeichenmethode, D&amp;D-Schlachtkarten, Kreuzstich-Zählmuster, Koordinatensystem-Arbeitsblätter, Orientierungskarten, Spielfeldzonen, Grundrisse und mehr — jeweils mit den empfohlenen Einstellungen.">
+  <meta property="og:url" content="https://aborndev.github.io/GridGen/de/wiki/anwendungen.html">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:locale:alternate" content="nl_NL">
+  <meta property="og:image" content="https://aborndev.github.io/GridGen/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="GridGen — ein beschriftetes Koordinatengitter über einem Bild, als PDF exportiert">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="GridGen Anwendungen — Einsatzmöglichkeiten für Koordinatengitter über Bilder">
+  <meta name="twitter:description" content="Praktische Anwendungen von GridGen: Gitterzeichenmethode, D&amp;D-Schlachtkarten, Kreuzstich-Zählmuster, Koordinatensystem-Arbeitsblätter, Orientierungskarten, Spielfeldzonen, Grundrisse und mehr — jeweils mit den empfohlenen Einstellungen.">
+  <meta name="twitter:image" content="https://aborndev.github.io/GridGen/og-image.png">
+  <meta name="twitter:image:alt" content="GridGen — ein beschriftetes Koordinatengitter über einem Bild, als PDF exportiert">
+
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../wiki/wiki.css">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": "de",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Benötige ich für einen dieser Anwendungsfälle ein Konto?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nein. GridGen ist kostenlos, erfordert keine Anmeldung und läuft vollständig im Browser — dein Bild verlässt dein Gerät nicht."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Stellt das Gitter echte Weltkoordinaten dar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nein. Es ist ein visuelles Referenzgitter aus gleichmäßig verteilten, beschrifteten Feldern. Es ist nicht georeferenziert und berechnet keine echten UTM-, MGRS- oder kartesischen Koordinaten — behandle es als relatives Referenzsystem, auf das sich alle beziehen können."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kann ich GridGen für die Gitterzeichenmethode verwenden?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja — das ist der klassische Kunst-Anwendungsfall. Lade deine Vorlage hoch, wähle Nach Zellen (zum Beispiel 10×10), füge Schach-Beschriftungen außen hinzu und reduziere die Deckkraft der Linien. Drucke das PDF und zeichne dasselbe Gitter auf deine Leinwand, um das Bild Feld für Feld zu übertragen oder zu vergrößern."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kann ich eine D&D- oder TTRPG-Schlachtkarte mit Gitter erstellen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. Lade deine Kartenillustration hoch, nutze Nach Größe, damit die Felder eine feste Größe behalten, schalte Schach-Beschriftungen (A1) ein und platziere sie innen, damit eine Referenz wie \"C4\" direkt auf der Schlachtkarte lesbar ist."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kann ich ein Foto in ein Kreuzstich- oder Pixel-Art-Zählmuster umwandeln?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja — nutze Nach Größe, damit jede Zelle einem Stich oder Pixel entspricht, und füge Beschriftungen hinzu, um Reihen und Spalten zu zählen. GridGen legt das Zählmuster-Gitter an; es reduziert keine Farben und erzeugt keine Stichpalette."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kann ich ein Koordinatensystem-Arbeitsblatt erstellen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. Nutze Nach Zellen mit numerischen Beschriftungen (1,1) und dem Ursprung unten links, um der kartesischen Konvention aus den Schulbüchern zu entsprechen, und drucke das PDF als Handout."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kann ich ein Referenzgitter über eine Karte legen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja — lade ein Kartenbild hoch und lege ein beschriftetes Gitter darüber, zum Beispiel für Orientierungslauf, Pfadfinder oder als Feldreferenz. Die Felder sind ein relatives Referenzsystem, keine echten UTM- oder MGRS-Koordinaten; die Seite Gitter über Karten behandelt das ausführlich."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kann ich ein Spielfeld oder einen Grundriss in Zonen einteilen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. Nutze Nach Zellen, um ein Spielfeld- oder Grundriss-Bild in beschriftete Zonen einzuteilen, und platziere die Beschriftungen außen, damit der zugrunde liegende Plan sichtbar bleibt — praktisch für Teambesprechungen oder die Orientierung bei Veranstaltungen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Welche Einstellungen soll ich für mein Projekt verwenden?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nutze Nach Zellen für eine feste Gitterform (Kunst, Arbeitsblätter, Zonen) und Nach Größe für eine feste Feldgröße (Schlachtkarten, Zählmuster). Nutze Schach-Beschriftungen (A1), um Felder zu benennen, oder Numerisch (1,1) für Koordinatensystem-Arbeiten."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kann ich das Ergebnis drucken?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. Jeder Anwendungsfall endet in einem druckfertigen A4-PDF — die Ausrichtung wird automatisch gewählt und das Gitter wird in voller Auflösung deines Bildes gezeichnet."
+      }
+    }
+  ]
+}
+</script>
+</head>
+
+<body>
+<div class="wiki">
+  <header class="topbar">
+    <a class="brand" href="../../de/index.html">
+      <img src="../../favicon.svg" alt="GridGen logo">
+      GridGen-Wiki
+    </a>
+    <nav class="topbar-actions" aria-label="Website">
+      <details class="lang-switch"><summary aria-label="DE — Sprache" title="Sprache"><svg viewBox="0 0 60 30" class="flag-svg" aria-hidden="true"><rect width="60" height="30" fill="#FFCE00"/><rect width="60" height="20" fill="#DD0000"/><rect width="60" height="10" fill="#000"/></svg><span class="lang-code">DE</span><svg class="lang-caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><div class="lang-menu"><a hreflang="en" href="../../wiki/use-cases.html"><svg viewBox="0 0 60 30" class="flag-svg" aria-hidden="true"><rect width="60" height="30" fill="#012169"/><path d="M0 0L60 30M60 0L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0L60 30M60 0L0 30" stroke="#C8102E" stroke-width="4"/><path d="M30 0V30M0 15H60" stroke="#fff" stroke-width="10"/><path d="M30 0V30M0 15H60" stroke="#C8102E" stroke-width="6"/></svg><span>English</span></a><a hreflang="nl" href="../../nl/wiki/toepassingen.html"><svg viewBox="0 0 60 30" class="flag-svg" aria-hidden="true"><rect width="60" height="30" fill="#21468B"/><rect width="60" height="20" fill="#fff"/><rect width="60" height="10" fill="#AE1C28"/></svg><span>Nederlands</span></a><a hreflang="de" href="../../de/wiki/anwendungen.html" aria-current="true" class="active"><svg viewBox="0 0 60 30" class="flag-svg" aria-hidden="true"><rect width="60" height="30" fill="#FFCE00"/><rect width="60" height="20" fill="#DD0000"/><rect width="60" height="10" fill="#000"/></svg><span>Deutsch</span></a></div></details>
+      <a href="../../de/index.html">App öffnen →</a>
+    </nav>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <nav class="nav-group" aria-label="Dokumentationsseiten">
+        <p class="nav-title">Anleitung</p>
+        <ul>
+          <li><a href="../../de/wiki/index.html">Wie GridGen funktioniert</a></li>
+          <li><a class="active" href="../../de/wiki/anwendungen.html">Anwendungen</a></li>
+          <li><a href="../../de/wiki/karten-gitter.html">Gitter über Karten</a></li>
+          <li><a href="../../de/wiki/technical.html">Technische Referenz</a></li>
+        </ul>
+      </nav>
+      <nav class="nav-group" aria-label="Auf dieser Seite">
+        <p class="nav-title">Auf dieser Seite</p>
+        <ul>
+          <li><a href="#overview">Überblick</a></li>
+          <li><a href="#art">Kunst &amp; Gitterzeichenmethode</a></li>
+          <li><a href="#tabletop">Tabletop &amp; Spiele</a></li>
+          <li><a href="#maps">Karten &amp; Gelände</a></li>
+          <li><a href="#education">Bildung</a></li>
+          <li><a href="#craft">Zählmuster</a></li>
+          <li><a href="#photo">Fotografie</a></li>
+          <li><a href="#spatial">Pläne &amp; Zonen</a></li>
+          <li><a href="#settings">Einstellungs-Kurzübersicht</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <p class="eyebrow">Anleitung</p>
+      <h1>Anwendungen von GridGen</h1>
+      <p class="lead">GridGen macht eine Sache gut — es legt ein beschriftetes Koordinatengitter über ein beliebiges Bild und exportiert ein druckfertiges PDF. Diese eine Funktion löst eine überraschend große Bandbreite an echten Problemen. Hier sind die nützlichsten Anwendungen mit den genauen Einstellungen für jede einzelne.</p>
+
+      <h2 id="overview">Überblick</h2>
+      <p>Jeder der folgenden Anwendungsfälle ist nur eine andere Kombination derselben Einstellungen: <strong>Nach Zellen</strong> vs. <strong>Nach Größe</strong>, <strong>Schach (A1)</strong> vs. <strong>Numerisch (1,1)</strong> Beschriftungen, <strong>außen</strong> vs. <strong>innen</strong> Platzierung und die <strong>Ursprung</strong>-Ecke. Die vollständige Referenz für diese Einstellungen findest du im <a class="inline" href="../../de/wiki/index.html">Benutzerhandbuch</a>; auf dieser Seite geht es darum, <em>welche</em> Kombination für <em>welchen</em> Einsatz passt. Alles läuft im Browser, dein Bild verlässt dein Gerät nicht.</p>
+      <div class="note">
+        <strong>Ein visuelles Referenzgitter, keine Koordinaten.</strong> GridGen zeichnet ein gleichmäßiges Gitter aus beschrifteten Feldern als <em>relatives</em> Referenzsystem. Es ist nicht georeferenziert und berechnet keine echten UTM-, MGRS- oder Gauß-Krüger-Koordinaten — siehe <a class="inline" href="../../de/wiki/karten-gitter.html#limits">Gitter über Karten</a>, wo das relevant ist.
+      </div>
+
+      <h2 id="art">Kunst &amp; Gitterzeichenmethode</h2>
+      <p>Die <strong>Gitterzeichenmethode</strong> ist eine klassische Technik, um ein Referenzbild von Hand auf Papier oder Leinwand zu übertragen oder zu vergrößern: Man legt ein gleichmäßiges Gitter über die Vorlage, zeichnet dasselbe Gitter auf die Zeichenfläche und kopiert das Bild Feld für Feld. GridGen automatisiert den Schritt der Gitterüberlagerung.</p>
+      <ul>
+        <li><strong>Künstlerinnen, Künstler &amp; Schülerinnen und Schüler</strong> — lade ein Referenzfoto hoch, nutze <strong>Nach Zellen</strong> (z.&nbsp;B. 8&nbsp;×&nbsp;8 oder 10&nbsp;×&nbsp;10), Schach-Beschriftungen (A1) außen und eine dünne Linie mit reduzierter Deckkraft, damit das Gitter dezent über dem Bild liegt. Drucke das PDF und übertrage das Gitter auf deine Leinwand.</li>
+        <li><strong>Wandmalerinnen, Wandmaler &amp; Schildermaler</strong> — dieselbe Methode funktioniert auch im großen Maßstab: Ein 10&nbsp;×&nbsp;10-Gitter auf einer kleinen Vorlage lässt sich Feld für Feld auf ein 10&nbsp;×&nbsp;10-Gitter an der Wand übertragen und behält die Proportionen in jeder Größe exakt.</li>
+      </ul>
+      <p>Relevante Suchbegriffe: <em>Gitterzeichenmethode, Rastermethode zeichnen, Referenzfoto mit Gitter, Zeichnung mit Raster vergrößern</em>.</p>
+
+      <h2 id="tabletop">Tabletop &amp; Spiele</h2>
+      <p>Jede Karte oder Illustration wird spielbar, sobald jedes Feld einen Namen hat.</p>
+      <ul>
+        <li><strong>D&amp;D- &amp; TTRPG-Schlachtkarten</strong> — lade eine Kartenillustration hoch, nutze <strong>Nach Größe</strong>, damit die Felder eine feste Größe behalten, Schach-Beschriftungen (A1) und Platzierung innen, damit „Treffpunkt C4" direkt auf der Schlachtkarte lesbar ist. Siehe <a class="inline" href="../../de/wiki/karten-gitter.html">Gitter über Karten</a> für den vollständigen Karten-Workflow.</li>
+        <li><strong>Kriegsspiele</strong> (historisch, Sci-Fi, Fantasy) — ein dichteres <strong>Nach-Größe</strong>-Gitter über einem Forumsfoto oder Szenariobild gibt allen eine gemeinsame Referenz für Schlachtberichte und Forumseinträge.</li>
+        <li><strong>Escape Rooms &amp; Rätsel-Requisiten</strong> — Schach-Beschriftungen innen mit dem automatischen Kontrasthalo bleiben auch über detailreicher Grafik lesbar, sodass „finde das Symbol in Feld D5" auf einem gedruckten Hinweis funktioniert.</li>
+      </ul>
+      <p>Suchbegriffe: <em>Schlachtkarte Raster, Schlachtkarte Gitter, D&amp;D-Karte mit Gitter, Kriegsspiel Szenariogitter, Escape-Room-Rätsel Gitter</em>.</p>
+
+      <h2 id="maps">Karten &amp; Gelände</h2>
+      <p>Versehe jedes Kartenbild mit einem gemeinsamen, druckbaren Referenzgitter. Ausführlicher behandelt wird dies auf der eigenen Seite <a class="inline" href="../../de/wiki/karten-gitter.html">Gitter über Karten</a>; kurz zusammengefasst:</p>
+      <ul>
+        <li><strong>Orientierungslauf &amp; Pfadfinder</strong> — füge einer Routen- oder Gebietskarte ein Koordinatengitter hinzu und drucke Kopien für eine Gruppe, damit sich alle ohne GPS auf Felder beziehen können.</li>
+        <li><strong>Archäologie &amp; Geländedokumentation</strong> — lege ein Referenzgitter über ein Gelände- oder Grabungsfoto für einen Bericht. Nutze numerische Beschriftungen und den Ursprung unten links, um der Südwest-Ecken-Konvention zu entsprechen. Die Felder sind ein <em>relatives</em> Referenzsystem, keine vermessungsgenauen Maße.</li>
+      </ul>
+      <p>Suchbegriffe: <em>Orientierungslauf Karte Gitter, Karte mit Koordinatengitter drucken, Grabungsfoto Gitter, Geländedokumentation Referenzgitter</em>.</p>
+
+      <h2 id="education">Bildung</h2>
+      <p><strong>Lehrerinnen, Lehrer &amp; Nachhilfekräfte</strong> können ein passendes Bild — einen Schulgrundriss, eine Ortskarte, ein Diagramm — in ein individuelles <strong>Koordinatensystem-Arbeitsblatt</strong> verwandeln. Nutze <strong>Nach Zellen</strong>, numerische Beschriftungen (1,1) und den <strong>Ursprung unten links</strong>, um der kartesischen Konvention aus den Schulbüchern zu entsprechen, und drucke das PDF als Handout. Das macht das Üben von Koordinaten spannender als ein generisches leeres Gitter.</p>
+      <p>Suchbegriffe: <em>Koordinatengitter Arbeitsblatt aus Bild, Koordinatensystem Arbeitsblatt erstellen, kartesisches Gitter Overlay</em>.</p>
+
+      <h2 id="craft">Zählmuster</h2>
+      <p>Zählmuster arbeiten mit einem Raster aus Feldern — genau das, was GridGen erzeugt.</p>
+      <ul>
+        <li><strong>Kreuzstich, Needlepoint &amp; Pixel-Art</strong> — lade ein Foto oder ein Design hoch, nutze <strong>Nach Größe</strong>, damit jede Zelle einem Stich oder Pixel entspricht, und füge Beschriftungen hinzu, um Reihen und Spalten zu zählen. Exportiere das Zählmuster als PDF, das du neben dem Bildschirm verwenden kannst.</li>
+        <li><strong>Weitere Zählarbeiten</strong> (Diamond Painting, Perlenarbeiten, Bügelperlen) verwenden denselben Foto-zu-Muster-Workflow.</li>
+      </ul>
+      <p>GridGen legt das Gitter zum Zählen an; es reduziert keine Farben und erzeugt keine Stichpalette. Suchbegriffe: <em>Zählmuster aus Foto, Kreuzstich Gitter aus Foto, Pixel-Art-Raster, Referenzgitter Foto</em>.</p>
+
+      <h2 id="photo">Fotografie</h2>
+      <ul>
+        <li><strong>Kompositionsstudie</strong> — lege ein 3&nbsp;×&nbsp;3-Gitter (Drittel-Regel-Check) oder ein dichteres Gitter mit niedriger Deckkraft über ein Foto, um die Bildkomposition zu analysieren. Das 3&nbsp;×&nbsp;3-Gitter stellst du selbst ein; GridGen enthält keine vordefinierte Drittel-Regel-Voreinstellung.</li>
+        <li><strong>Anmerkungen &amp; Feedback</strong> — ein leichtes, beschriftetes Gitter ermöglicht präzise Rückmeldungen im Team: „enger zuschneiden bei B3", „der Staubfleck liegt in D2." Kundenfotos verlassen den Browser nicht.</li>
+      </ul>
+      <p>Suchbegriffe: <em>Foto Kompositionsgitter Overlay, Drittel-Regel Gitter auf Foto, Bild mit Gitter annotieren</em>.</p>
+
+      <h2 id="spatial">Pläne &amp; Zonen</h2>
+      <ul>
+        <li><strong>Sport-Coaching</strong> — teile ein Spielfeld- oder Platzdiagramm in taktische Zonen ein (z.&nbsp;B. 6&nbsp;×&nbsp;3) mit <strong>Nach Zellen</strong>, damit sich alle in der Teambesprechung auf dieselbe „Zone 4B" beziehen.</li>
+        <li><strong>Museen, Ausstellungen &amp; Veranstaltungen</strong> — lege ein grobes, beschriftetes Gitter über ein Grundriss-Bild mit <strong>außen</strong> platzierten Beschriftungen (damit der Plan sichtbar bleibt), um Personal und Besuchern die Orientierung nach Zonen zu erleichtern.</li>
+      </ul>
+      <p>Suchbegriffe: <em>Fußballfeld Zonen Raster, Grundriss Raster, Veranstaltungsplan beschriftete Zonen</em>.</p>
+
+      <h2 id="settings">Einstellungs-Kurzübersicht</h2>
+      <table class="spec-table">
+        <thead><tr><th>Wenn du … möchtest</th><th>Gittermodus</th><th>Beschriftungen</th><th>Tipps</th></tr></thead>
+        <tbody>
+          <tr><td>Eine Zeichnung von Hand übertragen</td><td>Nach Zellen</td><td>Schach, außen</td><td>Dünne Linie, niedrige Deckkraft</td></tr>
+          <tr><td>Eine Schlachtkarte / ein Spielbrett erstellen</td><td>Nach Größe</td><td>Schach, innen</td><td>Feste Feldgröße; Halo hält Beschriftungen lesbar</td></tr>
+          <tr><td>Ein Koordinatensystem-Arbeitsblatt erstellen</td><td>Nach Zellen</td><td>Numerisch, außen</td><td>Ursprung unten links (kartesisch)</td></tr>
+          <tr><td>Ein Zählmuster anlegen</td><td>Nach Größe</td><td>Numerisch oder Schach</td><td>Eine Zelle pro Stich/Pixel</td></tr>
+          <tr><td>Ein Spielfeld oder einen Grundriss in Zonen einteilen</td><td>Nach Zellen</td><td>Schach oder Numerisch, außen</td><td>Grobes Gitter; Plan sichtbar lassen</td></tr>
+        </tbody>
+      </table>
+      <p>Wenn du eine Kombination gewählt hast, <a class="inline" href="../../de/index.html">öffne die App</a> und probiere sie aus — die Live-Vorschau aktualisiert sich bei jeder Anpassung.</p>
+
+      <h2 id="faq">FAQ</h2>
+      <h3>Benötige ich für einen dieser Anwendungsfälle ein Konto?</h3>
+      <p>Nein. GridGen ist kostenlos, erfordert keine Anmeldung und läuft vollständig im Browser — dein Bild verlässt dein Gerät nicht.</p>
+      <h3>Stellt das Gitter echte Weltkoordinaten dar?</h3>
+      <p>Nein. Es ist ein visuelles Referenzgitter aus gleichmäßig verteilten, beschrifteten Feldern. Es ist nicht georeferenziert und berechnet keine echten UTM-, MGRS- oder kartesischen Koordinaten — behandle es als relatives Referenzsystem, auf das sich alle beziehen können.</p>
+      <h3>Kann ich GridGen für die Gitterzeichenmethode verwenden?</h3>
+      <p>Ja — das ist der klassische Kunst-Anwendungsfall. Lade deine Vorlage hoch, wähle Nach Zellen (zum Beispiel 10×10), füge Schach-Beschriftungen außen hinzu und reduziere die Deckkraft der Linien. Drucke das PDF und zeichne dasselbe Gitter auf deine Leinwand, um das Bild Feld für Feld zu übertragen oder zu vergrößern.</p>
+      <h3>Kann ich eine D&amp;D- oder TTRPG-Schlachtkarte mit Gitter erstellen?</h3>
+      <p>Ja. Lade deine Kartenillustration hoch, nutze Nach Größe, damit die Felder eine feste Größe behalten, schalte Schach-Beschriftungen (A1) ein und platziere sie innen, damit eine Referenz wie "C4" direkt auf der Schlachtkarte lesbar ist.</p>
+      <h3>Kann ich ein Foto in ein Kreuzstich- oder Pixel-Art-Zählmuster umwandeln?</h3>
+      <p>Ja — nutze Nach Größe, damit jede Zelle einem Stich oder Pixel entspricht, und füge Beschriftungen hinzu, um Reihen und Spalten zu zählen. GridGen legt das Zählmuster-Gitter an; es reduziert keine Farben und erzeugt keine Stichpalette.</p>
+      <h3>Kann ich ein Koordinatensystem-Arbeitsblatt erstellen?</h3>
+      <p>Ja. Nutze Nach Zellen mit numerischen Beschriftungen (1,1) und dem Ursprung unten links, um der kartesischen Konvention aus den Schulbüchern zu entsprechen, und drucke das PDF als Handout.</p>
+      <h3>Kann ich ein Referenzgitter über eine Karte legen?</h3>
+      <p>Ja — lade ein Kartenbild hoch und lege ein beschriftetes Gitter darüber, zum Beispiel für Orientierungslauf, Pfadfinder oder als Feldreferenz. Die Felder sind ein relatives Referenzsystem, keine echten UTM- oder MGRS-Koordinaten; die Seite Gitter über Karten behandelt das ausführlich.</p>
+      <h3>Kann ich ein Spielfeld oder einen Grundriss in Zonen einteilen?</h3>
+      <p>Ja. Nutze Nach Zellen, um ein Spielfeld- oder Grundriss-Bild in beschriftete Zonen einzuteilen, und platziere die Beschriftungen außen, damit der zugrunde liegende Plan sichtbar bleibt — praktisch für Teambesprechungen oder die Orientierung bei Veranstaltungen.</p>
+      <h3>Welche Einstellungen soll ich für mein Projekt verwenden?</h3>
+      <p>Nutze Nach Zellen für eine feste Gitterform (Kunst, Arbeitsblätter, Zonen) und Nach Größe für eine feste Feldgröße (Schlachtkarten, Zählmuster). Nutze Schach-Beschriftungen (A1), um Felder zu benennen, oder Numerisch (1,1) für Koordinatensystem-Arbeiten.</p>
+      <h3>Kann ich das Ergebnis drucken?</h3>
+      <p>Ja. Jeder Anwendungsfall endet in einem druckfertigen A4-PDF — die Ausrichtung wird automatisch gewählt und das Gitter wird in voller Auflösung deines Bildes gezeichnet.</p>
+
+      <nav class="page-nav" aria-label="Seitennavigation">
+        <a class="prev" href="../../de/wiki/index.html"><span>Zurück</span>Wie GridGen funktioniert</a>
+        <a class="next" href="../../de/wiki/karten-gitter.html"><span>Weiter</span>Gitter über Karten →</a>
+      </nav>
+
+      <footer class="footer">
+        <p>GridGen ist quelloffen unter der GPL v3. Ein visuelles Gitter-Overlay-Tool — kein georeferenzierter Kartengenerator.</p>
+      </footer>
+    </main>
+  </div>
+</div>
+
+
+</body>
+</html>

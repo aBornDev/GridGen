@@ -10,12 +10,13 @@
   "pages": {
     "home": {
       "title": "GridGen — Koordinatengitter über jedes Bild legen & als PDF exportieren",
-      "description": "Kostenloses Browser-Tool, um ein beschriftetes Koordinatengitter über ein Foto oder eine Karte zu legen und als druckfertiges PDF zu exportieren. Kein Konto nötig, läuft komplett im Browser.",
-      "keywords": "Gitter über Bild, Raster über Bild legen, Koordinatengitter, Gitter über Foto, Gitterzeichenmethode, Bild zu Gitter PDF, Gitter über Karte"
+      "description": "Kostenloses Browser-Tool, um ein beschriftetes Koordinatengitter über ein Foto, eine Karte, eine Schlachtkarte oder einen Grundriss zu legen und als druckfertiges A4-PDF zu exportieren. Kein Upload, kein Konto nötig.",
+      "keywords": "Gitter über Bild, Raster über Bild legen, Koordinatengitter, Gitter über Foto, Gitterzeichenmethode, Rastermethode zeichnen, Bild zu Gitter PDF, Raster PDF drucken, Gitter über Karte, Schlachtkarte Raster, Zählmuster aus Foto, Pixel-Art-Raster, Koordinatensystem Arbeitsblatt, Fußballfeld Zonen Raster, Grundriss Raster, Referenzgitter Foto"
     },
     "wikiHow": {
       "title": "Wie GridGen funktioniert — Anleitung & Wiki",
-      "description": "Eine vollständige Anleitung zu GridGen: ein Bild hochladen, ein Koordinatengitter einstellen, die Darstellung anpassen, Schach- oder Zahlenbeschriftungen hinzufügen und als druckfertiges PDF exportieren."
+      "description": "Eine vollständige Anleitung zu GridGen: ein Bild hochladen, ein Koordinatengitter einstellen, die Darstellung anpassen, Schach- oder Zahlenbeschriftungen hinzufügen und als druckfertiges PDF exportieren.",
+      "keywords": "Gitterzeichenmethode anwenden, Koordinatenbeschriftung zu Bild hinzufügen, Gitter-Overlay Anleitung, Schach A1 Gitterbeschriftung, Koordinatengitter PDF Export, Referenzgitter Foto"
     },
     "wikiTech": {
       "title": "GridGen Technische Referenz — Stack & Architektur",
@@ -25,17 +26,25 @@
       "title": "Koordinatengitter über eine Karte legen & als PDF drucken — GridGen",
       "description": "Lege ein Koordinaten-Referenzgitter über ein Kartenbild und exportiere ein druckfertiges PDF — praktisch für Orientierungslauf, Pfadfinder und als Feldreferenz. Ein visuelles Gitter über einer vorhandenen Karte, kein Kartengenerator mit Geodaten.",
       "keywords": "Koordinatengitter über Karte, Raster über Karte legen, Gitter über Karte, Karte mit Gitter drucken PDF, Orientierungslauf Karte Gitter, Wanderkarte Gitter, Referenzgitter über Karte"
+    },
+    "useCases": {
+      "title": "GridGen Anwendungen — Einsatzmöglichkeiten für Koordinatengitter über Bilder",
+      "description": "Praktische Anwendungen von GridGen: Gitterzeichenmethode, D&D-Schlachtkarten, Kreuzstich-Zählmuster, Koordinatensystem-Arbeitsblätter, Orientierungskarten, Spielfeldzonen, Grundrisse und mehr — jeweils mit den empfohlenen Einstellungen.",
+      "keywords": "Gitterzeichenmethode, Rastermethode zeichnen, Schlachtkarte Raster, Kreuzstich Gitter aus Foto, Zählmuster aus Foto, Koordinatensystem Arbeitsblatt, Orientierungslauf Karte Gitter, Spielfeld Zonen Raster, Grundriss Raster, Escape-Room Gitter, Foto Kompositionsgitter, Archäologie Referenzgitter, Raster über Bild legen Anwendungen"
     }
   },
   "schema": {
     "home": {
       "featureList": [
-        "Gitter nach Anzahl der Zellen oder nach Zellengröße in Pixeln",
-        "Anpassbare Linienfarbe, -stärke und Deckkraft",
-        "Schachnotation (A1) oder Zahlenbeschriftung (1,1)",
-        "Beschriftung innerhalb oder außerhalb der Zellen",
-        "Ursprung oben links oder unten links",
-        "PDF-Export in voller Bildauflösung"
+        "Gitter nach Anzahl der Zellen (1–100 Spalten/Zeilen) oder nach Zellengröße in Pixeln (5–500)",
+        "Anpassbare Linienfarbe, -stärke (1–10 px) und Deckkraft (10–100 %)",
+        "Schach-Beschriftung (A1) oder numerische Beschriftung (1,1)",
+        "Beschriftung innen mit Kontrasthalo oder außen in sauberen Rändern",
+        "Ursprung oben links oder unten links (kartesisch)",
+        "Live-Vorschau, die sich bei jeder Gitteranpassung sofort aktualisiert",
+        "Druckfertiger A4-PDF-Export, automatische Hoch-/Querformat-Wahl, eingepasst",
+        "Läuft vollständig im Browser — Bilder werden nie hochgeladen",
+        "Kostenlos und quelloffen (GPL v3), keine Anmeldung"
       ]
     },
     "wikiHow": {
@@ -46,6 +55,13 @@
         { "name": "Darstellung anpassen", "text": "Stelle Linienfarbe, -stärke und Deckkraft für gute Lesbarkeit ein." },
         { "name": "Koordinatenbeschriftung hinzufügen", "text": "Wähle Schach- oder Zahlenbeschriftung, Position innen oder außen und die Ursprungsecke." },
         { "name": "PDF exportieren", "text": "Klicke auf PDF herunterladen, um eine A4-Datei in voller Auflösung zu speichern." }
+      ],
+      "faq": [
+        { "q": "Ist GridGen kostenlos?", "a": "Ja. Es ist kostenlos, quelloffen und unter der GNU GPL v3 veröffentlicht." },
+        { "q": "Werden meine Bilder irgendwo hochgeladen?", "a": "Nein. Die gesamte Verarbeitung findet lokal in deinem Browser statt. Deine Bilder werden nie an einen Server gesendet." },
+        { "q": "Welche Bildformate werden unterstützt?", "a": "PNG, JPG und WEBP — jedes Rasterformat, das dein Browser dekodieren kann." },
+        { "q": "Welche Auflösung hat das exportierte PDF?", "a": "Das Gitter wird in der nativen Vollauflösung deines Bildes zusammengesetzt und dann auf einer A4-Seite eingepasst." },
+        { "q": "Welche Browser werden unterstützt?", "a": "Alle modernen Browser mit HTML5 Canvas- und File-API-Unterstützung — Chrome, Firefox, Safari und Edge." }
       ]
     },
     "wikiTech": {
@@ -59,6 +75,26 @@
         { "name": "Gitter einstellen", "text": "Wähle die Anzahl der Felder oder eine feste Zellengröße passend zum gewünschten Referenzgitter." },
         { "name": "Koordinatenbeschriftung hinzufügen", "text": "Aktiviere Schach- (A1) oder Zahlenbeschriftung (1,1), damit jedes Feld eine Referenz hat." },
         { "name": "Als PDF exportieren", "text": "Lade ein druckfertiges PDF herunter, um es ins Gelände mitzunehmen." }
+      ],
+      "faq": [
+        { "q": "Erzeugt GridGen eine topografische Karte oder lädt es Kartendaten herunter?", "a": "Nein. GridGen legt ein Gitter über ein Kartenbild, das du bereitstellst. Um eine Basiskarte zu erhalten, mach einen Screenshot einer Online-Karte, scanne eine Papierkarte oder exportiere eine aus einem Kartendienst, und lade sie dann hier hoch." },
+        { "q": "Sind die Felder echte UTM- oder MGRS-Koordinaten?", "a": "Nein. Das Gitter ist eine visuelle Referenz — gleichmäßig verteilte Felder mit A1- bzw. numerischen Beschriftungen. Sie sind nicht auf die Projektion der Karte georeferenziert, also behandle sie als relatives Referenzsystem und nicht als vermessungsgenaue Koordinaten." },
+        { "q": "Kann ich das Gitter an ein vorhandenes Kartengitter anpassen?", "a": "Teilweise — verwende den Modus Nach Größe und passe die Zellengröße so an, dass die Überlagerungslinien grob mit dem aufgedruckten Gitter deines Kartenbildes übereinstimmen. Es handelt sich um eine visuelle Ausrichtung, keine berechnete." },
+        { "q": "Ist es kostenlos und datenschutzfreundlich?", "a": "Ja. GridGen ist kostenlos und quelloffen, und deine Karte verlässt dein Gerät nicht — die gesamte Verarbeitung findet in deinem Browser statt." }
+      ]
+    },
+    "useCases": {
+      "faq": [
+        { "q": "Benötige ich für einen dieser Anwendungsfälle ein Konto?", "a": "Nein. GridGen ist kostenlos, erfordert keine Anmeldung und läuft vollständig im Browser — dein Bild verlässt dein Gerät nicht." },
+        { "q": "Stellt das Gitter echte Weltkoordinaten dar?", "a": "Nein. Es ist ein visuelles Referenzgitter aus gleichmäßig verteilten, beschrifteten Feldern. Es ist nicht georeferenziert und berechnet keine echten UTM-, MGRS- oder kartesischen Koordinaten — behandle es als relatives Referenzsystem, auf das sich alle beziehen können." },
+        { "q": "Kann ich GridGen für die Gitterzeichenmethode verwenden?", "a": "Ja — das ist der klassische Kunst-Anwendungsfall. Lade deine Vorlage hoch, wähle Nach Zellen (zum Beispiel 10×10), füge Schach-Beschriftungen außen hinzu und reduziere die Deckkraft der Linien. Drucke das PDF und zeichne dasselbe Gitter auf deine Leinwand, um das Bild Feld für Feld zu übertragen oder zu vergrößern." },
+        { "q": "Kann ich eine D&D- oder TTRPG-Schlachtkarte mit Gitter erstellen?", "a": "Ja. Lade deine Kartenillustration hoch, nutze Nach Größe, damit die Felder eine feste Größe behalten, schalte Schach-Beschriftungen (A1) ein und platziere sie innen, damit eine Referenz wie \"C4\" direkt auf der Schlachtkarte lesbar ist." },
+        { "q": "Kann ich ein Foto in ein Kreuzstich- oder Pixel-Art-Zählmuster umwandeln?", "a": "Ja — nutze Nach Größe, damit jede Zelle einem Stich oder Pixel entspricht, und füge Beschriftungen hinzu, um Reihen und Spalten zu zählen. GridGen legt das Zählmuster-Gitter an; es reduziert keine Farben und erzeugt keine Stichpalette." },
+        { "q": "Kann ich ein Koordinatensystem-Arbeitsblatt erstellen?", "a": "Ja. Nutze Nach Zellen mit numerischen Beschriftungen (1,1) und dem Ursprung unten links, um der kartesischen Konvention aus den Schulbüchern zu entsprechen, und drucke das PDF als Handout." },
+        { "q": "Kann ich ein Referenzgitter über eine Karte legen?", "a": "Ja — lade ein Kartenbild hoch und lege ein beschriftetes Gitter darüber, zum Beispiel für Orientierungslauf, Pfadfinder oder als Feldreferenz. Die Felder sind ein relatives Referenzsystem, keine echten UTM- oder MGRS-Koordinaten; die Seite Gitter über Karten behandelt das ausführlich." },
+        { "q": "Kann ich ein Spielfeld oder einen Grundriss in Zonen einteilen?", "a": "Ja. Nutze Nach Zellen, um ein Spielfeld- oder Grundriss-Bild in beschriftete Zonen einzuteilen, und platziere die Beschriftungen außen, damit der zugrunde liegende Plan sichtbar bleibt — praktisch für Teambesprechungen oder die Orientierung bei Veranstaltungen." },
+        { "q": "Welche Einstellungen soll ich für mein Projekt verwenden?", "a": "Nutze Nach Zellen für eine feste Gitterform (Kunst, Arbeitsblätter, Zonen) und Nach Größe für eine feste Feldgröße (Schlachtkarten, Zählmuster). Nutze Schach-Beschriftungen (A1), um Felder zu benennen, oder Numerisch (1,1) für Koordinatensystem-Arbeiten." },
+        { "q": "Kann ich das Ergebnis drucken?", "a": "Ja. Jeder Anwendungsfall endet in einem druckfertigen A4-PDF — die Ausrichtung wird automatisch gewählt und das Gitter wird in voller Auflösung deines Bildes gezeichnet." }
       ]
     }
   }

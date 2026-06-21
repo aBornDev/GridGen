@@ -16,6 +16,7 @@
         <p class="nav-title">Handleiding</p>
         <ul>
           <li><a href="{{link.wikiHow}}">Hoe GridGen werkt</a></li>
+          <li><a href="{{link.useCases}}">Toepassingen</a></li>
           <li><a class="active" href="{{link.mapGrid}}">Raster over kaarten</a></li>
           <li><a href="{{link.wikiTech}}">Technische referentie</a></li>
         </ul>
@@ -67,7 +68,7 @@
       <ul>
         <li>✅ Het legt een regelmatig raster met leesbare coördinaatlabels over elke kaartafbeelding en exporteert een nette PDF.</li>
         <li>✅ Het raster is uitstekend als <em>relatief</em> referentiesysteem voor een groep — vakjes die iedereen kan benoemen en aanwijzen.</li>
-        <li>❌ Het berekent <strong>geen</strong> echte coördinaten. De vakjes zijn geen UTM-, MGRS- of Lambertrastercellen en zijn niet geogereferenceerd aan de projectie van de kaart.</li>
+        <li>❌ Het berekent <strong>geen</strong> echte coördinaten. De vakjes zijn geen UTM-, MGRS- of Lambertrastercellen en zijn niet gegeorefereerd aan de projectie van de kaart.</li>
         <li>❌ Het genereert of downloadt <strong>geen</strong> kaartgegevens — jij levert de kaartafbeelding aan.</li>
       </ul>
       <p>Als je een echt coördinatenraster nodig hebt dat gekoppeld is aan UTM/MGRS, gebruik dan een officiële topografische kaart (stafkaart) die die rasterlijnen al gedrukt heeft, en gebruik GridGen alleen wanneer een eenvoudig, afdrukbaar referentieraster voldoende is.</p>
@@ -84,19 +85,19 @@
       <h3>Genereert GridGen een topografische kaart of haalt het kaartgegevens op?</h3>
       <p>Nee. GridGen legt een raster over een kaartafbeelding die jij aanlevert. Om een basiskaart te verkrijgen, maak je een screenshot van een online kaart, scan je een papieren kaart of stafkaart, of exporteer je er een vanuit een kaartdienst en upload je die hier.</p>
       <h3>Zijn de vakjes echte UTM- of MGRS-coördinaten?</h3>
-      <p>Nee. Het raster is een visuele referentie — gelijkmatig verdeelde vakjes met A1- of cijferlabels. Ze zijn niet geogereferenceerd aan de projectie van de kaart, dus behandel ze als een relatief referentiesysteem, geen coördinaten met landmeetkundige nauwkeurigheid.</p>
+      <p>Nee. Het raster is een visuele referentie — gelijkmatig verdeelde vakjes met A1- of cijferlabels. Ze zijn niet gegeorefereerd aan de projectie van de kaart, dus behandel ze als een relatief referentiesysteem, geen coördinaten met landmeetkundige nauwkeurigheid.</p>
       <h3>Kan ik het raster laten aansluiten op een bestaand kaartraster?</h3>
       <p>Gedeeltelijk — gebruik de modus <strong>Op grootte</strong> en pas de celgrootte aan zodat de overlaylijnen ruwweg samenvallen met het gedrukte raster op je kaartafbeelding. Het is een visuele uitlijning, geen berekende.</p>
       <h3>Is het gratis en privé?</h3>
       <p>Ja. GridGen is gratis en open source, en je kaart verlaat je apparaat nooit — alle verwerking vindt plaats in je browser.</p>
 
       <nav class="page-nav" aria-label="Paginanavigatie">
-        <a class="prev" href="{{link.wikiHow}}"><span>Vorige</span>Hoe GridGen werkt</a>
-        <a class="next" href="{{link.home}}"><span>Probeer het</span>Open de app →</a>
+        <a class="prev" href="{{link.useCases}}"><span>Vorige</span>Toepassingen</a>
+        <a class="next" href="{{link.wikiTech}}"><span>Volgende</span>Technische referentie →</a>
       </nav>
 
       <footer class="footer">
-        <p>GridGen is open source onder de GPL v3. Een visueel rasteroverlay-hulpmiddel — geen geogereferenceerde kaartgenerator.</p>
+        <p>GridGen is open source onder de GPL v3. Een visueel rasteroverlay-hulpmiddel — geen gegeorefereerde kaartgenerator.</p>
       </footer>
     </main>
   </div>

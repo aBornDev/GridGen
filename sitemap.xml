@@ -96,4 +96,28 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://aborndev.github.io/GridGen/wiki/map-grid.html"/>
     <changefreq>monthly</changefreq>
   </url>
+  <url>
+    <loc>https://aborndev.github.io/GridGen/wiki/use-cases.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aborndev.github.io/GridGen/wiki/use-cases.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aborndev.github.io/GridGen/nl/wiki/toepassingen.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aborndev.github.io/GridGen/de/wiki/anwendungen.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aborndev.github.io/GridGen/wiki/use-cases.html"/>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://aborndev.github.io/GridGen/nl/wiki/toepassingen.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aborndev.github.io/GridGen/wiki/use-cases.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aborndev.github.io/GridGen/nl/wiki/toepassingen.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aborndev.github.io/GridGen/de/wiki/anwendungen.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aborndev.github.io/GridGen/wiki/use-cases.html"/>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://aborndev.github.io/GridGen/de/wiki/anwendungen.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aborndev.github.io/GridGen/wiki/use-cases.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aborndev.github.io/GridGen/nl/wiki/toepassingen.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aborndev.github.io/GridGen/de/wiki/anwendungen.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aborndev.github.io/GridGen/wiki/use-cases.html"/>
+    <changefreq>monthly</changefreq>
+  </url>
 </urlset>

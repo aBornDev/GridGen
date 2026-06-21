@@ -10,12 +10,13 @@
   "pages": {
     "home": {
       "title": "GridGen — Coördinatenraster over elke afbeelding, exporteer als PDF",
-      "description": "Gratis browsertool om een coördinatenraster over een foto of kaart te leggen en als drukklare PDF te exporteren. Geen account nodig, draait volledig in je browser.",
-      "keywords": "raster over afbeelding, raster over kaart leggen, coördinatenraster, rasterlijnen over foto, raster tekenmethode, afbeelding naar raster pdf, stafkaart raster"
+      "description": "Gratis browsertool om een coördinatenraster over elke afbeelding te leggen — foto, kaart, battle map of plattegrond — en te exporteren als drukklare A4-PDF. Geen upload, geen account, draait volledig in je browser.",
+      "keywords": "raster over afbeelding, raster over kaart leggen, coördinatenraster, rasterlijnen over foto, rastermethode tekenen, afbeelding naar raster pdf, stafkaart raster, battle map raster, kruissteek raster uit foto, pixel art raster, coördinatenstelsel werkblad, voetbalveld zonering, plattegrond raster, referentieraster foto, raster pdf printen"
     },
     "wikiHow": {
       "title": "Hoe GridGen werkt — Handleiding & wiki",
-      "description": "Een complete handleiding voor GridGen: een afbeelding uploaden, een coördinatenraster instellen, het uiterlijk aanpassen, schaak- of cijferlabels toevoegen en exporteren als drukklare PDF."
+      "description": "Een complete handleiding voor GridGen: een afbeelding uploaden, een coördinatenraster instellen, het uiterlijk aanpassen, schaak- of cijferlabels toevoegen en exporteren als drukklare PDF.",
+      "keywords": "hoe de rastermethode te gebruiken, coördinaatlabels toevoegen aan afbeelding, rasteroverlay handleiding, schaak A1 rasterlabels, coördinatenraster PDF exporteren, referentieraster foto"
     },
     "wikiTech": {
       "title": "GridGen technische referentie — Stack & architectuur",
@@ -25,17 +26,25 @@
       "title": "Coördinatenraster over een kaart leggen & printen als PDF — GridGen",
       "description": "Leg een coördinatenraster over een kaartafbeelding en exporteer een drukklare PDF — handig voor oriëntatieloop, scouting en als veldreferentie. Een visueel raster over een bestaande kaart, geen kaartgenerator met geodata.",
       "keywords": "coördinatenraster over kaart, raster over kaart leggen, stafkaart raster, kaart met rasterlijnen printen pdf, grid over kaart, stafkaart printen, raster over stafkaart"
+    },
+    "useCases": {
+      "title": "GridGen-toepassingen — Praktische manieren om een raster over een afbeelding te leggen",
+      "description": "Praktische toepassingen van GridGen: de rastermethode, D&D battle maps, kruissteekpatronen, coördinatenvlakwerkbladen, oriëntatieloopkaarten, veldzones, plattegronden en meer — elk met de exacte aanbevolen instellingen.",
+      "keywords": "rastermethode tekenen, battle map raster, kruissteek raster uit foto, coördinatenstelsel werkblad, oriëntatieloop kaartraster, voetbalveld zonering, plattegrond raster overlay, escape room raster, foto compositieraster, archeologie sitefoto raster, raster toevoegen aan afbeelding toepassingen"
     }
   },
   "schema": {
     "home": {
       "featureList": [
-        "Raster op aantal vakjes of op celgrootte in pixels",
-        "Aanpasbare lijnkleur, dikte en dekking",
+        "Raster op aantal vakjes (1–100 kolommen/rijen) of op celgrootte in pixels (5–500)",
+        "Aanpasbare lijnkleur, dikte (1–10 px) en dekking (10–100%)",
         "Schaaknotatie (A1) of cijferlabels (1,1)",
-        "Labels binnen of buiten de vakjes",
-        "Oorsprong linksboven of linksonder",
-        "PDF-export op volledige beeldresolutie"
+        "Labels binnen de vakjes met contrasthalo, of buiten in schone marges",
+        "Oorsprong linksboven of linksonder (Cartesisch)",
+        "Live voorbeeldvenster dat direct bijwerkt terwijl je het raster aanpast",
+        "Drukklare A4-PDF-export, automatische staande/liggende oriëntatie, passend geschaald",
+        "Werkt volledig in je browser — afbeeldingen worden nooit geüpload",
+        "Gratis en open source (GPL v3), geen account nodig"
       ]
     },
     "wikiHow": {
@@ -46,6 +55,13 @@
         { "name": "Pas het uiterlijk aan", "text": "Stel lijnkleur, dikte en dekking in voor goede leesbaarheid." },
         { "name": "Voeg coördinaatlabels toe", "text": "Kies schaak- of cijferlabels, plaatsing binnen of buiten, en de oorsprongshoek." },
         { "name": "Exporteer de PDF", "text": "Klik op PDF downloaden om een A4-bestand op volledige resolutie op te slaan." }
+      ],
+      "faq": [
+        { "q": "Is GridGen gratis?", "a": "Ja. Het is gratis, open source en uitgebracht onder de GNU GPL v3." },
+        { "q": "Worden mijn afbeeldingen ergens naar geüpload?", "a": "Nee. Alle verwerking vindt lokaal plaats in je browser. Je afbeeldingen worden nooit naar een server gestuurd." },
+        { "q": "Welke afbeeldingsformaten worden ondersteund?", "a": "PNG, JPG en WEBP — elk rasterformaat dat je browser kan decoderen." },
+        { "q": "Wat is de resolutie van de geëxporteerde PDF?", "a": "Het raster wordt samengesteld op de volledige native resolutie van je afbeelding en vervolgens passend geschaald op een A4-pagina." },
+        { "q": "Welke browsers worden ondersteund?", "a": "Elke moderne browser met ondersteuning voor HTML5 Canvas en de File API — Chrome, Firefox, Safari en Edge." }
       ]
     },
     "wikiTech": {
@@ -59,6 +75,26 @@
         { "name": "Stel het raster in", "text": "Kies het aantal vakjes of een vaste celgrootte die past bij het referentieraster dat je nodig hebt." },
         { "name": "Voeg coördinaatlabels toe", "text": "Zet schaaknotatie (A1) of cijferlabels (1,1) aan zodat elk vak een referentie heeft." },
         { "name": "Exporteer als PDF", "text": "Download een drukklare PDF om mee het veld in te nemen." }
+      ],
+      "faq": [
+        { "q": "Genereert GridGen een topografische kaart of haalt het kaartgegevens op?", "a": "Nee. GridGen legt een raster over een kaartafbeelding die jij aanlevert. Om een basiskaart te verkrijgen, maak je een screenshot van een online kaart, scan je een papieren kaart of stafkaart, of exporteer je er een vanuit een kaartdienst en upload je die hier." },
+        { "q": "Zijn de vakjes echte UTM- of MGRS-coördinaten?", "a": "Nee. Het raster is een visuele referentie — gelijkmatig verdeelde vakjes met A1- of cijferlabels. Ze zijn niet gegeorefereerd aan de projectie van de kaart, dus behandel ze als een relatief referentiesysteem, geen coördinaten met landmeetkundige nauwkeurigheid." },
+        { "q": "Kan ik het raster laten aansluiten op een bestaand kaartraster?", "a": "Gedeeltelijk — gebruik de modus Op grootte en pas de celgrootte aan zodat de overlaylijnen ruwweg samenvallen met het gedrukte raster op je kaartafbeelding. Het is een visuele uitlijning, geen berekende." },
+        { "q": "Is het gratis en privé?", "a": "Ja. GridGen is gratis en open source, en je kaart verlaat je apparaat nooit — alle verwerking vindt plaats in je browser." }
+      ]
+    },
+    "useCases": {
+      "faq": [
+        { "q": "Heb ik een account nodig voor een van deze toepassingen?", "a": "Nee. GridGen is gratis, vereist geen account en werkt volledig in je browser — je afbeelding verlaat je apparaat nooit." },
+        { "q": "Stelt het raster echte wereldcoördinaten voor?", "a": "Nee. Het is een visueel referentieraster van gelijkmatig verdeelde, gelabelde vakjes. Het is niet gegeorefereerd en berekent geen echte UTM-, MGRS- of Cartesische coördinaten — behandel het als een relatief referentiesysteem dat iedereen kan benoemen." },
+        { "q": "Kan ik GridGen gebruiken voor de rastermethode?", "a": "Ja — dat is de klassieke toepassing in de kunst. Upload je referentie, kies Op vakjes (bijvoorbeeld 10×10), voeg schaak-(A1)-labels buiten toe en verlaag de dekking. Print de PDF en teken hetzelfde raster op je doek om de afbeelding vak voor vak over te nemen of te vergroten." },
+        { "q": "Kan ik een D&D- of TTRPG-battle-mapgrid maken?", "a": "Ja. Upload je kaartillustratie, gebruik Op grootte zodat vakjes een vaste afmeting houden, zet schaak-(A1)-labels aan en plaats ze binnen zodat een referentie als \"C4\" direct op de gevechtstafel leesbaar is." },
+        { "q": "Kan ik een foto omzetten in een kruissteek- of pixel-artschema?", "a": "Ja — gebruik Op grootte zodat elke cel overeenkomt met één steek of pixel, en voeg labels toe om rijen en kolommen te tellen. GridGen legt alleen het telraster over; het reduceert geen kleuren en bouwt geen steekpalet op." },
+        { "q": "Kan ik een coördinatenvlakwerkblad maken?", "a": "Ja. Gebruik Op vakjes met cijferlabels (1,1) en een linksonderoorsprong om aan te sluiten bij de Cartesische conventie die leerlingen in hun leerboeken tegenkomen, en druk de PDF vervolgens als uitdeelblad af." },
+        { "q": "Kan ik een referentieraster over een kaart leggen?", "a": "Ja — laad een kaartafbeelding en leg er een gelabeld raster overheen voor oriëntatielopen, scouting of veldreferentie. De vakjes zijn een relatieve referentie, geen echte UTM- of MGRS-coördinaten; de pagina raster over kaarten behandelt dit uitvoerig." },
+        { "q": "Kan ik een sportveld of plattegrond in zones indelen?", "a": "Ja. Gebruik Op vakjes om een veld- of plattegrondafbeelding in gelabelde zones te verdelen, en plaats labels buiten zodat de onderliggende plattegrond zichtbaar blijft — handig voor teambriefings of bewegwijzering in een locatie." },
+        { "q": "Welke instellingen moet ik gebruiken voor mijn project?", "a": "Gebruik Op vakjes voor een vaste rastervorm (kunst, werkbladen, zones) en Op grootte voor een vaste vakjesgrootte (battle maps, telhandwerkschema's). Gebruik schaak-(A1)-labels om vakjes te benoemen, of cijferlabels (1,1) voor coördinatenvlakwerk." },
+        { "q": "Kan ik het resultaat afdrukken?", "a": "Ja. Elke toepassing eindigt in een drukklare A4-PDF — de oriëntatie wordt automatisch gekozen en het raster wordt getekend op de volledige resolutie van je afbeelding." }
       ]
     }
   }

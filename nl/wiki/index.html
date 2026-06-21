@@ -6,7 +6,7 @@
 
   <title>Hoe GridGen werkt — Handleiding &amp; wiki</title>
   <meta name="description" content="Een complete handleiding voor GridGen: een afbeelding uploaden, een coördinatenraster instellen, het uiterlijk aanpassen, schaak- of cijferlabels toevoegen en exporteren als drukklare PDF.">
-
+<meta name="keywords" content="hoe de rastermethode te gebruiken, coördinaatlabels toevoegen aan afbeelding, rasteroverlay handleiding, schaak A1 rasterlabels, coördinatenraster PDF exporteren, referentieraster foto">
   <link rel="canonical" href="https://aborndev.github.io/GridGen/nl/wiki/">
   <meta name="theme-color" content="#171717">
   <meta name="robots" content="index, follow">
@@ -72,6 +72,55 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": "nl",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is GridGen gratis?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. Het is gratis, open source en uitgebracht onder de GNU GPL v3."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Worden mijn afbeeldingen ergens naar geüpload?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nee. Alle verwerking vindt lokaal plaats in je browser. Je afbeeldingen worden nooit naar een server gestuurd."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Welke afbeeldingsformaten worden ondersteund?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "PNG, JPG en WEBP — elk rasterformaat dat je browser kan decoderen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wat is de resolutie van de geëxporteerde PDF?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Het raster wordt samengesteld op de volledige native resolutie van je afbeelding en vervolgens passend geschaald op een A4-pagina."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Welke browsers worden ondersteund?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Elke moderne browser met ondersteuning voor HTML5 Canvas en de File API — Chrome, Firefox, Safari en Edge."
+      }
+    }
+  ]
+}
+</script>
 </head>
 
 <body>
@@ -93,6 +142,7 @@
         <p class="nav-title">Handleiding</p>
         <ul>
           <li><a class="active" href="../../nl/wiki/index.html">Hoe GridGen werkt</a></li>
+          <li><a href="../../nl/wiki/toepassingen.html">Toepassingen</a></li>
           <li><a href="../../nl/wiki/stafkaart.html">Raster over kaarten</a></li>
           <li><a href="../../nl/wiki/technical.html">Technische referentie</a></li>
         </ul>
@@ -199,6 +249,7 @@
         <li><strong>Archeologen &amp; veldonderzoekers</strong> — leg een referentieraster over veldfotos voor documentatie.</li>
         <li><strong>Docenten &amp; studenten</strong> — maak werkbladen met coördinaatvlakken en gelabelde diagrammen.</li>
       </ul>
+      <p>Voor de volledige set toepassingen met de aanbevolen instellingen voor elk, zie <a class="inline" href="../../nl/wiki/toepassingen.html">manieren om GridGen te gebruiken</a>.</p>
 
       <h2 id="faq">FAQ</h2>
       <h3>Is GridGen gratis?</h3>
@@ -214,7 +265,7 @@
 
       <nav class="page-nav" aria-label="Paginanavigatie">
         <a class="prev" href="../../nl/index.html"><span>Terug naar</span>De app</a>
-        <a class="next" href="../../nl/wiki/technical.html"><span>Volgende</span>Technische referentie →</a>
+        <a class="next" href="../../nl/wiki/toepassingen.html"><span>Volgende</span>Toepassingen →</a>
       </nav>
 
       <footer class="footer">

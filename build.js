@@ -64,6 +64,13 @@ const PAGES = {
     // Localized slugs for the map page; other locales auto-derive (see outFor).
     out: { en: 'wiki/map-grid.html', nl: 'nl/wiki/stafkaart.html', de: 'de/wiki/karten-gitter.html' },
   },
+  useCases: {
+    body: 'use-cases',
+    css: 'wiki/wiki.css',
+    ogType: 'article',
+    schema: 'FAQPage',
+    out: { en: 'wiki/use-cases.html', nl: 'nl/wiki/toepassingen.html', de: 'de/wiki/anwendungen.html' },
+  },
 };
 const PAGE_IDS = Object.keys(PAGES);
 
@@ -111,6 +118,20 @@ function outFor(pageId, locale) {
 const urlFor = (p) => SITE_URL + p.replace(/index\.html$/, '');
 const baseFor = (p) => '../'.repeat(p.split('/').length - 1);
 
+function faqObj(pageId, L) {
+  const faqs = (L.schema && L.schema[pageId] && L.schema[pageId].faq) || [];
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    inLanguage: L.meta.lang,
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  };
+}
+
 function jsonLd(pageId, L, ctx) {
   const s = (L.schema && L.schema[pageId]) || {};
   const name = L.pages[pageId].title;
@@ -138,6 +159,8 @@ function jsonLd(pageId, L, ctx) {
       inLanguage: L.meta.lang,
       step: (s.steps || []).map((st) => ({ '@type': 'HowToStep', name: st.name, text: st.text })),
     };
+  } else if (PAGES[pageId].schema === 'FAQPage') {
+    obj = faqObj(pageId, L);
   } else {
     obj = {
       '@context': 'https://schema.org',
@@ -149,8 +172,15 @@ function jsonLd(pageId, L, ctx) {
       about: s.about || [],
     };
   }
-  return `<script type="application/ld+json">\n${JSON.stringify(obj, null, 2)}\n</script>`;
+  let out = `<script type="application/ld+json">\n${JSON.stringify(obj, null, 2)}\n</script>`;
+  // Additionally emit an FAQPage block for non-FAQPage pages that declare an faq
+  // array (so e.g. a HowTo page can also surface FAQ rich results).
+  if (PAGES[pageId].schema !== 'FAQPage' && (s.faq || []).length) {
+    out += `\n<script type="application/ld+json">\n${JSON.stringify(faqObj(pageId, L), null, 2)}\n</script>`;
+  }
+  return out;
 }
+
 
 // Small inline SVG flags for the language switcher (robust across platforms,
 // unlike emoji flags which don't render on Windows). Keyed by locale code; a
