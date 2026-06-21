@@ -55,7 +55,7 @@
       "name": "Stelt het raster echte wereldcoördinaten voor?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Nee. Het is een visueel referentieraster van gelijkmatig verdeelde, gelabelde vakjes. Het is niet georefereerd en berekent geen echte UTM-, MGRS- of Cartesische coördinaten — behandel het als een relatief referentiesysteem dat iedereen kan benoemen."
+        "text": "Nee. Het is een visueel referentieraster van gelijkmatig verdeelde, gelabelde vakjes. Het is niet geogereferenceerd en berekent geen echte UTM-, MGRS- of Cartesische coördinaten — behandel het als een relatief referentiesysteem dat iedereen kan benoemen."
       }
     },
     {
@@ -128,14 +128,14 @@
       <h2 id="overview">Overzicht</h2>
       <p>Elke toepassing hieronder is gewoon een andere combinatie van dezelfde instellingen: <strong>Op vakjes</strong> vs <strong>Op grootte</strong>, <strong>schaak (A1)</strong> vs <strong>cijfers (1,1)</strong> labels, plaatsing <strong>binnen</strong> vs <strong>buiten</strong>, en de <strong>oorsprong</strong>hoek. De volledige referentie voor die instellingen staat in de <a class="inline" href="../../nl/wiki/index.html">gebruikershandleiding</a>; deze pagina gaat over <em>welke</em> combinatie bij <em>welke</em> taak past. Alles werkt in je browser — je afbeelding verlaat je apparaat nooit.</p>
       <div class="note">
-        <strong>Een visueel raster, geen coördinaten.</strong> GridGen tekent een regelmatig raster van gelabelde vakjes als <em>relatief</em> referentiesysteem. Het is NIET georefereerd en berekent geen echte UTM-, MGRS- of landmeetkundige coördinaten — zie <a class="inline" href="../../nl/wiki/stafkaart.html#limits">raster over kaarten</a> voor waar dat van belang is.
+        <strong>Een visueel raster, geen coördinaten.</strong> GridGen tekent een regelmatig raster van gelabelde vakjes als <em>relatief</em> referentiesysteem. Het is niet geogereferenceerd en berekent geen echte UTM-, MGRS- of landmeetkundige coördinaten — zie <a class="inline" href="../../nl/wiki/stafkaart.html#limits">raster over kaarten</a> voor waar dat van belang is.
       </div>
 
       <h2 id="art">Kunst &amp; de rastermethode</h2>
-      <p>De <strong>rastermethode</strong> is een klassieke techniek om een referentieafbeelding met de hand over te tekenen of op schaal te brengen naar papier of doek: leg een regelmatig raster over de referentie, teken hetzelfde raster op je ondergrond en kopieer de afbeelding vak voor vak. GridGen automatiseert de overlayststap.</p>
+      <p>De <strong>rastermethode</strong> is een klassieke techniek om een referentieafbeelding met de hand over te tekenen of op schaal te brengen naar papier of doek: leg een regelmatig raster over de referentie, teken hetzelfde raster op je ondergrond en kopieer de afbeelding vak voor vak. GridGen automatiseert de overlaystap.</p>
       <ul>
         <li><strong>Kunstenaars &amp; studenten</strong> — upload een referentiefoto, gebruik <strong>Op vakjes</strong> (bijv. 8&nbsp;×&nbsp;8 of 10&nbsp;×&nbsp;10), schaak-(A1)-labels buiten, en een dunne lijn met verlaagde dekking zodat het raster licht over de afbeelding ligt. Print de PDF en teken hetzelfde raster op je doek.</li>
-        <li><strong>Muurschilders &amp; reclameschilders</strong> — dezelfde methode werkt ook voor vergrotingen: een 10&nbsp;×&nbsp;10 raster op een kleine referentie correspondeert vak voor vak met een 10&nbsp;×&nbsp;10 raster gekrijtd op een muur, waardoor verhoudingen kloppen op elke schaal.</li>
+        <li><strong>Muurschilders &amp; reclameschilders</strong> — dezelfde methode werkt ook voor vergrotingen: een 10&nbsp;×&nbsp;10 raster op een kleine referentie correspondeert vak voor vak met een 10&nbsp;×&nbsp;10 raster op een muur uitgezet, waardoor verhoudingen kloppen op elke schaal.</li>
       </ul>
       <p>Zoektermen die dit omvat: <em>rastermethode tekenen, rastertekenmethode, raster over referentiefoto leggen, tekening vergroten met raster</em>.</p>
 
@@ -152,7 +152,7 @@
       <p>Geef elke kaartafbeelding een gedeeld, afdrukbaar referentieraster. Dit wordt uitvoerig behandeld op de speciale pagina <a class="inline" href="../../nl/wiki/stafkaart.html">raster over kaarten</a>; in het kort:</p>
       <ul>
         <li><strong>Oriëntatielopen &amp; scouting</strong> — voeg een coördinaatreferentieraster toe aan een route- of gebiedskaart en druk exemplaren af zodat een groep vakjes kan aanwijzen zonder GPS.</li>
-        <li><strong>Archeologie &amp; velddocumentatie</strong> — leg een referentieraster over een site- of sleuvenf foto voor een rapport. Gebruik cijferlabels en een linksonderoorsprong om aan te sluiten bij de conventie van de zuidwesthoek. De vakjes zijn een <em>relatieve</em> referentie, geen landmeetkundige maten.</li>
+        <li><strong>Archeologie &amp; velddocumentatie</strong> — leg een referentieraster over een site- of sleuvenfoto voor een rapport. Gebruik cijferlabels en een linksonderoorsprong om aan te sluiten bij de conventie van de zuidwesthoek. De vakjes zijn een <em>relatieve</em> referentie, geen landmeetkundige maten.</li>
       </ul>
       <p>Zoektermen: <em>oriëntatieloop kaartraster, kaart afdrukken met coördinatenraster, opgravingsfoto raster, velddocumentatie referentieraster</em>.</p>
 
@@ -166,7 +166,7 @@
         <li><strong>Kruissteek, borduurwerk &amp; pixel art</strong> — upload een foto of ontwerp, gebruik <strong>Op grootte</strong> zodat elke cel overeenkomt met één steek of pixel, en voeg labels toe om rijen en kolommen te tellen. Exporteer het schema als PDF om van te volgen zonder scherm.</li>
         <li><strong>Ander telwerk</strong> (diamond painting, kralenwerk, strijkkralen) deelt dezelfde workflow van foto naar schema.</li>
       </ul>
-      <p>GridGen legt het raster over voor het tellen; het reduceert geen kleuren en genereert geen steekpalet. Zoektermen: <em>foto naar kruissteekpatroon, kruissteek raster uit foto, pixel art raster, Zählmuster aus Foto</em>.</p>
+      <p>GridGen legt het raster over voor het tellen; het reduceert geen kleuren en genereert geen steekpalet. Zoektermen: <em>foto naar kruissteekpatroon, kruissteek raster uit foto, pixel art raster, telpatroon uit foto</em>.</p>
 
       <h2 id="photo">Fotografie</h2>
       <ul>
@@ -199,7 +199,7 @@
       <h3>Heb ik een account nodig voor een van deze toepassingen?</h3>
       <p>Nee. GridGen is gratis, vereist geen account en werkt volledig in je browser — je afbeelding verlaat je apparaat nooit.</p>
       <h3>Stelt het raster echte wereldcoördinaten voor?</h3>
-      <p>Nee. Het is een visueel referentieraster van gelijkmatig verdeelde, gelabelde vakjes. Het is niet georefereerd en berekent geen echte UTM-, MGRS- of Cartesische coördinaten — behandel het als een relatief referentiesysteem dat iedereen kan benoemen.</p>
+      <p>Nee. Het is een visueel referentieraster van gelijkmatig verdeelde, gelabelde vakjes. Het is niet geogereferenceerd en berekent geen echte UTM-, MGRS- of Cartesische coördinaten — behandel het als een relatief referentiesysteem dat iedereen kan benoemen.</p>
       <h3>Welke instellingen moet ik gebruiken voor mijn project?</h3>
       <p>Gebruik Op vakjes voor een vaste rastervorm (kunst, werkbladen, zones) en Op grootte voor een vaste vakjesgrootte (battle maps, telhandwerkschema's). Gebruik schaak-(A1)-labels om vakjes te benoemen, of cijferlabels (1,1) voor coördinatenvlakwerk.</p>
       <h3>Kan ik het resultaat afdrukken?</h3>
@@ -207,7 +207,7 @@
 
       <nav class="page-nav" aria-label="Paginanavigatie">
         <a class="prev" href="../../nl/wiki/index.html"><span>Vorige</span>Hoe GridGen werkt</a>
-        <a class="next" href="../../nl/index.html"><span>Probeer het</span>Open de app →</a>
+        <a class="next" href="../../nl/wiki/stafkaart.html"><span>Volgende</span>Raster over kaarten →</a>
       </nav>
 
       <footer class="footer">

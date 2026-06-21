@@ -86,7 +86,7 @@
     "useCases": {
       "faq": [
         { "q": "Benötige ich für einen dieser Anwendungsfälle ein Konto?", "a": "Nein. GridGen ist kostenlos, erfordert keine Anmeldung und läuft vollständig im Browser — dein Bild verlässt dein Gerät nicht." },
-        { "q": "Stellt das Gitter echte Weltkoordinaten dar?", "a": "Nein. Es ist ein visuelles Referenzgitter aus gleichmäßig verteilten, beschrifteten Feldern. Es ist NICHT georeferenziert und berechnet keine echten UTM-, MGRS- oder kartesischen Koordinaten — behandle es als relatives Referenzsystem, auf das sich alle beziehen können." },
+        { "q": "Stellt das Gitter echte Weltkoordinaten dar?", "a": "Nein. Es ist ein visuelles Referenzgitter aus gleichmäßig verteilten, beschrifteten Feldern. Es ist nicht georeferenziert und berechnet keine echten UTM-, MGRS- oder kartesischen Koordinaten — behandle es als relatives Referenzsystem, auf das sich alle beziehen können." },
         { "q": "Welche Einstellungen soll ich für mein Projekt verwenden?", "a": "Nutze Nach Zellen für eine feste Gitterform (Kunst, Arbeitsblätter, Zonen) und Nach Größe für eine feste Feldgröße (Schlachtkarten, Zählmuster). Nutze Schach-Beschriftungen (A1), um Felder zu benennen, oder Numerisch (1,1) für Koordinatensystem-Arbeiten." },
         { "q": "Kann ich das Ergebnis drucken?", "a": "Ja. Jeder Anwendungsfall endet in einem druckfertigen A4-PDF — die Ausrichtung wird automatisch gewählt und das Gitter wird in voller Auflösung deines Bildes gezeichnet." }
       ]

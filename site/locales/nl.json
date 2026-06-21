@@ -86,7 +86,7 @@
     "useCases": {
       "faq": [
         { "q": "Heb ik een account nodig voor een van deze toepassingen?", "a": "Nee. GridGen is gratis, vereist geen account en werkt volledig in je browser — je afbeelding verlaat je apparaat nooit." },
-        { "q": "Stelt het raster echte wereldcoördinaten voor?", "a": "Nee. Het is een visueel referentieraster van gelijkmatig verdeelde, gelabelde vakjes. Het is niet georefereerd en berekent geen echte UTM-, MGRS- of Cartesische coördinaten — behandel het als een relatief referentiesysteem dat iedereen kan benoemen." },
+        { "q": "Stelt het raster echte wereldcoördinaten voor?", "a": "Nee. Het is een visueel referentieraster van gelijkmatig verdeelde, gelabelde vakjes. Het is niet geogereferenceerd en berekent geen echte UTM-, MGRS- of Cartesische coördinaten — behandel het als een relatief referentiesysteem dat iedereen kan benoemen." },
         { "q": "Welke instellingen moet ik gebruiken voor mijn project?", "a": "Gebruik Op vakjes voor een vaste rastervorm (kunst, werkbladen, zones) en Op grootte voor een vaste vakjesgrootte (battle maps, telhandwerkschema's). Gebruik schaak-(A1)-labels om vakjes te benoemen, of cijferlabels (1,1) voor coördinatenvlakwerk." },
         { "q": "Kan ik het resultaat afdrukken?", "a": "Ja. Elke toepassing eindigt in een drukklare A4-PDF — de oriëntatie wordt automatisch gekozen en het raster wordt getekend op de volledige resolutie van je afbeelding." }
       ]
