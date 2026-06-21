@@ -78,7 +78,7 @@
       ],
       "faq": [
         { "q": "Genereert GridGen een topografische kaart of haalt het kaartgegevens op?", "a": "Nee. GridGen legt een raster over een kaartafbeelding die jij aanlevert. Om een basiskaart te verkrijgen, maak je een screenshot van een online kaart, scan je een papieren kaart of stafkaart, of exporteer je er een vanuit een kaartdienst en upload je die hier." },
-        { "q": "Zijn de vakjes echte UTM- of MGRS-coördinaten?", "a": "Nee. Het raster is een visuele referentie — gelijkmatig verdeelde vakjes met A1- of cijferlabels. Ze zijn niet geogereferenceerd aan de projectie van de kaart, dus behandel ze als een relatief referentiesysteem, geen coördinaten met landmeetkundige nauwkeurigheid." },
+        { "q": "Zijn de vakjes echte UTM- of MGRS-coördinaten?", "a": "Nee. Het raster is een visuele referentie — gelijkmatig verdeelde vakjes met A1- of cijferlabels. Ze zijn niet gegeorefereerd aan de projectie van de kaart, dus behandel ze als een relatief referentiesysteem, geen coördinaten met landmeetkundige nauwkeurigheid." },
         { "q": "Kan ik het raster laten aansluiten op een bestaand kaartraster?", "a": "Gedeeltelijk — gebruik de modus Op grootte en pas de celgrootte aan zodat de overlaylijnen ruwweg samenvallen met het gedrukte raster op je kaartafbeelding. Het is een visuele uitlijning, geen berekende." },
         { "q": "Is het gratis en privé?", "a": "Ja. GridGen is gratis en open source, en je kaart verlaat je apparaat nooit — alle verwerking vindt plaats in je browser." }
       ]
@@ -86,7 +86,7 @@
     "useCases": {
       "faq": [
         { "q": "Heb ik een account nodig voor een van deze toepassingen?", "a": "Nee. GridGen is gratis, vereist geen account en werkt volledig in je browser — je afbeelding verlaat je apparaat nooit." },
-        { "q": "Stelt het raster echte wereldcoördinaten voor?", "a": "Nee. Het is een visueel referentieraster van gelijkmatig verdeelde, gelabelde vakjes. Het is niet geogereferenceerd en berekent geen echte UTM-, MGRS- of Cartesische coördinaten — behandel het als een relatief referentiesysteem dat iedereen kan benoemen." },
+        { "q": "Stelt het raster echte wereldcoördinaten voor?", "a": "Nee. Het is een visueel referentieraster van gelijkmatig verdeelde, gelabelde vakjes. Het is niet gegeorefereerd en berekent geen echte UTM-, MGRS- of Cartesische coördinaten — behandel het als een relatief referentiesysteem dat iedereen kan benoemen." },
         { "q": "Kan ik GridGen gebruiken voor de rastermethode?", "a": "Ja — dat is de klassieke toepassing in de kunst. Upload je referentie, kies Op vakjes (bijvoorbeeld 10×10), voeg schaak-(A1)-labels buiten toe en verlaag de dekking. Print de PDF en teken hetzelfde raster op je doek om de afbeelding vak voor vak over te nemen of te vergroten." },
         { "q": "Kan ik een D&D- of TTRPG-battle-mapgrid maken?", "a": "Ja. Upload je kaartillustratie, gebruik Op grootte zodat vakjes een vaste afmeting houden, zet schaak-(A1)-labels aan en plaats ze binnen zodat een referentie als \"C4\" direct op de gevechtstafel leesbaar is." },
         { "q": "Kan ik een foto omzetten in een kruissteek- of pixel-artschema?", "a": "Ja — gebruik Op grootte zodat elke cel overeenkomt met één steek of pixel, en voeg labels toe om rijen en kolommen te tellen. GridGen legt alleen het telraster over; het reduceert geen kleuren en bouwt geen steekpalet op." },
