@@ -71,6 +71,20 @@ const PAGES = {
     schema: 'FAQPage',
     out: { en: 'wiki/use-cases.html', nl: 'nl/wiki/toepassingen.html', de: 'de/wiki/anwendungen.html' },
   },
+  gridMethod: {
+    body: 'grid-method',
+    css: 'wiki/wiki.css',
+    ogType: 'article',
+    schema: 'HowTo',
+    out: { en: 'wiki/grid-drawing-method.html', nl: 'nl/wiki/rastermethode.html', de: 'de/wiki/gitterzeichenmethode.html' },
+  },
+  countedCraft: {
+    body: 'counted-craft',
+    css: 'wiki/wiki.css',
+    ogType: 'article',
+    schema: 'HowTo',
+    out: { en: 'wiki/cross-stitch-grid.html', nl: 'nl/wiki/telpatroon.html', de: 'de/wiki/zaehlmuster.html' },
+  },
 };
 const PAGE_IDS = Object.keys(PAGES);
 
