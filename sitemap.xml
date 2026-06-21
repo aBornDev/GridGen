@@ -120,4 +120,52 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://aborndev.github.io/GridGen/wiki/use-cases.html"/>
     <changefreq>monthly</changefreq>
   </url>
+  <url>
+    <loc>https://aborndev.github.io/GridGen/wiki/grid-drawing-method.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aborndev.github.io/GridGen/wiki/grid-drawing-method.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aborndev.github.io/GridGen/nl/wiki/rastermethode.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aborndev.github.io/GridGen/de/wiki/gitterzeichenmethode.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aborndev.github.io/GridGen/wiki/grid-drawing-method.html"/>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://aborndev.github.io/GridGen/nl/wiki/rastermethode.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aborndev.github.io/GridGen/wiki/grid-drawing-method.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aborndev.github.io/GridGen/nl/wiki/rastermethode.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aborndev.github.io/GridGen/de/wiki/gitterzeichenmethode.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aborndev.github.io/GridGen/wiki/grid-drawing-method.html"/>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://aborndev.github.io/GridGen/de/wiki/gitterzeichenmethode.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aborndev.github.io/GridGen/wiki/grid-drawing-method.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aborndev.github.io/GridGen/nl/wiki/rastermethode.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aborndev.github.io/GridGen/de/wiki/gitterzeichenmethode.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aborndev.github.io/GridGen/wiki/grid-drawing-method.html"/>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://aborndev.github.io/GridGen/wiki/cross-stitch-grid.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aborndev.github.io/GridGen/wiki/cross-stitch-grid.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aborndev.github.io/GridGen/nl/wiki/telpatroon.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aborndev.github.io/GridGen/de/wiki/zaehlmuster.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aborndev.github.io/GridGen/wiki/cross-stitch-grid.html"/>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://aborndev.github.io/GridGen/nl/wiki/telpatroon.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aborndev.github.io/GridGen/wiki/cross-stitch-grid.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aborndev.github.io/GridGen/nl/wiki/telpatroon.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aborndev.github.io/GridGen/de/wiki/zaehlmuster.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aborndev.github.io/GridGen/wiki/cross-stitch-grid.html"/>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://aborndev.github.io/GridGen/de/wiki/zaehlmuster.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aborndev.github.io/GridGen/wiki/cross-stitch-grid.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aborndev.github.io/GridGen/nl/wiki/telpatroon.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aborndev.github.io/GridGen/de/wiki/zaehlmuster.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aborndev.github.io/GridGen/wiki/cross-stitch-grid.html"/>
+    <changefreq>monthly</changefreq>
+  </url>
 </urlset>

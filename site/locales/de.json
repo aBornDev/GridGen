@@ -31,6 +31,16 @@
       "title": "GridGen Anwendungen — Einsatzmöglichkeiten für Koordinatengitter über Bilder",
       "description": "Praktische Anwendungen von GridGen: Gitterzeichenmethode, D&D-Schlachtkarten, Kreuzstich-Zählmuster, Koordinatensystem-Arbeitsblätter, Orientierungskarten, Spielfeldzonen, Grundrisse und mehr — jeweils mit den empfohlenen Einstellungen.",
       "keywords": "Gitterzeichenmethode, Rastermethode zeichnen, Schlachtkarte Raster, Kreuzstich Gitter aus Foto, Zählmuster aus Foto, Koordinatensystem Arbeitsblatt, Orientierungslauf Karte Gitter, Spielfeld Zonen Raster, Grundriss Raster, Escape-Room Gitter, Foto Kompositionsgitter, Archäologie Referenzgitter, Raster über Bild legen Anwendungen"
+    },
+    "gridMethod": {
+      "title": "Die Gitterzeichenmethode — Bilder von Hand kopieren oder vergrößern | GridGen",
+      "description": "Mit der Gitterzeichenmethode (Rastermethode) Bilder von Hand kopieren oder vergrößern. GridGen legt ein beschriftetes Gitter über dein Referenzfoto und exportiert ein druckfertiges PDF — kostenlos, privat, im Browser.",
+      "keywords": "Gitterzeichenmethode, Rastermethode zeichnen, Zeichnung mit Raster vergrößern, Gitter über Referenzfoto, Rastermethode Kunst, Bild mit Gitter abzeichnen, Gitter Zeichentechnik, Foto mit Gitter übertragen, druckfertiges Gitter PDF"
+    },
+    "countedCraft": {
+      "title": "Kreuzstich & Zählmuster aus einem Foto erstellen — GridGen",
+      "description": "Lege ein beschriftetes Zählgitter über ein beliebiges Foto und exportiere ein druckfertiges PDF für Kreuzstich, Pixel-Art, Diamond Painting und Perlenarbeiten. Zählmuster aus deinem Bild — kostenlos und privat im Browser.",
+      "keywords": "Zählmuster aus Foto, Kreuzstichvorlage aus Foto erstellen, Foto in Zählmuster umwandeln, Kreuzstich Gitter aus Foto, Pixel-Art-Raster, Diamond Painting Raster, Zählmuster erstellen, Perlenarbeit Muster aus Foto, Bügelperlen Muster aus Foto"
     }
   },
   "schema": {
@@ -81,6 +91,40 @@
         { "q": "Sind die Felder echte UTM- oder MGRS-Koordinaten?", "a": "Nein. Das Gitter ist eine visuelle Referenz — gleichmäßig verteilte Felder mit A1- bzw. numerischen Beschriftungen. Sie sind nicht auf die Projektion der Karte georeferenziert, also behandle sie als relatives Referenzsystem und nicht als vermessungsgenaue Koordinaten." },
         { "q": "Kann ich das Gitter an ein vorhandenes Kartengitter anpassen?", "a": "Teilweise — verwende den Modus Nach Größe und passe die Zellengröße so an, dass die Überlagerungslinien grob mit dem aufgedruckten Gitter deines Kartenbildes übereinstimmen. Es handelt sich um eine visuelle Ausrichtung, keine berechnete." },
         { "q": "Ist es kostenlos und datenschutzfreundlich?", "a": "Ja. GridGen ist kostenlos und quelloffen, und deine Karte verlässt dein Gerät nicht — die gesamte Verarbeitung findet in deinem Browser statt." }
+      ]
+    },
+    "gridMethod": {
+      "howtoName": "Wie man die Gitterzeichenmethode mit GridGen anwendet",
+      "steps": [
+        { "name": "Vorlage hochladen", "text": "Ziehe ein Foto oder eine Zeichnung in GridGen oder klicke, um eine Datei auszuwählen. Sie verlässt deinen Browser nicht." },
+        { "name": "Nach Zellen wählen", "text": "Lege die Anzahl der Spalten und Zeilen fest, zum Beispiel 10×10." },
+        { "name": "Schach (A1)-Beschriftung außen hinzufügen", "text": "Jedes Feld in den Rändern benennen, ohne das Bild zu überdecken." },
+        { "name": "Deckkraft reduzieren", "text": "Eine dünne Linie mit niedriger Deckkraft lässt die Vorlage gut lesbar." },
+        { "name": "PDF exportieren und Gitter zeichnen", "text": "PDF drucken, dasselbe Gitter auf der Zeichenfläche bleistiftieren und das Bild Feld für Feld übertragen." }
+      ],
+      "faq": [
+        { "q": "Was ist die Gitterzeichenmethode?", "a": "Es ist eine Technik, um ein Bild von Hand zu kopieren oder in der Größe zu verändern: Du legst ein gleichmäßiges Gitter über eine Vorlage, zeichnest ein übereinstimmendes Gitter auf dein Papier und überträgst das Bild Feld für Feld — so bleiben die Proportionen durchgehend korrekt." },
+        { "q": "Wie viele Felder soll ich verwenden?", "a": "Starte mit etwa 8×8 bis 10×10 für ein einfaches Motiv und verwende mehr, kleinere Felder für feine Details. Mit GridGen kannst du jederzeit neu mit einer höheren Zellenanzahl drucken, wenn ein Feld zu viel zum komfortablen Abzeichnen enthält." },
+        { "q": "Zeichnet GridGen das Bild für mich?", "a": "Nein. GridGen legt nur das beschriftete Gitter über das Bild und exportiert ein PDF. Das Bild zeichnest du selbst von Hand — GridGen ist eine Hilfe für deine eigene Arbeit, kein Paus- oder Bildgenerator." },
+        { "q": "Kann ich die Gitterzeichenmethode verwenden, um eine Zeichnung zu vergrößern?", "a": "Ja. Gib Vorlage und Zeichenfläche dieselbe Feldanzahl, mache die Felder auf der größeren Fläche aber größer. Jedes Feld enthält denselben Bildausschnitt — so skalieren die Proportionen exakt." },
+        { "q": "Brauche ich ein Konto, und ist mein Bild privat?", "a": "Kein Konto nötig, und es ist kostenlos. Dein Bild wird vollständig in deinem Browser verarbeitet und nie hochgeladen — deine Vorlage bleibt privat." }
+      ]
+    },
+    "countedCraft": {
+      "howtoName": "Wie man mit GridGen ein Zählmuster aus einem Foto erstellt",
+      "steps": [
+        { "name": "Foto oder Design hochladen", "text": "Ziehe es in GridGen oder klicke, um es auszuwählen. Es wird in deinem Browser verarbeitet und nie hochgeladen." },
+        { "name": "Nach Größe wählen", "text": "Lege eine feste Zellengröße in Pixeln fest, damit jedes Feld einem Stich, einer Perle oder einem Pixel entspricht." },
+        { "name": "Beschriftungen einschalten", "text": "Reihen und Spalten nummerieren, damit du zählen und die Stelle behalten kannst." },
+        { "name": "Linienfarbe und Deckkraft einstellen", "text": "Eine Linie wählen, die sich gut vom Bild abhebt." },
+        { "name": "PDF exportieren", "text": "Ein A4-Zählmuster in voller Auflösung herunterladen und Feld für Feld folgen." }
+      ],
+      "faq": [
+        { "q": "Kann ich ein Foto in ein Kreuzstich-Zählmuster umwandeln?", "a": "Ja — GridGen legt ein Zählgitter über das Foto, bei dem jedes Feld einem Stich entspricht. Wähle Nach Größe, um die Zellengröße festzulegen, schalte Beschriftungen ein, um Reihen und Spalten zu zählen, und exportiere das PDF. Es wählt keine Fadenfarben für dich aus; es gibt dir das zählbare Gitter, mit dem du arbeiten kannst." },
+        { "q": "Wählt GridGen die Fadenfarben aus oder erstellt es ein Symbolmuster?", "a": "Nein. Es legt nur das Gitter und die Reihen-/Spaltenbeschriftungen an. Es reduziert das Bild nicht auf eine Farbpalette und weist keine Symbole oder Farbnummern zu — die Farben wählst du beim Sticken selbst." },
+        { "q": "Wie mache ich, dass eine Zelle einem Stich entspricht?", "a": "Verwende Nach Größe und lege die Zellengröße in Pixeln fest. Jedes Feld hat dann auf dem gesamten Bild dieselbe Größe, sodass eine Zelle genau einem Stich, einer Perle oder einem Pixel entspricht." },
+        { "q": "Für welche Handarbeitstechniken funktioniert das?", "a": "Für jede Zähltechnik, die nach einem Raster arbeitet — Kreuzstich, Needlepoint, Pixel-Art, Diamond Painting, Perlenarbeiten, Bügelperlen/Hama-Perlen und Latch Hook." },
+        { "q": "Ist es kostenlos und datenschutzfreundlich?", "a": "Ja. GridGen ist kostenlos und quelloffen, und dein Foto wird vollständig in deinem Browser verarbeitet — es verlässt dein Gerät nicht." }
       ]
     },
     "useCases": {

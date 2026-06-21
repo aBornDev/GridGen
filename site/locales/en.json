@@ -31,6 +31,16 @@
       "title": "GridGen Use Cases — Real-World Ways to Add a Grid to an Image",
       "description": "Practical ways to use GridGen: the grid drawing method, D&D battle maps, cross-stitch charts, coordinate-plane worksheets, orienteering maps, pitch zones, floor plans and more — each with the exact settings to use.",
       "keywords": "grid drawing method, battle map grid, cross stitch grid from photo, coordinate plane worksheet, orienteering map grid, pitch zone grid, floor plan grid overlay, escape room grid, photo composition grid, archaeology site grid, add grid to image use cases"
+    },
+    "gridMethod": {
+      "title": "The Grid Drawing Method — Copy or Scale Any Image by Hand | GridGen",
+      "description": "Use the grid drawing method to copy or resize a picture by hand. GridGen overlays a labeled grid on your reference photo and exports a print-ready PDF — free, private, in your browser.",
+      "keywords": "grid drawing method, grid method art, grid method drawing, how to use the grid method, draw with a grid, scale a drawing with a grid, enlarge a drawing grid method, grid technique drawing, add grid to reference photo"
+    },
+    "countedCraft": {
+      "title": "Cross-Stitch & Counted-Craft Charts from a Photo — GridGen",
+      "description": "Overlay a labeled counting grid on any photo and export a print-ready PDF for cross-stitch, pixel art, diamond painting, and beadwork. A counting grid from your image — free and private in your browser.",
+      "keywords": "photo to cross stitch chart, cross stitch grid from photo, cross stitch pattern from photo, pixel art grid, diamond painting grid, counted cross stitch chart maker, needlework chart from photo, beadwork pattern grid, perler bead pattern grid"
     }
   },
   "schema": {
@@ -95,6 +105,40 @@
         { "q": "Can I zone a sports pitch or a floor plan?", "a": "Yes. Use By cells to divide a pitch or floor-plan image into labeled zones, and place labels outside so the underlying plan stays visible — handy for coaching briefings or venue wayfinding." },
         { "q": "Which settings should I use for my project?", "a": "Use By cells for a fixed grid shape (art, worksheets, zones) and By size for a fixed square size (battle maps, counted-craft charts). Use chess (A1) labels to name squares, or numeric (1,1) labels for coordinate-plane work." },
         { "q": "Can I print the result?", "a": "Yes. Every use case ends in a print-ready A4 PDF — orientation is chosen automatically and the grid is drawn at your image's full resolution." }
+      ]
+    },
+    "gridMethod": {
+      "howtoName": "How to use the grid drawing method with GridGen",
+      "steps": [
+        { "name": "Upload your reference", "text": "Drag a photo or drawing into GridGen, or click to select one. It stays in your browser." },
+        { "name": "Choose By cells", "text": "Pick the number of columns and rows, such as 10×10." },
+        { "name": "Add chess (A1) labels outside", "text": "Name every square in the margins without drawing over the picture." },
+        { "name": "Lower the opacity", "text": "A thin, low-opacity line keeps the reference easy to read." },
+        { "name": "Export and draw your grid", "text": "Print the PDF, pencil the same grid on your surface, and copy square by square." }
+      ],
+      "faq": [
+        { "q": "What is the grid drawing method?", "a": "It is a technique for copying or resizing an image by hand: you overlay a grid of equal squares on a reference, draw a matching grid on your paper, and redraw the picture one square at a time so the proportions stay accurate." },
+        { "q": "How many squares should I use?", "a": "Start around 8×8 to 10×10 for a simple subject, and use more, smaller squares for fine detail. With GridGen you can reprint at a higher cell count any time a square holds too much to copy comfortably." },
+        { "q": "Does GridGen draw the picture for me?", "a": "No. GridGen only overlays the labeled grid and exports a PDF. You still draw the picture by hand — it is a guide for your own work, not a tracer or an image generator." },
+        { "q": "Can I use the grid method to enlarge a drawing?", "a": "Yes. Give your reference and your surface the same number of squares but make the squares bigger on the larger surface. Each square holds the same part of the picture, so the proportions scale exactly." },
+        { "q": "Do I need an account, and is my image private?", "a": "No account is needed and it is free. Your image is processed entirely in your browser and never uploaded, so your reference stays private." }
+      ]
+    },
+    "countedCraft": {
+      "howtoName": "How to make a counted-craft chart from a photo with GridGen",
+      "steps": [
+        { "name": "Upload your photo or design", "text": "Drag it into GridGen or click to select; it is processed in your browser." },
+        { "name": "Choose By size", "text": "Set a fixed cell size so each square maps to one stitch, bead, or pixel." },
+        { "name": "Turn on labels", "text": "Number the rows and columns so you can count and keep your place." },
+        { "name": "Set line color and opacity", "text": "Pick a line that stands out against your image." },
+        { "name": "Export the PDF", "text": "Download an A4 chart at full resolution and follow it square by square." }
+      ],
+      "faq": [
+        { "q": "Can I turn a photo into a cross-stitch chart?", "a": "Yes — GridGen overlays a counting grid where each square is one stitch. Use By size to fix the cell size, turn on labels to count rows and columns, and export the PDF. It does not pick thread colors for you; it gives you the countable grid to work from." },
+        { "q": "Does GridGen choose the thread colors or make a symbol chart?", "a": "No. It overlays the grid and row/column labels only. It does not reduce the image to a palette or assign symbols or color codes — you choose colors as you stitch." },
+        { "q": "How do I make one cell equal one stitch?", "a": "Use By size and set the cell size in pixels. Every square is then the same size across the image, so one cell maps to one stitch, bead, or pixel." },
+        { "q": "What craft formats does this work for?", "a": "Any counted craft that works from a grid — cross-stitch, needlepoint, pixel art, diamond painting, beadwork, perler/fuse beads, and latch hook." },
+        { "q": "Is it free and private?", "a": "Yes. GridGen is free and open source, and your photo is processed entirely in your browser, so it never leaves your device." }
       ]
     }
   }

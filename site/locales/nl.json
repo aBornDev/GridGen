@@ -31,6 +31,16 @@
       "title": "GridGen-toepassingen — Praktische manieren om een raster over een afbeelding te leggen",
       "description": "Praktische toepassingen van GridGen: de rastermethode, D&D battle maps, kruissteekpatronen, coördinatenvlakwerkbladen, oriëntatieloopkaarten, veldzones, plattegronden en meer — elk met de exacte aanbevolen instellingen.",
       "keywords": "rastermethode tekenen, battle map raster, kruissteek raster uit foto, coördinatenstelsel werkblad, oriëntatieloop kaartraster, voetbalveld zonering, plattegrond raster overlay, escape room raster, foto compositieraster, archeologie sitefoto raster, raster toevoegen aan afbeelding toepassingen"
+    },
+    "gridMethod": {
+      "title": "De rastermethode — Elke afbeelding met de hand overtekenen of vergroten | GridGen",
+      "description": "Gebruik de rastermethode om een afbeelding met de hand over te tekenen of op schaal te brengen. GridGen legt een gelabeld raster over je referentiefoto en exporteert een drukklare PDF — gratis, privé, in je browser.",
+      "keywords": "rastermethode tekenen, rastertekenmethode, tekening vergroten met raster, raster over referentiefoto, rastermethode kunst, hoe de rastermethode te gebruiken, tekenen met raster, afbeelding op schaal brengen raster, pixel art raster, referentieraster foto"
+    },
+    "countedCraft": {
+      "title": "Kruissteek & telpatronen van een foto — GridGen",
+      "description": "Leg een gelabeld telraster over elke foto en exporteer een drukklare PDF voor kruissteek, pixel art, diamond painting en kralenwerk. Een telraster van je afbeelding — gratis en privé in je browser.",
+      "keywords": "foto naar kruissteekpatroon, kruissteekpatroon van foto, kruissteek raster uit foto, telpatroon maken, telpatroon van foto, pixel art raster, diamond painting raster, borduurpatroon van foto, kralenwerk patroon raster, strijkkralen patroon raster"
     }
   },
   "schema": {
@@ -81,6 +91,40 @@
         { "q": "Zijn de vakjes echte UTM- of MGRS-coördinaten?", "a": "Nee. Het raster is een visuele referentie — gelijkmatig verdeelde vakjes met A1- of cijferlabels. Ze zijn niet gegeorefereerd aan de projectie van de kaart, dus behandel ze als een relatief referentiesysteem, geen coördinaten met landmeetkundige nauwkeurigheid." },
         { "q": "Kan ik het raster laten aansluiten op een bestaand kaartraster?", "a": "Gedeeltelijk — gebruik de modus Op grootte en pas de celgrootte aan zodat de overlaylijnen ruwweg samenvallen met het gedrukte raster op je kaartafbeelding. Het is een visuele uitlijning, geen berekende." },
         { "q": "Is het gratis en privé?", "a": "Ja. GridGen is gratis en open source, en je kaart verlaat je apparaat nooit — alle verwerking vindt plaats in je browser." }
+      ]
+    },
+    "gridMethod": {
+      "howtoName": "De rastermethode gebruiken met GridGen",
+      "steps": [
+        { "name": "Upload je referentie", "text": "Sleep een foto of tekening naar GridGen, of klik om er een te kiezen. De afbeelding blijft in je browser." },
+        { "name": "Kies Op vakjes", "text": "Kies het aantal kolommen en rijen, bijvoorbeeld 10×10." },
+        { "name": "Voeg schaak-(A1)-labels toe, buiten", "text": "Geef elk vakje een naam in de marges zonder over de afbeelding te tekenen." },
+        { "name": "Verlaag de dekking", "text": "Een dunne lijn met lage dekking houdt de referentie goed leesbaar." },
+        { "name": "Exporteer en teken je raster", "text": "Print de PDF, teken hetzelfde raster met potlood op je ondergrond en kopieer vak voor vak." }
+      ],
+      "faq": [
+        { "q": "Wat is de rastermethode?", "a": "Het is een techniek om een afbeelding met de hand over te tekenen of op schaal te brengen: je legt een raster van gelijke vakjes over een referentie, tekent een overeenkomend raster op je papier en tekent de afbeelding vak voor vak over zodat de verhoudingen correct blijven." },
+        { "q": "Hoeveel vakjes moet ik gebruiken?", "a": "Begin met ongeveer 8×8 tot 10×10 voor een eenvoudig onderwerp, en gebruik meer, kleinere vakjes voor fijn detail. Met GridGen kun je op elk moment opnieuw afdrukken met een hoger aantal cellen als een vakje te veel bevat om comfortabel te kopiëren." },
+        { "q": "Tekent GridGen de afbeelding voor mij?", "a": "Nee. GridGen legt alleen het gelabelde raster over en exporteert een PDF. Je tekent de afbeelding nog steeds met de hand — het is een hulpmiddel voor je eigen werk, geen traceer- of afbeeldingsgenerator." },
+        { "q": "Kan ik de rastermethode gebruiken om een tekening te vergroten?", "a": "Ja. Geef je referentie en je tekenondergrond hetzelfde aantal vakjes maar maak de vakjes groter op het grotere oppervlak. Elk vakje omvat hetzelfde deel van de afbeelding, zodat de verhoudingen precies meeschalen." },
+        { "q": "Heb ik een account nodig, en blijft mijn afbeelding privé?", "a": "Er is geen account nodig en het is gratis. Je afbeelding wordt volledig in je browser verwerkt en nooit geüpload, zodat je referentie privé blijft." }
+      ]
+    },
+    "countedCraft": {
+      "howtoName": "Een telpatroon van een foto maken met GridGen",
+      "steps": [
+        { "name": "Upload je foto of ontwerp", "text": "Sleep het naar GridGen of klik om het te kiezen; het wordt in je browser verwerkt." },
+        { "name": "Kies Op grootte", "text": "Stel een vaste celgrootte in zodat elk vakje overeenkomt met één steek, kraal of pixel." },
+        { "name": "Zet labels aan", "text": "Nummer de rijen en kolommen zodat je kunt tellen en je plaats kunt bijhouden." },
+        { "name": "Stel lijnkleur en dekking in", "text": "Kies een lijn die afsteekt tegen je afbeelding." },
+        { "name": "Exporteer de PDF", "text": "Download een A4-schema op volledige resolutie en volg het vak voor vak." }
+      ],
+      "faq": [
+        { "q": "Kan ik een foto omzetten in een kruissteekpatroon?", "a": "Ja — GridGen legt een telraster over waarbij elk vakje één steek is. Gebruik Op grootte om de celgrootte vast te leggen, zet labels aan om rijen en kolommen te tellen, en exporteer de PDF. Het kiest geen draadkleuren voor je; het geeft je het telbare raster om van te werken." },
+        { "q": "Kiest GridGen de draadkleuren of maakt het een symbolenschema?", "a": "Nee. Het legt alleen het raster en de rij- en kolomlabels over. Het reduceert de afbeelding niet tot een palet en kent geen symbolen of kleurcodes toe — jij kiest de kleuren terwijl je naait." },
+        { "q": "Hoe maak ik één cel gelijk aan één steek?", "a": "Gebruik Op grootte en stel de celgrootte in pixels in. Elk vakje is dan even groot over de hele afbeelding, zodat één cel overeenkomt met één steek, kraal of pixel." },
+        { "q": "Voor welke handwerkformaten werkt dit?", "a": "Elk telhandwerk dat vanuit een raster werkt — kruissteek, borduurwerk, pixel art, diamond painting, kralenwerk, strijkkralen en latch hook." },
+        { "q": "Is het gratis en privé?", "a": "Ja. GridGen is gratis en open source, en je foto wordt volledig in je browser verwerkt zodat die je apparaat nooit verlaat." }
       ]
     },
     "useCases": {
