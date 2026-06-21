@@ -121,7 +121,7 @@
       ],
       "faq": [
         { "q": "Kan ik een foto omzetten in een kruissteekpatroon?", "a": "Ja — GridGen legt een telraster over waarbij elk vakje één steek is. Gebruik Op grootte om de celgrootte vast te leggen, zet labels aan om rijen en kolommen te tellen, en exporteer de PDF. Het kiest geen draadkleuren voor je; het geeft je het telbare raster om van te werken." },
-        { "q": "Kiest GridGen de draadkleuren of maakt het een symbolenschema?", "a": "Nee. Het legt alleen het raster en de rij- en kolomlabels over. Het reduceert de afbeelding niet tot een palet en kent geen symbolen of kleurcodes toe — jij kiest de kleuren terwijl je naait." },
+        { "q": "Kiest GridGen de draadkleuren of maakt het een symbolenschema?", "a": "Nee. Het legt alleen het raster en de rij- en kolomlabels over. Het reduceert de afbeelding niet tot een palet en kent geen symbolen of kleurcodes toe — jij kiest de kleuren terwijl je werkt." },
         { "q": "Hoe maak ik één cel gelijk aan één steek?", "a": "Gebruik Op grootte en stel de celgrootte in pixels in. Elk vakje is dan even groot over de hele afbeelding, zodat één cel overeenkomt met één steek, kraal of pixel." },
         { "q": "Voor welke handwerkformaten werkt dit?", "a": "Elk telhandwerk dat vanuit een raster werkt — kruissteek, borduurwerk, pixel art, diamond painting, kralenwerk, strijkkralen en latch hook." },
         { "q": "Is het gratis en privé?", "a": "Ja. GridGen is gratis en open source, en je foto wordt volledig in je browser verwerkt zodat die je apparaat nooit verlaat." }
