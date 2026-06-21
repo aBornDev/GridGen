@@ -231,12 +231,34 @@ pdf.addImage(imgData, 'PNG', x, y, drawW, drawH);
 pdf.save(`${baseName || 'grid-map'}-grid.pdf`);</code></pre>
       <p>Da der Quell-Canvas die nativen Pixelabmessungen des Bildes hat, bleiben die Gitterlinien beim Herunterskalieren auf die Seite scharf. Der Ausgabedateiname wird aus der hochgeladenen Datei abgeleitet, ihre Erweiterung wird entfernt und <code>-grid</code> angehängt.</p>
 
+      <p>jsPDF wird <strong>bei Bedarf geladen</strong>, nicht im Voraus. <code>exportPDF()</code> ist <code>async</code> und wartet auf einen kleinen Loader, der das CDN-<code>&lt;script&gt;</code> beim ersten Bedarf einfügt — im Hintergrund schon vorbereitet, sobald du ein Bild hinzufügst. Wer nie exportiert, lädt nichts vom CDN.</p>
+      <pre><code>let jspdfPromise = null;
+function loadJsPDF() {
+  if (window.jspdf) return Promise.resolve();
+  if (!jspdfPromise) {
+    jspdfPromise = new Promise((resolve, reject) =&gt; {
+      const s = document.createElement('script');
+      s.src = JSPDF_SRC;            // the cdnjs UMD bundle
+      s.onload = resolve;
+      s.onerror = () =&gt; { jspdfPromise = null; reject(); };
+      document.head.appendChild(s);
+    });
+  }
+  return jspdfPromise;              // memoized; retries after a failure
+}
+
+async function exportPDF() {
+  await loadJsPDF();
+  const { jsPDF } = window.jspdf;
+  // … build the PDF (above) …
+}</code></pre>
+
       <h2 id="privacy">Datenschutzmodell</h2>
       <p>GridGen ist <strong>rein clientseitig</strong>. Das Bild wird mit dem <code>FileReader</code> des Browsers als Daten-URL gelesen und in ein <code>Image</code>-Element dekodiert – es wird nirgendwo übertragen:</p>
       <pre><code>const reader = new FileReader();
 reader.onload = (ev) => { img.src = ev.target.result; };
 reader.readAsDataURL(file);</code></pre>
-      <p>Es gibt keine Analysen, keinen Server und keine Netzwerkanfrage außer dem Laden der jsPDF-Bibliothek von deren CDN. Alles andere läuft auf der Seite.</p>
+      <p>Es gibt keine Analysen, keinen Server und keine Netzwerkanfrage außer dem Laden der jsPDF-Bibliothek von deren CDN — und das nur bei Bedarf. Alles andere läuft auf der Seite.</p>
 
       <h2 id="extend">GridGen erweitern</h2>
       <p>Das Design mit einer einzelnen Logikdatei hält Änderungen lokal. Häufige Erweiterungen:</p>

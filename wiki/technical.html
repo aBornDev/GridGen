@@ -231,12 +231,34 @@ pdf.addImage(imgData, 'PNG', x, y, drawW, drawH);
 pdf.save(`${baseName || 'grid-map'}-grid.pdf`);</code></pre>
       <p>Because the source canvas is at the image's native pixel dimensions, downscaling to the page keeps grid lines sharp. The output filename is derived from the uploaded file, with its extension stripped and <code>-grid</code> appended.</p>
 
+      <p>jsPDF is <strong>loaded on demand</strong>, not up front. <code>exportPDF()</code> is <code>async</code> and awaits a small loader that injects the CDN <code>&lt;script&gt;</code> the first time it is needed — warmed up in the background as soon as you add an image. A visitor who never exports downloads nothing from the CDN.</p>
+      <pre><code>let jspdfPromise = null;
+function loadJsPDF() {
+  if (window.jspdf) return Promise.resolve();
+  if (!jspdfPromise) {
+    jspdfPromise = new Promise((resolve, reject) =&gt; {
+      const s = document.createElement('script');
+      s.src = JSPDF_SRC;            // the cdnjs UMD bundle
+      s.onload = resolve;
+      s.onerror = () =&gt; { jspdfPromise = null; reject(); };
+      document.head.appendChild(s);
+    });
+  }
+  return jspdfPromise;              // memoized; retries after a failure
+}
+
+async function exportPDF() {
+  await loadJsPDF();
+  const { jsPDF } = window.jspdf;
+  // … build the PDF (above) …
+}</code></pre>
+
       <h2 id="privacy">Privacy model</h2>
       <p>GridGen is <strong>client-only</strong>. The image is read with the browser's <code>FileReader</code> as a data URL and decoded into an <code>Image</code> element — it is never transmitted anywhere:</p>
       <pre><code>const reader = new FileReader();
 reader.onload = (ev) => { img.src = ev.target.result; };
 reader.readAsDataURL(file);</code></pre>
-      <p>There is no analytics, no server, and no network request beyond loading the jsPDF library from its CDN. Everything else runs in the page.</p>
+      <p>There is no analytics, no server, and no network request beyond loading the jsPDF library from its CDN — and that happens only on demand. Everything else runs in the page.</p>
 
       <h2 id="extend">Extending GridGen</h2>
       <p>The single-file-of-logic design makes changes localized. Common extensions:</p>
